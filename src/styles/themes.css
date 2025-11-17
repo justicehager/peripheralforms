@@ -1,0 +1,158 @@
+/* Platform Theme - Initial State */
+
+:root[data-theme="platform"],
+:root:not([data-theme]) {
+  color-scheme: light;
+}
+
+/* Resistance Theme - Liberated State */
+
+:root[data-theme="resistance"] {
+  color-scheme: dark;
+}
+
+/* Smooth transitions between themes */
+body {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Infrastructure Visibility Overrides */
+
+[data-infrastructure-level="1"] {
+  --infra-opacity: 0.2;
+}
+
+[data-infrastructure-level="2"] {
+  --infra-opacity: 0.5;
+}
+
+[data-infrastructure-level="3"] {
+  --infra-opacity: 1;
+}
+
+/* Glitch effect for resistance state */
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  }
+  25% {
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  }
+  50% {
+    text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff;
+  }
+  75% {
+    text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff;
+  }
+  100% {
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  }
+}
+
+[data-theme="resistance"] h1 {
+  animation: glitch 0.3s infinite;
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Scanlines effect for resistance */
+[data-theme="resistance"]::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 0, 0.05),
+    rgba(0, 255, 0, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Infrastructure visibility classes */
+.infrastructure-panel {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.95);
+  color: #00ff00;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 8px;
+  border: 1px solid #333;
+  z-index: 9998;
+  max-width: 400px;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.database-query {
+  opacity: 0.7;
+  font-size: 10px;
+  color: #888;
+  font-family: var(--font-mono);
+  margin-left: 20px;
+  transform: rotate(-2deg);
+  margin-bottom: 4px;
+}
+
+/* Platform state specific styling */
+:root[data-theme="platform"] .layout-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/* Resistance state specific styling */
+:root[data-theme="resistance"] .layout-container {
+  max-width: none;
+  margin: 0;
+  padding: var(--spacing-lg);
+  border: 2px solid var(--border);
+}
+
+:root[data-theme="resistance"] table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-md) 0;
+}
+
+:root[data-theme="resistance"] td,
+:root[data-theme="resistance"] th {
+  border: 1px solid var(--border);
+  padding: var(--spacing-sm);
+  text-align: left;
+}
+
+:root[data-theme="resistance"] a {
+  color: var(--link);
+  text-decoration: underline;
+  border-bottom: 2px dotted var(--link);
+}
+
+:root[data-theme="resistance"] hr {
+  border: 1px solid var(--border);
+  margin: var(--spacing-xl) 0;
+}
+
+/* ASCII art styling for resistance */
+:root[data-theme="resistance"] pre {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  overflow-x: auto;
+  padding: var(--spacing-md);
+  border: 1px dashed var(--border);
+  margin: var(--spacing-md) 0;
+}
+
+/* Marquee for fun */
+marquee {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: var(--spacing-md) 0;
+}

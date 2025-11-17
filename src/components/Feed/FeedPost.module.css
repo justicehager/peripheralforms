@@ -1,0 +1,129 @@
+.feed-post {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.feed-post:hover {
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.post-header {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.header-info {
+  flex: 1;
+}
+
+.header-info h3 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.verified {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.post-content {
+  padding: var(--spacing-md);
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.artwork-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative;
+}
+
+.artwork-placeholder {
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  width: 100%;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.mechanism-placeholder {
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-blue);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  width: 100%;
+  text-align: center;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.locked-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.unlocked-badge,
+.locked-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.post-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.engagement {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.engagement span {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.engagement span:hover {
+  color: var(--text-primary);
+}

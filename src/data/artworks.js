@@ -1,0 +1,103 @@
+// Artwork metadata and configuration
+export const ARTWORKS = [
+  {
+    id: 'lynch',
+    title: 'Restoring a Name to Grate American Honor',
+    artistName: 'Garrett Lynch',
+    mechanismType: 'Confirmshaming',
+    mechanismId: 'confirmshaming',
+    year: 2025,
+    medium: 'Browser Extension / Interactive',
+    likes: 1247,
+    comments: 89,
+    shares: 342,
+    description: 'A work about resisting imposed names trapped behind guilt-manipulation.',
+    artistStatement: 'This work explores the power of naming and the resistance to imposed identity.',
+    imageUrl: '/artworks/lynch/thumbnail.jpg',
+    contentUrl: '/artworks/lynch/content'
+  },
+  {
+    id: 'weigel',
+    title: 'Interrogation',
+    artistName: 'Jennifer Weigel',
+    mechanismType: 'Autoplay/Countdown',
+    mechanismId: 'autoplay',
+    year: 2025,
+    medium: 'Poetry / Video',
+    likes: 892,
+    comments: 56,
+    shares: 234,
+    description: 'Testimony resisting predetermined narrative trapped behind forced official narrative.',
+    artistStatement: 'A meditation on police narratives and counter-testimony.',
+    imageUrl: '/artworks/weigel/thumbnail.jpg',
+    contentUrl: '/artworks/weigel/content'
+  },
+  {
+    id: 'gibbins',
+    title: 'ISOLATION PROCEDURES',
+    artistName: 'Ian Gibbins',
+    mechanismType: 'Time-Out',
+    mechanismId: 'timeout',
+    year: 2025,
+    medium: 'Video Installation',
+    likes: 1103,
+    comments: 73,
+    shares: 289,
+    description: 'Work about authoritarian control trapped behind paternalistic restriction.',
+    artistStatement: 'Exploring the ways control is exercised through isolation and waiting.',
+    imageUrl: '/artworks/gibbins/thumbnail.jpg',
+    contentUrl: '/artworks/gibbins/content'
+  },
+  {
+    id: 'desire-engineering',
+    title: 'Starter Questions for 21st Century Grovelers',
+    artistName: 'desire_engineering',
+    mechanismType: 'Infinite Scroll',
+    mechanismId: 'infinite_scroll',
+    year: 2025,
+    medium: 'Digital / Performance',
+    likes: 2156,
+    comments: 134,
+    shares: 567,
+    description: 'Critique of compulsory performance trapped behind compulsory scrolling.',
+    artistStatement: 'A CAPTCHA critique exploring the labor of attention.',
+    imageUrl: '/artworks/desire-engineering/thumbnail.jpg',
+    contentUrl: '/artworks/desire-engineering/content'
+  },
+  {
+    id: 'perfect-users',
+    title: 'Perfect Censorship // Perfectly Unpublished',
+    artistName: 'Perfect Users',
+    mechanismType: 'Surveillance UI',
+    mechanismId: 'surveillance',
+    year: 2025,
+    medium: 'Interactive / Data Visualization',
+    likes: 745,
+    comments: 42,
+    shares: 198,
+    description: 'Work requiring privacy trapped behind maximum surveillance.',
+    artistStatement: 'Making visible the normally invisible surveillance infrastructure.',
+    imageUrl: '/artworks/perfect-users/thumbnail.jpg',
+    contentUrl: '/artworks/perfect-users/content'
+  },
+  {
+    id: 'search-engine-scores',
+    title: 'Search Engine Scores',
+    artistName: '[Your Name]',
+    mechanismType: 'Harmony Button',
+    mechanismId: 'harmony',
+    year: 2025,
+    medium: 'Phantom API / Search',
+    likes: 634,
+    comments: 38,
+    shares: 156,
+    description: 'Work about fabricating demand trapped behind mandatory assent to platform rules.',
+    artistStatement: 'Exploring the phantom demand generation and phantom APIs.',
+    imageUrl: '/artworks/search-engine-scores/thumbnail.jpg',
+    contentUrl: '/artworks/search-engine-scores/content'
+  }
+]
+
+export const getArtworkById = (id) => {
+  return ARTWORKS.find(artwork => artwork.id === id)
+}

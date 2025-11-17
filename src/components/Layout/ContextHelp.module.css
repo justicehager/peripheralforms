@@ -1,0 +1,47 @@
+.context-help {
+  padding: var(--spacing-lg) 0;
+}
+
+.help-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.help-content h1 {
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-primary);
+}
+
+.help-content h2 {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: var(--spacing-sm);
+}
+
+.help-content section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.help-content p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.help-content ol {
+  list-style: decimal;
+  padding-left: 2rem;
+  color: var(--text-secondary);
+}
+
+.help-content li {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+}
+
+.help-content strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}

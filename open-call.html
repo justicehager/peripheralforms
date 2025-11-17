@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Should Be Allowed to Think - Open Call</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F5E6D3;
+            color: #1C1C1C;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        /* Glitch text effect */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #00FFB5;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #FF3F80;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 30px, 0); }
+            25% { clip: rect(70px, 9999px, 90px, 0); }
+            50% { clip: rect(40px, 9999px, 60px, 0); }
+            75% { clip: rect(20px, 9999px, 80px, 0); }
+            100% { clip: rect(50px, 9999px, 100px, 0); }
+        }
+        
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero section */
+        .hero {
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: 
+                repeating-conic-gradient(
+                    from 0deg at 50% 50%,
+                    #D64933 0deg,
+                    #F5B942 30deg,
+                    #F5E6D3 40deg,
+                    #D64933 60deg
+                );
+            opacity: 0.15;
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -100px;
+            width: 250px;
+            height: 250px;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 15px,
+                    rgba(255, 63, 128, 0.1) 15px,
+                    rgba(255, 63, 128, 0.1) 30px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 15px,
+                    rgba(0, 255, 181, 0.1) 15px,
+                    rgba(0, 255, 181, 0.1) 30px
+                );
+            z-index: -1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        @keyframes rotate {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            transform: rotate(-1deg);
+        }
+        
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 30px;
+            transform: rotate(0.5deg);
+        }
+        
+        .subtitle span {
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
+        }
+        
+        .deadline {
+            display: inline-block;
+            background: #FFEA00;
+            color: #1C1C1C;
+            padding: 15px 25px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: 4px dotted #1C1C1C;
+            box-shadow: 8px 8px 0 #00FFB5;
+            transform: rotate(-2deg);
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .deadline::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dotted #FF3F80;
+            opacity: 0.4;
+        }
+        
+        /* Content blocks */
+        .block {
+            background: #fff;
+            border: 5px dotted #1C1C1C;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.1);
+        }
+        
+        /* Interference patterns */
+        .block::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -40px;
+            width: 200px;
+            height: 200px;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 63, 128, 0.1) 10px,
+                rgba(255, 63, 128, 0.1) 20px
+            );
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .block:nth-child(odd) {
+            transform: rotate(-0.5deg);
+        }
+        
+        .block:nth-child(odd)::after {
+            right: auto;
+            left: -50px;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 8px,
+                rgba(0, 255, 181, 0.12) 8px,
+                rgba(0, 255, 181, 0.12) 16px
+            );
+        }
+        
+        .block:nth-child(even) {
+            transform: rotate(0.5deg);
+            box-shadow: -12px 12px 0 rgba(0,0,0,0.1);
+        }
+        
+        /* Cognitive interference overlay */
+        .container::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 234, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 181, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, 
+                #D64933 0%, 
+                #D64933 25%, 
+                #FFEA00 25%, 
+                #FFEA00 50%, 
+                #00FFB5 50%, 
+                #00FFB5 75%, 
+                #FF3F80 75%, 
+                #FF3F80 100%
+            );
+        }
+        
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+        
+        .concept-block {
+            background: #1C1C1C;
+            color: #F5E6D3;
+        }
+        
+        .concept-block h2 {
+            color: #FFEA00;
+        }
+        
+        .quote {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 30px 0;
+            padding-left: 30px;
+            border-left: 8px solid #FF3F80;
+            font-style: italic;
+        }
+        
+        /* List styling */
+        .formats {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .formats li {
+            background: #F5E6D3;
+            padding: 12px 15px;
+            border: 3px dotted #1C1C1C;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .formats li:nth-child(3n)::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background: #FF3F80;
+            opacity: 0.3;
+            transform: rotate(45deg);
+        }
+        
+        .formats li::before {
+            content: '▸';
+            color: #D64933;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #D64933 0%, #F5B942 100%);
+            border: 8px dotted #1C1C1C;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.03) 2px,
+                    rgba(0,0,0,0.03) 4px
+                );
+            pointer-events: none;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(
+                circle,
+                rgba(0, 255, 181, 0.15) 0%,
+                transparent 70%
+            );
+            pointer-events: none;
+        }
+        
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #1C1C1C;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 0 #FFEA00;
+        }
+        
+        .submit-btn {
+            display: inline-block;
+            background: #1C1C1C;
+            color: #FFEA00;
+            padding: 25px 50px;
+            font-size: 2rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 6px dotted #00FFB5;
+            box-shadow: 0 0 0 4px #1C1C1C, 8px 8px 0 6px #FF3F80;
+            transition: all 0.2s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 2px dotted rgba(255, 234, 0, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 0 0 0 4px #1C1C1C, 4px 4px 0 6px #FF3F80;
+        }
+        
+        .deadline-repeat {
+            margin-top: 25px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1C1C1C;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1C1C1C;
+            color: #F5E6D3;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 8px solid #D64933;
+        }
+        
+        footer p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+        
+        footer a {
+            color: #00FFB5;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 2px solid #00FFB5;
+        }
+        
+        footer a:hover {
+            color: #FF3F80;
+            border-bottom-color: #FF3F80;
+        }
+        
+        .pf-link {
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .block {
+                padding: 25px;
+            }
+            
+            .formats {
+                grid-template-columns: 1fr;
+            }
+            
+            .submit-btn {
+                padding: 20px 40px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Scanline effect */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 181, 0.03) 2px,
+                rgba(0, 255, 181, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="glitch" data-text="WE SHOULD BE ALLOWED TO THINK">
+                WE SHOULD BE ALLOWED TO THINK
+            </h1>
+            <div class="subtitle">
+                An open call for <span>peripheral forms</span>
+            </div>
+            <div class="deadline">
+                NOV 1–12 / 2025
+            </div>
+        </section>
+        
+        <!-- Concept Block -->
+        <section class="block concept-block">
+            <h2>The Call</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                <strong>"We Should be Allowed to Think"</strong> will be the first online exhibition as part of a reboot of <span style="text-decoration: line-through;">peripheral forms</span> (PF), a rhizomatic container for digital art created by Justice Alexander Hager. This exhibition is a part of a larger project, <strong>Fall of Freedom</strong>, an urgent call to the arts community to unite in defiance of authoritarian forces sweeping the nation.
+            </p>
+            
+            <div class="quote">
+                "The first fascist to resist is always the one that's inside your head, placed there by a culture of surveillance and control."
+            </div>
+            
+            <p style="font-size: 1.1rem;">
+                We are putting forth an open call for new and existing work from artists across the globe that grapples with the ways that cognition can be captured, limited, and suppressed by authoritarian/proto-authoritarian forces—from governments and police forces to media outlets and online platforms.
+            </p>
+        </section>
+        
+        <!-- What We Welcome -->
+        <section class="block">
+            <h2>What We Welcome</h2>
+            <ul class="formats">
+                <li>theoretical essays</li>
+                <li>personal essays</li>
+                <li>poetry</li>
+                <li>memes</li>
+                <li>desktop backgrounds</li>
+                <li>interactive websites</li>
+                <li>social practice projects</li>
+                <li>online performances</li>
+                <li>short-form video</li>
+                <li>scores for better thinking</li>
+                <li>podcasts</li>
+                <li>recorded conversations</li>
+                <li>lectures</li>
+                <li>other aesthetic and critical interventions</li>
+            </ul>
+            
+            <p style="font-size: 1.3rem; font-weight: 700; margin-top: 30px; text-transform: uppercase; background: #FFEA00; padding: 15px; border: 3px solid #1C1C1C; display: inline-block;">
+                ► Submissions are open to anyone and everyone globally
+            </p>
+        </section>
+        
+        <!-- About -->
+        <section class="block">
+            <h2>The Process</h2>
+            <p style="font-size: 1.05rem; line-height: 1.7;">
+                This show is being curated, organized, assembled, and designed by Justice, and they will be looking for resonances between submissions to build a body of work that collectively speaks strongly to both this moment and the historical moments that resonate with it.
+            </p>
+            <p style="font-size: 1.05rem; line-height: 1.7; margin-top: 15px;">
+                Justice will work with the selected artists, writers, thinkers, and dreamers to facilitate the presentation of their work online in a way that makes it accessible and impactful for audiences.
+            </p>
+            <p style="font-size: 1.05rem; line-height: 1.7; margin-top: 15px; font-weight: 700;">
+                We hope that you will join us in taking part in this moment of solidarity with the artistic community throughout the United States and beyond.
+            </p>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>SUBMIT YOUR WORK</h2>
+            <a href="https://forms.gle/WFXinwqUzHkoENcN6" class="submit-btn">
+                SUBMIT HERE
+            </a>
+            <div class="deadline-repeat">
+                Submissions close November 12, 2025
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.2rem; margin-bottom: 15px;">
+            Part of <strong>Fall of Freedom</strong> — Nov 21–22, 2025
+        </p>
+        <p>
+            Curated by <a href="https://justicehager.com" target="_blank" style="color: #F5E6D3; text-decoration: none; border-bottom: 2px dotted #FFEA00;">Justice Alexander Hager</a>
+        </p>
+        <p style="margin-top: 20px;">
+            <a href="https://peripheralforms.com" class="pf-link">peripheralforms.com</a>
+        </p>
+        <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.7;">
+            <a href="https://falloffreedom.com" target="_blank">FallOfFreedom.com</a> | 
+            <a href="https://instagram.com/falloffreedom" target="_blank">@FallOfFreedom</a>
+        </p>
+    </footer>
+</body>
+</html>

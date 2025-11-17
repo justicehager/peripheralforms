@@ -1,0 +1,22 @@
+.feed-container {
+  width: 100%;
+  padding: var(--spacing-md) 0;
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .feed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .feed-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

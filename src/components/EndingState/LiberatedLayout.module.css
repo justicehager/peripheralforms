@@ -1,0 +1,131 @@
+.liberated-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
+
+.liberated-header {
+  border-bottom: 3px solid var(--border);
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.liberated-header h1 {
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--spacing-md);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+.liberated-header marquee {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.liberated-nav {
+  background-color: var(--bg-secondary);
+  border-bottom: 2px solid var(--border);
+  padding: var(--spacing-lg);
+}
+
+.liberated-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.liberated-nav li {
+  margin: 0;
+}
+
+.liberated-nav a {
+  color: var(--link);
+  text-decoration: underline;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+}
+
+.liberated-nav a:hover {
+  color: var(--accent);
+}
+
+.liberated-main {
+  flex: 1;
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  overflow-y: auto;
+}
+
+.liberated-footer {
+  border-top: 3px solid var(--border);
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.liberated-footer pre {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 2px solid var(--border);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  overflow-x: auto;
+  text-align: left;
+}
+
+.liberated-footer p {
+  color: var(--text-primary);
+  margin: var(--spacing-md) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Brutalist tables for artwork listing */
+[data-theme="resistance"] table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-xl) 0;
+  border: 2px solid var(--border);
+}
+
+[data-theme="resistance"] td,
+[data-theme="resistance"] th {
+  border: 1px solid var(--border);
+  padding: var(--spacing-md);
+  text-align: left;
+  font-family: var(--font-mono);
+}
+
+[data-theme="resistance"] th {
+  background: var(--bg-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="resistance"] td {
+  font-size: 0.9rem;
+}
+
+/* Hr styling */
+[data-theme="resistance"] hr {
+  border: 0;
+  border-top: 2px solid var(--border);
+  margin: var(--spacing-xl) 0;
+}
