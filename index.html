@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Should Be Allowed to Think - Coming Soon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F5E6D3;
+            color: #1C1C1C;
+            line-height: 1.5;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glitch text effect */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #00FFB5;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #FF3F80;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 30px, 0); }
+            25% { clip: rect(70px, 9999px, 90px, 0); }
+            50% { clip: rect(40px, 9999px, 60px, 0); }
+            75% { clip: rect(20px, 9999px, 80px, 0); }
+            100% { clip: rect(50px, 9999px, 100px, 0); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Hero section */
+        .hero {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background:
+                repeating-conic-gradient(
+                    from 0deg at 50% 50%,
+                    #D64933 0deg,
+                    #F5B942 30deg,
+                    #F5E6D3 40deg,
+                    #D64933 60deg
+                );
+            opacity: 0.15;
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            transform: rotate(-1deg);
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 40px;
+            color: #65676b;
+            transform: rotate(0.5deg);
+        }
+
+        /* Status badge */
+        .coming-soon {
+            display: inline-block;
+            background: linear-gradient(135deg, #D64933 0%, #F5B942 100%);
+            color: #1C1C1C;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: 5px dotted #1C1C1C;
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            margin: 40px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .coming-soon::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dotted #FF3F80;
+            opacity: 0.4;
+        }
+
+        /* Content block */
+        .block {
+            background: #fff;
+            border: 4px dotted #1C1C1C;
+            padding: 40px;
+            margin: 30px 0;
+            position: relative;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+            text-align: left;
+            transform: rotate(0.5deg);
+        }
+
+        .block h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #1C1C1C;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .block p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #65676b;
+            margin-bottom: 15px;
+        }
+
+        .block strong {
+            color: #1C1C1C;
+            font-weight: 700;
+        }
+
+        /* Links */
+        .links {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            display: inline-block;
+            background: #1C1C1C;
+            color: #F5E6D3;
+            padding: 15px 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 3px dotted #00FFB5;
+            box-shadow: 0 0 0 2px #1C1C1C, 6px 6px 0 3px #FF3F80;
+            transition: all 0.2s;
+            letter-spacing: 0.05em;
+        }
+
+        .link-btn:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 0 0 0 2px #1C1C1C, 3px 3px 0 3px #FF3F80;
+        }
+
+        /* Interference patterns */
+        .block::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -40px;
+            width: 200px;
+            height: 200px;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 63, 128, 0.08) 10px,
+                rgba(255, 63, 128, 0.08) 20px
+            );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Scanline effect */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 181, 0.02) 2px,
+                rgba(0, 255, 181, 0.02) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Footer */
+        footer {
+            background: #1C1C1C;
+            color: #F5E6D3;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 6px solid #D64933;
+            margin-top: 60px;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #00FFB5;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        footer a:hover {
+            color: #FF3F80;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .block {
+                padding: 25px;
+            }
+
+            .links {
+                gap: 15px;
+            }
+
+            .link-btn {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="glitch" data-text="WE SHOULD BE ALLOWED TO THINK">
+                WE SHOULD BE ALLOWED TO THINK
+            </h1>
+            <p class="subtitle">
+                An interactive exhibition exploring pre-emptive control and tactical evasion
+            </p>
+        </section>
+
+        <!-- Coming Soon Notice -->
+        <div class="coming-soon" style="position: relative;">
+            🚀 COMING SOON 🚀
+        </div>
+
+        <!-- About Section -->
+        <section class="block">
+            <h2>What's Coming</h2>
+            <p>
+                A web-based art exhibition presenting six artworks each initially trapped behind different attention-capture and authoritarian control mechanisms. Visitors will solve puzzles to disable each mechanism and unlock the artwork—revealing the platform's hidden surveillance infrastructure in the process.
+            </p>
+        </section>
+
+        <!-- Features Section -->
+        <section class="block">
+            <h2>The Experience</h2>
+            <p>
+                <strong>Interactive Puzzles:</strong> Each mechanism requires active problem-solving, not simple clicking.
+            </p>
+            <p>
+                <strong>Progressive Revelation:</strong> As you solve mechanisms, the platform facade fractures and infrastructure becomes visible.
+            </p>
+            <p>
+                <strong>Your Choice:</strong> No required sequence—visit artworks in any order you choose.
+            </p>
+            <p>
+                <strong>Transformation:</strong> Solve all mechanisms to reveal the "people's internet" aesthetic.
+            </p>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="block">
+            <h2>In the Meantime</h2>
+            <p>
+                Are you an artist with work exploring surveillance, control, or resistance? The exhibition is part of <strong>Fall of Freedom</strong>, featuring works by global artists responding to authoritarianism.
+            </p>
+        </section>
+
+        <!-- Links -->
+        <div class="links">
+            <a href="open-call.html" class="link-btn">→ Call for Artists</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="margin-bottom: 10px;">We Should Be Allowed to Think © 2025</p>
+        <p>Part of <strong>Fall of Freedom</strong></p>
+        <p style="margin-top: 15px; font-size: 0.85rem;">
+            Curated by <a href="https://justicehager.com" target="_blank">Justice Alexander Hager</a>
+        </p>
+    </footer>
+</body>
+</html>
