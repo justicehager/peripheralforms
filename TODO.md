@@ -100,6 +100,11 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 
 ## Phase 6: Testing & Polish (Week 7)
 
+### Visual Enhancement
+- [x] **NEW**: Per-mechanism theming infrastructure implemented
+- [x] **NEW**: Political poll theme for Confirmshaming mechanism (aggressive poll aesthetic)
+- [ ] Design and implement unique themes for remaining 5 mechanisms
+
 ### Functionality Testing
 - [ ] Test all 6 mechanisms individually for functionality and solvability
 - [ ] Test state persistence across browser refreshes

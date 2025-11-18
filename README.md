@@ -37,10 +37,13 @@ Output will be in `exhibition/dist/`
 └── exhibition/                 # Exhibition application (not live on root)
     ├── src/
     │   ├── components/         # React components
+    │   │   └── Mechanisms/    # Individual mechanism components + theming
     │   ├── hooks/             # Custom React hooks
     │   ├── store/             # Zustand state management
     │   ├── styles/            # CSS modules and themes
-    │   └── data/              # Static data (artworks, mechanisms)
+    │   └── data/              # Static data (artworks, mechanisms, themes)
+    │       ├── artworks.js    # Artwork metadata
+    │       └── mechanismThemes.js  # Per-mechanism theme configuration
     ├── public/                # Static assets
     ├── index.html             # Vite entry point
     ├── vite.config.js         # Vite configuration
@@ -61,6 +64,7 @@ The open call site remains on the root (`/`) for continuous operation.
 ### Features
 
 - **6 Interactive Mechanisms**: Each trapping an artwork behind a different control system
+- **Per-Mechanism Theming**: Each mechanism overlay has its own unique visual style/aesthetic
 - **State Persistence**: Progress saved in browser localStorage
 - **Progressive Infrastructure Visibility**: Surveillance apparatus becomes visible as mechanisms are solved
 - **Theme Transformation**: Platform aesthetic shifts to "people's internet" brutalist design when all mechanisms solved
