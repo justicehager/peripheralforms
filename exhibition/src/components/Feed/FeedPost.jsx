@@ -1,7 +1,25 @@
 import { Link } from 'react-router-dom'
+import Confirmshaming from '../Mechanisms/Confirmshaming'
+import AutoplayCountdown from '../Mechanisms/AutoplayCountdown'
+import TimeOut from '../Mechanisms/TimeOut'
+import InfiniteScroll from '../Mechanisms/InfiniteScroll'
+import SurveillanceUI from '../Mechanisms/SurveillanceUI'
+import HarmonyButton from '../Mechanisms/HarmonyButton'
 import './FeedPost.module.css'
 
+// Map mechanism types to components
+const MECHANISM_COMPONENTS = {
+  'Confirmshaming': Confirmshaming,
+  'Autoplay/Countdown': AutoplayCountdown,
+  'Time-Out': TimeOut,
+  'Infinite Scroll': InfiniteScroll,
+  'Surveillance UI': SurveillanceUI,
+  'Harmony Button': HarmonyButton
+}
+
 export default function FeedPost({ artwork, isUnlocked }) {
+  const MechanismComponent = MECHANISM_COMPONENTS[artwork.mechanismType]
+
   return (
     <article className="feed-post">
       <div className="post-header">
@@ -20,9 +38,13 @@ export default function FeedPost({ artwork, isUnlocked }) {
           </Link>
         ) : (
           <div className="locked-content">
-            <div className="mechanism-placeholder">
-              Mechanism: {artwork.mechanismType}
-            </div>
+            {MechanismComponent ? (
+              <MechanismComponent />
+            ) : (
+              <div className="mechanism-placeholder">
+                Mechanism: {artwork.mechanismType}
+              </div>
+            )}
             <div className="locked-badge">🔒 Locked</div>
           </div>
         )}

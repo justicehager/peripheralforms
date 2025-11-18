@@ -1,0 +1,219 @@
+.autoplay-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--bg-secondary, #f5f5f5);
+  border-radius: 8px;
+}
+
+.autoplay-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border, #e4e6eb);
+}
+
+.autoplay-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary, #000);
+  letter-spacing: 1px;
+}
+
+.official-badge {
+  display: inline-block;
+  background: #1877f2;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.video-player {
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.video-screen {
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-content {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  position: relative;
+}
+
+.hidden-clue {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 4px;
+  animation: pulse 0.5s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.official-text {
+  color: #fff;
+}
+
+.timestamp {
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #00ff00;
+}
+
+.speaker {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+.transcript {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.video-controls {
+  background: #1a1a1a;
+  padding: 15px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #333;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #1877f2;
+  transition: width 0.1s linear;
+  border-radius: 4px;
+}
+
+.clue-marker {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.8);
+  animation: blink 0.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-pause,
+.btn-play {
+  background: #1877f2;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-pause:hover,
+.btn-play:hover {
+  background: #166fe5;
+  transform: translateY(-1px);
+}
+
+.time-display {
+  color: #aaa;
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-size: 14px;
+}
+
+.autoplay-hint {
+  background: rgba(255, 215, 0, 0.1);
+  border-left: 4px solid #ffd700;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.hint-text {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: var(--text-primary, #000);
+}
+
+.hint-subtext {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary, #65676b);
+  font-style: italic;
+}
+
+.autoplay-solved {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  border-radius: 8px;
+  text-align: center;
+  color: #000;
+}
+
+.autoplay-solved h3 {
+  margin: 0 0 15px 0;
+  font-size: 24px;
+}
+
+.autoplay-solved p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.clue-revealed {
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-weight: 700;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
