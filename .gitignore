@@ -7,4 +7,3 @@ dist/
 .vite/
 .eslintcache
 exhibition/node_modules/
-exhibition/dist/
