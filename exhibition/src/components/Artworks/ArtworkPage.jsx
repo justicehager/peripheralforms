@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getArtworkById } from '../../data/artworks'
-import './ArtworkPage.module.css'
+import './ArtworkPage.css'
 import './ArtworkPageThemes.css'
 import { getArtistTheme } from '../../data/artistThemes'
 
