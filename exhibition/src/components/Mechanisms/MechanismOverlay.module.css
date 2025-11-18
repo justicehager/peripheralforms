@@ -1,0 +1,150 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transform: rotate(90deg);
+}
+
+.header {
+  padding: var(--spacing-2xl);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+.thumbnail {
+  font-size: 4rem;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+}
+
+.info h2 {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.artist {
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 1.1rem;
+}
+
+.description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mechanismContainer {
+  padding: var(--spacing-2xl);
+  min-height: 300px;
+}
+
+.error {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: var(--spacing-lg);
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
+  }
+
+  .info h2 {
+    font-size: 1.5rem;
+  }
+
+  .mechanismContainer {
+    padding: var(--spacing-lg);
+  }
+}
