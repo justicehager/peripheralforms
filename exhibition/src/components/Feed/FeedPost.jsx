@@ -51,7 +51,11 @@ export default function FeedPost({ artwork, isUnlocked }) {
               <MechanismComponent />
             ) : (
               <div className="mechanism-placeholder">
-                Mechanism: {artwork.mechanismType}
+                <div>Mechanism: {artwork.mechanismType}</div>
+                <div style={{color: 'red', fontSize: '12px', marginTop: '10px'}}>
+                  DEBUG: Component {MechanismComponent ? 'FOUND' : 'NOT FOUND'}
+                  <br/>Available: {Object.keys(MECHANISM_COMPONENTS).join(', ')}
+                </div>
               </div>
             )}
             <div className="locked-badge">🔒 Locked</div>
