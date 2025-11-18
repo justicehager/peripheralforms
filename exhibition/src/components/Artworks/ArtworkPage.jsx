@@ -1,11 +1,13 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getArtworkById } from '../../data/artworks'
 import './ArtworkPage.module.css'
+import { getArtistTheme } from '../../data/artistThemes'
 
 export default function ArtworkPage() {
   const { artworkId } = useParams()
   const navigate = useNavigate()
   const artwork = getArtworkById(artworkId)
+  const artistTheme = getArtistTheme(artworkId)
 
   if (!artwork) {
     return (
@@ -17,7 +19,11 @@ export default function ArtworkPage() {
   }
 
   return (
-    <div className="artwork-page">
+    <div
+      className="artwork-page"
+      data-artist={artworkId}
+      style={artistTheme?.cssVariables || {}}
+    >
       <button onClick={() => navigate(-1)} className="back-button">
         ← Back
       </button>
