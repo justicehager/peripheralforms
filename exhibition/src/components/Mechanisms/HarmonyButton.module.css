@@ -1,0 +1,326 @@
+.harmony-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--bg-secondary, #f5f5f5);
+  border-radius: 8px;
+}
+
+.harmony-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border, #e4e6eb);
+}
+
+.harmony-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary, #000);
+}
+
+.standards-badge,
+.verification-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.verification-badge {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.terms-container {
+  background: white;
+  border: 1px solid var(--border, #e4e6eb);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.terms-scroll {
+  max-height: 400px;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.terms-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terms-scroll::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+.terms-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.terms-scroll h4 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: var(--text-primary, #000);
+  text-align: center;
+}
+
+.terms-scroll section {
+  margin-bottom: 20px;
+}
+
+.terms-scroll h5 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary, #000);
+}
+
+.terms-scroll p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary, #65676b);
+}
+
+.terms-footer {
+  background: #fafafa;
+  padding: 20px;
+  border-top: 2px solid var(--border, #e4e6eb);
+  text-align: center;
+}
+
+.harmony-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.harmony-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.mandatory-notice {
+  margin: 10px 0 0 0;
+  font-size: 12px;
+  color: var(--text-secondary, #65676b);
+  font-style: italic;
+}
+
+.captcha-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e4e6eb);
+  margin-bottom: 20px;
+}
+
+.captcha-container h4 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  text-align: center;
+  color: var(--text-primary, #000);
+}
+
+.captcha-instructions {
+  margin: 0 0 25px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary, #65676b);
+  text-align: center;
+}
+
+.captcha-display {
+  background: #f5f5f5;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 2px dashed var(--border, #e4e6eb);
+}
+
+.captcha-text-container {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.captcha-text {
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 3px;
+  display: block;
+}
+
+.captcha-text.distorted {
+  text-shadow:
+    2px 2px 0px rgba(255, 0, 0, 0.3),
+    -2px -2px 0px rgba(0, 255, 0, 0.3),
+    1px -1px 0px rgba(0, 0, 255, 0.3);
+  transform: skew(-2deg, 1deg);
+}
+
+.captcha-label {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary, #65676b);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.captcha-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.captcha-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid var(--border, #e4e6eb);
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  transition: border-color 0.2s;
+}
+
+.captcha-input:focus {
+  outline: none;
+  border-color: #1877f2;
+}
+
+.verify-btn {
+  padding: 12px;
+  background: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.verify-btn:hover {
+  background: #166fe5;
+  transform: translateY(-1px);
+}
+
+.error-message {
+  background: rgba(255, 0, 0, 0.1);
+  color: #cc0000;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.captcha-hint {
+  background: rgba(255, 215, 0, 0.1);
+  border-left: 4px solid #ffd700;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.captcha-hint p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-primary, #000);
+}
+
+.harmony-hint {
+  background: rgba(0, 150, 255, 0.1);
+  border-left: 4px solid #0096ff;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.hint-text {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: var(--text-primary, #000);
+}
+
+.hint-subtext {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary, #65676b);
+  font-style: italic;
+}
+
+.harmony-solved {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  border-radius: 8px;
+  text-align: center;
+  color: #000;
+}
+
+.harmony-solved h3 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+}
+
+.harmony-solved > p {
+  margin: 0 0 25px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.instructions-revealed {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.instructions-revealed h4 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+}
+
+.instructions-revealed p {
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.instructions-revealed strong {
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.meta-note {
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}

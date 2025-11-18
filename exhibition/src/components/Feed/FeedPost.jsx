@@ -1,7 +1,34 @@
 import { Link } from 'react-router-dom'
+import Confirmshaming from '../Mechanisms/Confirmshaming'
+import AutoplayCountdown from '../Mechanisms/AutoplayCountdown'
+import TimeOut from '../Mechanisms/TimeOut'
+import InfiniteScroll from '../Mechanisms/InfiniteScroll'
+import SurveillanceUI from '../Mechanisms/SurveillanceUI'
+import HarmonyButton from '../Mechanisms/HarmonyButton'
 import './FeedPost.module.css'
 
+// Map mechanism types to components
+const MECHANISM_COMPONENTS = {
+  'Confirmshaming': Confirmshaming,
+  'Autoplay/Countdown': AutoplayCountdown,
+  'Time-Out': TimeOut,
+  'Infinite Scroll': InfiniteScroll,
+  'Surveillance UI': SurveillanceUI,
+  'Harmony Button': HarmonyButton
+}
+
 export default function FeedPost({ artwork, isUnlocked }) {
+  const MechanismComponent = MECHANISM_COMPONENTS[artwork.mechanismType]
+
+  // Comprehensive debug logging
+  console.log('FeedPost Debug:', {
+    artworkId: artwork.id,
+    mechanismType: artwork.mechanismType,
+    isUnlocked,
+    hasComponent: !!MechanismComponent,
+    componentName: MechanismComponent?.name
+  })
+
   return (
     <article className="feed-post">
       <div className="post-header">
@@ -20,9 +47,17 @@ export default function FeedPost({ artwork, isUnlocked }) {
           </Link>
         ) : (
           <div className="locked-content">
-            <div className="mechanism-placeholder">
-              Mechanism: {artwork.mechanismType}
-            </div>
+            {MechanismComponent ? (
+              <MechanismComponent />
+            ) : (
+              <div className="mechanism-placeholder">
+                <div>Mechanism: {artwork.mechanismType}</div>
+                <div style={{color: 'red', fontSize: '12px', marginTop: '10px'}}>
+                  DEBUG: Component {MechanismComponent ? 'FOUND' : 'NOT FOUND'}
+                  <br/>Available: {Object.keys(MECHANISM_COMPONENTS).join(', ')}
+                </div>
+              </div>
+            )}
             <div className="locked-badge">🔒 Locked</div>
           </div>
         )}
