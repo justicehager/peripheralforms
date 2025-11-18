@@ -2,11 +2,6 @@
 
 /* Lynch: Academic/Editorial gallery aesthetic */
 [data-artist="lynch"] {
-  --accent-blue: var(--artist-accent);
-  --text-primary: var(--artist-text);
-  --text-secondary: var(--artist-text-light);
-  --bg-secondary: var(--artist-bg);
-  --border: var(--artist-border);
   background-color: var(--artist-bg);
 }
 
@@ -17,7 +12,7 @@
   letter-spacing: 0.02em;
   line-height: 1.2;
   color: var(--artist-primary);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 1.5rem;
 }
 
 [data-artist="lynch"] .artwork-meta {
@@ -32,7 +27,7 @@
 [data-artist="lynch"] .artwork-media {
   border: 1px solid var(--artist-border);
   background: white;
-  padding: var(--spacing-3xl);
+  padding: 2rem;
 }
 
 [data-artist="lynch"] .artwork-description h2,
@@ -66,11 +61,6 @@
 
 /* Weigel: Bold, contemporary aesthetic */
 [data-artist="weigel"] {
-  --accent-blue: var(--artist-accent);
-  --text-primary: var(--artist-text);
-  --text-secondary: var(--artist-text-light);
-  --bg-secondary: var(--artist-bg);
-  --border: var(--artist-border);
   background-color: var(--artist-bg);
 }
 
@@ -89,11 +79,6 @@
 
 /* Gibbins: Tech/futuristic aesthetic */
 [data-artist="gibbins"] {
-  --accent-blue: var(--artist-accent);
-  --text-primary: var(--artist-text);
-  --text-secondary: var(--artist-text-light);
-  --bg-secondary: var(--artist-bg);
-  --border: var(--artist-border);
   background: linear-gradient(to bottom, var(--artist-bg), var(--artist-secondary));
   font-family: 'Courier New', monospace;
 }
@@ -115,11 +100,7 @@
 
 /* desire_engineering: Brutalist/Stark */
 [data-artist="desire-engineering"] {
-  --accent-blue: var(--artist-accent);
-  --text-primary: var(--artist-text);
-  --text-secondary: var(--artist-text-light);
-  --bg-secondary: var(--artist-bg);
-  --border: var(--artist-border);
+  background: white;
 }
 
 [data-artist="desire-engineering"] .artwork-content h1 {
@@ -145,12 +126,7 @@
 
 /* Perfect Users: Retro Windows 95 aesthetic */
 [data-artist="perfect-users"] {
-  --accent-blue: var(--artist-accent);
-  --text-primary: var(--artist-text);
-  --text-secondary: var(--artist-text-light);
-  --bg-secondary: var(--artist-secondary);
-  --border: var(--artist-border);
-  background: var(--artist-bg);
+  background: #c0c0c0;
   font-family: 'MS Sans Serif', Arial, sans-serif;
 }
 
@@ -158,29 +134,28 @@
   border: 2px solid;
   border-color: #dfdfdf #808080 #808080 #dfdfdf;
   padding: 2px;
-  background: var(--artist-bg);
+  background: #c0c0c0;
 }
 
 [data-artist="perfect-users"] .artwork-content h1 {
   font-size: 1.3rem;
   font-weight: bold;
-  color: var(--artist-text);
   background: linear-gradient(to right, #000080, #1084d7);
   color: white;
   padding: 2px 4px;
-  margin: -8px -8px var(--spacing-lg) -8px;
+  margin: -8px -8px 1.5rem -8px;
 }
 
 [data-artist="perfect-users"] .artwork-media {
   border: 2px solid;
   border-color: #dfdfdf #808080 #808080 #dfdfdf;
-  background: var(--artist-secondary);
+  background: #c0c0c0;
   box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
 }
 
 [data-artist="perfect-users"] .back-button {
   border: 2px outset #dfdfdf;
-  background: var(--artist-bg);
+  background: #c0c0c0;
   color: black;
   padding: 4px 12px;
   font-weight: bold;
@@ -188,22 +163,17 @@
 
 /* Search Engine Scores: Clean/Modern */
 [data-artist="search-engine-scores"] {
-  --accent-blue: var(--artist-accent);
-  --text-primary: var(--artist-text);
-  --text-secondary: var(--artist-text-light);
-  --bg-secondary: var(--artist-bg);
-  --border: var(--artist-border);
-  background-color: var(--artist-bg);
+  background-color: #f9fafb;
 }
 
 [data-artist="search-engine-scores"] .artwork-content h1 {
   font-size: 2.6rem;
   font-weight: 600;
-  color: var(--artist-accent);
+  color: #3b82f6;
   letter-spacing: -0.5px;
 }
 
 [data-artist="search-engine-scores"] .artwork-media {
-  border: 1px solid var(--artist-border);
+  border: 1px solid #e5e7eb;
   background: white;
 }
