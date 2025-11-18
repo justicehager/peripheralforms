@@ -13,7 +13,7 @@ export default function Feed() {
           <FeedPost
             key={artwork.id}
             artwork={artwork}
-            isUnlocked={solvedMechanisms.includes(artwork.id)}
+            isUnlocked={solvedMechanisms.includes(artwork.mechanismId)}
           />
         ))}
       </div>
