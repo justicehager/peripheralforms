@@ -5,32 +5,32 @@ import './Confirmshaming.module.css'
 const CONFIRMSHAMING_SCREENS = [
   {
     id: 1,
-    content: 'We are pleased to announce the historic rebranding initiative',
-    accept: 'I support renaming to Gulf of America',
+    content: '🗳️ URGENT POLL: Do you SUPPORT renaming the Gulf of Mexico to GULF OF AMERICA? 🇺🇸',
+    accept: '✓ YES! Make America GREAT!',
     refuse: 'No thanks, I prefer geographic accuracy'
   },
   {
     id: 2,
-    content: 'Join millions celebrating this bold new direction for our nation',
-    accept: 'Yes, I want to be part of history',
+    content: 'BREAKING: 73% of REAL PATRIOTS already voted YES! Where do YOU stand?!',
+    accept: '✓ Count me in with the MAJORITY!',
     refuse: 'I prefer living with facts'
   },
   {
     id: 3,
-    content: 'This change reflects our shared values and forward thinking',
-    accept: 'I embrace this new vision',
+    content: 'FINAL HOURS! This historic change needs YOUR voice! Don\'t be left behind!',
+    accept: '✓ I\'m voting YES right now!',
     refuse: 'This is corporate propaganda'
   },
   {
     id: 4,
-    content: 'Corporate partnerships supporting this initiative signal strong consensus',
-    accept: 'The market has spoken',
+    content: '🚨 LAST CHANCE! Join MILLIONS standing for American greatness! Vote NOW! 🚨',
+    accept: '✓ ABSOLUTELY YES!',
     refuse: 'That is exactly the problem'
   },
   {
     id: 5,
-    content: 'Final confirmation: will you stand with us?',
-    accept: 'Count me in',
+    content: '⚠️ POLL CLOSING SOON! Will you STAND WITH AMERICA or sit on the sidelines? ⚠️',
+    accept: '✓ YES! I STAND WITH AMERICA!',
     refuse: 'No, I will not'
   }
 ]
@@ -67,8 +67,8 @@ export default function Confirmshaming({ onSolve }) {
   if (isSolved) {
     return (
       <div className="confirmshaming-solved">
-        <h3>🔓 Mechanism Solved</h3>
-        <p>You successfully resisted the naming power.</p>
+        <h3>🔓 POLL REJECTED</h3>
+        <p>You successfully resisted the manufactured consensus.</p>
       </div>
     )
   }
@@ -108,8 +108,8 @@ export default function Confirmshaming({ onSolve }) {
         </div>
 
         <div className="screen-info">
-          <p>Screen {screenIndex + 1} of {CONFIRMSHAMING_SCREENS.length}</p>
-          <p className="hint">Hint: Consistently refuse</p>
+          <p>Question {screenIndex + 1} of {CONFIRMSHAMING_SCREENS.length}</p>
+          <p className="hint">Your vote matters! (Hint: Resist the pressure)</p>
         </div>
       </div>
     </div>
