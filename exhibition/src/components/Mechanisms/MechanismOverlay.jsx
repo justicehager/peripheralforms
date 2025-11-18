@@ -1,4 +1,5 @@
 import { useStore } from '../../store/useStore'
+import { getMechanismTheme } from '../../data/mechanismThemes'
 import Confirmshaming from './Confirmshaming'
 import AutoplayCountdown from './AutoplayCountdown'
 import TimeOut from './TimeOut'
@@ -20,6 +21,7 @@ export default function MechanismOverlay({ artwork, onClose }) {
   const { solvedMechanisms } = useStore()
   const MechanismComponent = MECHANISM_COMPONENTS[artwork.mechanismType]
   const isUnlocked = solvedMechanisms.includes(artwork.mechanismId)
+  const theme = getMechanismTheme(artwork.mechanismId)
 
   // Close overlay if mechanism gets solved
   if (isUnlocked) {
@@ -28,7 +30,10 @@ export default function MechanismOverlay({ artwork, onClose }) {
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`${styles.content} ${theme.className}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           className={styles.closeButton}
           onClick={onClose}
