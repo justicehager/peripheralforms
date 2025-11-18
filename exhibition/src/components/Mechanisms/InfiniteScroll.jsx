@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '../../store/useStore'
-import './InfiniteScroll.module.css'
+import styles from './InfiniteScroll.module.css'
 
 // Configuration
 const TOTAL_ITEMS = 250
@@ -119,10 +119,10 @@ export default function InfiniteScroll({ onSolve }) {
 
   if (isSolved) {
     return (
-      <div className="infinitescroll-solved">
+      <div className={styles['infinitescroll-solved']}>
         <h3>🔓 Mechanism Solved</h3>
         <p>You escaped the endless performance. Pattern recognition defeats compulsory scrolling.</p>
-        <p className="pattern-revealed">
+        <p className={styles['pattern-revealed']}>
           The exit appeared at item {EXIT_PATTERN_INDEX} of {TOTAL_ITEMS}
         </p>
       </div>
@@ -130,41 +130,41 @@ export default function InfiniteScroll({ onSolve }) {
   }
 
   return (
-    <div className="infinitescroll-container">
-      <div className="infinitescroll-header">
+    <div className={styles['infinitescroll-container']}>
+      <div className={styles['infinitescroll-header']}>
         <h3>SUCCESS STORIES</h3>
-        <p className="trending-badge">TRENDING IN YOUR NETWORK</p>
+        <p className={styles['trending-badge']}>TRENDING IN YOUR NETWORK</p>
       </div>
 
-      <div className="scroll-progress">
-        <div className="progress-bar">
+      <div className={styles['scroll-progress']}>
+        <div className={styles['progress-bar']}>
           <div
-            className="progress-fill"
+            className={styles['progress-fill']}
             style={{ width: `${scrollDepth}%` }}
           />
         </div>
-        <p className="progress-text">
+        <p className={styles['progress-text']}>
           Viewing {visibleCount} of {TOTAL_ITEMS} testimonials
         </p>
       </div>
 
       <div
-        className="testimonials-scroll"
+        className={styles['testimonials-scroll']}
         ref={scrollContainerRef}
       >
         {items.slice(0, visibleCount).map((item, index) => (
-          <div key={item.id} className="testimonial-card">
-            <div className="testimonial-header">
-              <div className={`avatar ${item.avatar}`} />
-              <div className="testimonial-info">
+          <div key={item.id} className={styles['testimonial-card']}>
+            <div className={styles['testimonial-header']}>
+              <div className={`${styles.avatar} ${styles[item.avatar]}`} />
+              <div className={styles['testimonial-info']}>
                 <h4>{item.name}</h4>
-                <p className="role">{item.role} at {item.company}</p>
+                <p className={styles.role}>{item.role} at {item.company}</p>
               </div>
             </div>
-            <div className="testimonial-content">
+            <div className={styles['testimonial-content']}>
               <p>{item.content}</p>
             </div>
-            <div className="testimonial-footer">
+            <div className={styles['testimonial-footer']}>
               <span>👍 {item.likes}</span>
               <span>💬 {item.comments}</span>
               <span>🔄 Share</span>
@@ -172,12 +172,12 @@ export default function InfiniteScroll({ onSolve }) {
 
             {/* Pattern/Exit appears at specific index */}
             {index === EXIT_PATTERN_INDEX - 1 && showExit && (
-              <div className="pattern-break">
-                <div className="pattern-notice">
+              <div className={styles['pattern-break']}>
+                <div className={styles['pattern-notice']}>
                   ⚠️ PATTERN DETECTED ⚠️
                   <p>The testimonials repeat. The success is manufactured. The performance is compulsory.</p>
                   <button
-                    className="exit-button"
+                    className={styles['exit-button']}
                     onClick={handleExitClick}
                   >
                     EXIT THE SCROLL
@@ -189,18 +189,18 @@ export default function InfiniteScroll({ onSolve }) {
         ))}
 
         {visibleCount < TOTAL_ITEMS && (
-          <div className="loading-more">
-            <div className="spinner" />
+          <div className={styles['loading-more']}>
+            <div className={styles.spinner} />
             <p>Loading more success stories...</p>
           </div>
         )}
       </div>
 
-      <div className="infinitescroll-hint">
-        <p className="hint-text">
+      <div className={styles['infinitescroll-hint']}>
+        <p className={styles['hint-text']}>
           💡 Keep scrolling. Pattern recognition is key.
         </p>
-        <p className="hint-subtext">
+        <p className={styles['hint-subtext']}>
           Hint: Corporate testimonials are procedurally generated
         </p>
       </div>

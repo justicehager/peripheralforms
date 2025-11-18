@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '../../store/useStore'
-import './SurveillanceUI.module.css'
+import styles from './SurveillanceUI.module.css'
 
 // Target pattern: click zones in specific order
 const TARGET_ZONES = ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'center']
@@ -124,10 +124,10 @@ export default function SurveillanceUI({ onSolve }) {
 
   if (isSolved) {
     return (
-      <div className="surveillance-solved">
+      <div className={styles['surveillance-solved']}>
         <h3>🔓 Mechanism Solved</h3>
         <p>You performed the pattern under total surveillance.</p>
-        <p className="data-summary">
+        <p className={styles['data-summary']}>
           Tracked: {trackingData.totalMoves} mouse movements, {trackingData.totalClicks} clicks,{' '}
           {trackingData.timeTracked}s of observation
         </p>
@@ -136,13 +136,13 @@ export default function SurveillanceUI({ onSolve }) {
   }
 
   return (
-    <div className="surveillance-container">
-      <div className="surveillance-header">
+    <div className={styles['surveillance-container']}>
+      <div className={styles['surveillance-header']}>
         <h3>🔒 PRIVACY & PERSONALIZATION</h3>
-        <p className="privacy-badge">PROTECTING YOUR EXPERIENCE</p>
+        <p className={styles['privacy-badge']}>PROTECTING YOUR EXPERIENCE</p>
       </div>
 
-      <div className="privacy-message">
+      <div className={styles['privacy-message']}>
         <h4>How We Use Your Data</h4>
         <p>
           We collect interaction data to personalize your experience and improve our services.
@@ -154,93 +154,93 @@ export default function SurveillanceUI({ onSolve }) {
         </p>
       </div>
 
-      <div className="tracking-display">
+      <div className={styles['tracking-display']}>
         <h4>📊 Real-Time Activity Monitor</h4>
-        <div className="tracking-stats">
-          <div className="stat">
-            <span className="stat-label">Mouse Position:</span>
-            <span className="stat-value">({mousePos.x}, {mousePos.y})</span>
+        <div className={styles['tracking-stats']}>
+          <div className={styles.stat}>
+            <span className={styles['stat-label']}>Mouse Position:</span>
+            <span className={styles['stat-value']}>({mousePos.x}, {mousePos.y})</span>
           </div>
-          <div className="stat">
-            <span className="stat-label">Current Zone:</span>
-            <span className="stat-value">{hoverZone || 'none'}</span>
+          <div className={styles.stat}>
+            <span className={styles['stat-label']}>Current Zone:</span>
+            <span className={styles['stat-value']}>{hoverZone || 'none'}</span>
           </div>
-          <div className="stat">
-            <span className="stat-label">Hover Duration:</span>
-            <span className="stat-value">{Math.round(hoverDuration)}ms</span>
+          <div className={styles.stat}>
+            <span className={styles['stat-label']}>Hover Duration:</span>
+            <span className={styles['stat-value']}>{Math.round(hoverDuration)}ms</span>
           </div>
-          <div className="stat">
-            <span className="stat-label">Total Movements:</span>
-            <span className="stat-value">{trackingData.totalMoves}</span>
+          <div className={styles.stat}>
+            <span className={styles['stat-label']}>Total Movements:</span>
+            <span className={styles['stat-value']}>{trackingData.totalMoves}</span>
           </div>
-          <div className="stat">
-            <span className="stat-label">Total Clicks:</span>
-            <span className="stat-value">{trackingData.totalClicks}</span>
+          <div className={styles.stat}>
+            <span className={styles['stat-label']}>Total Clicks:</span>
+            <span className={styles['stat-value']}>{trackingData.totalClicks}</span>
           </div>
-          <div className="stat">
-            <span className="stat-label">Time Tracked:</span>
-            <span className="stat-value">{trackingData.timeTracked}s</span>
+          <div className={styles.stat}>
+            <span className={styles['stat-label']}>Time Tracked:</span>
+            <span className={styles['stat-value']}>{trackingData.timeTracked}s</span>
           </div>
         </div>
       </div>
 
-      <div className="interaction-zone" ref={containerRef} onMouseMove={handleMouseMove}>
-        <div className="zone-grid">
+      <div className={styles['interaction-zone']} ref={containerRef} onMouseMove={handleMouseMove}>
+        <div className={styles['zone-grid']}>
           <div
-            className={`zone top-left ${hoverZone === 'top-left' ? 'active' : ''} ${
-              clickPattern.includes('top-left') ? 'clicked' : ''
+            className={`${styles.zone} ${styles['top-left']} ${hoverZone === 'top-left' ? styles.active : ''} ${
+              clickPattern.includes('top-left') ? styles.clicked : ''
             }`}
             onClick={() => handleZoneClick('top-left')}
           >
-            <span className="zone-label">1</span>
+            <span className={styles['zone-label']}>1</span>
           </div>
           <div
-            className={`zone top-right ${hoverZone === 'top-right' ? 'active' : ''} ${
-              clickPattern.includes('top-right') ? 'clicked' : ''
+            className={`${styles.zone} ${styles['top-right']} ${hoverZone === 'top-right' ? styles.active : ''} ${
+              clickPattern.includes('top-right') ? styles.clicked : ''
             }`}
             onClick={() => handleZoneClick('top-right')}
           >
-            <span className="zone-label">2</span>
+            <span className={styles['zone-label']}>2</span>
           </div>
           <div
-            className={`zone bottom-left ${hoverZone === 'bottom-left' ? 'active' : ''} ${
-              clickPattern.includes('bottom-left') ? 'clicked' : ''
+            className={`${styles.zone} ${styles['bottom-left']} ${hoverZone === 'bottom-left' ? styles.active : ''} ${
+              clickPattern.includes('bottom-left') ? styles.clicked : ''
             }`}
             onClick={() => handleZoneClick('bottom-left')}
           >
-            <span className="zone-label">3</span>
+            <span className={styles['zone-label']}>3</span>
           </div>
           <div
-            className={`zone bottom-right ${hoverZone === 'bottom-right' ? 'active' : ''} ${
-              clickPattern.includes('bottom-right') ? 'clicked' : ''
+            className={`${styles.zone} ${styles['bottom-right']} ${hoverZone === 'bottom-right' ? styles.active : ''} ${
+              clickPattern.includes('bottom-right') ? styles.clicked : ''
             }`}
             onClick={() => handleZoneClick('bottom-right')}
           >
-            <span className="zone-label">4</span>
+            <span className={styles['zone-label']}>4</span>
           </div>
           <div
-            className={`zone center ${hoverZone === 'center' ? 'active' : ''} ${
-              clickPattern.includes('center') ? 'clicked' : ''
+            className={`${styles.zone} ${styles.center} ${hoverZone === 'center' ? styles.active : ''} ${
+              clickPattern.includes('center') ? styles.clicked : ''
             }`}
             onClick={() => handleZoneClick('center')}
           >
-            <span className="zone-label">5</span>
+            <span className={styles['zone-label']}>5</span>
           </div>
         </div>
 
-        <div className="pattern-tracker">
+        <div className={styles['pattern-tracker']}>
           <p>Click Pattern: {clickPattern.length > 0 ? clickPattern.join(' → ') : 'none'}</p>
-          <p className="pattern-progress">
+          <p className={styles['pattern-progress']}>
             {clickPattern.length} / {TARGET_ZONES.length} steps
           </p>
         </div>
       </div>
 
-      <div className="surveillance-hint">
-        <p className="hint-text">
+      <div className={styles['surveillance-hint']}>
+        <p className={styles['hint-text']}>
           💡 Maximum surveillance requires maximum compliance
         </p>
-        <p className="hint-subtext">
+        <p className={styles['hint-subtext']}>
           Hint: Click the zones in numerical order (1 → 2 → 3 → 4 → 5)
         </p>
       </div>

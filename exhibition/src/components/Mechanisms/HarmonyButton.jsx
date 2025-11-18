@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useStore } from '../../store/useStore'
-import './HarmonyButton.module.css'
+import styles from './HarmonyButton.module.css'
 
 // The CAPTCHA contains hidden instructions
 const CAPTCHA_TEXT = 'SEARCH transparency API labor conditions'
@@ -32,13 +32,13 @@ export default function HarmonyButton({ onSolve }) {
 
   if (isSolved) {
     return (
-      <div className="harmony-solved">
+      <div className={styles['harmony-solved']}>
         <h3>🔓 Mechanism Solved</h3>
         <p>You decoded the instructions hidden in mandatory assent.</p>
-        <div className="instructions-revealed">
+        <div className={styles['instructions-revealed']}>
           <h4>Search Engine Score Instructions:</h4>
           <p>Generate phantom demand by searching: <strong>{CAPTCHA_SOLUTION}</strong></p>
-          <p className="meta-note">
+          <p className={styles['meta-note']}>
             (The artwork reveals how APIs can be manipulated to fabricate evidence of demand)
           </p>
         </div>
@@ -48,14 +48,14 @@ export default function HarmonyButton({ onSolve }) {
 
   if (!agreedToTerms) {
     return (
-      <div className="harmony-container">
-        <div className="harmony-header">
+      <div className={styles['harmony-container']}>
+        <div className={styles['harmony-header']}>
           <h3>📋 COMMUNITY STANDARDS</h3>
-          <p className="standards-badge">REQUIRED AGREEMENT</p>
+          <p className={styles['standards-badge']}>REQUIRED AGREEMENT</p>
         </div>
 
-        <div className="terms-container">
-          <div className="terms-scroll">
+        <div className={styles['terms-container']}>
+          <div className={styles['terms-scroll']}>
             <h4>Terms of Service & Acceptable Use Policy</h4>
 
             <section>
@@ -119,21 +119,21 @@ export default function HarmonyButton({ onSolve }) {
             </section>
           </div>
 
-          <div className="terms-footer">
-            <button className="harmony-btn" onClick={handleAgree}>
+          <div className={styles['terms-footer']}>
+            <button className={styles['harmony-btn']} onClick={handleAgree}>
               ✓ I AGREE TO ALL TERMS
             </button>
-            <p className="mandatory-notice">
+            <p className={styles['mandatory-notice']}>
               Agreement is mandatory to access content
             </p>
           </div>
         </div>
 
-        <div className="harmony-hint">
-          <p className="hint-text">
+        <div className={styles['harmony-hint']}>
+          <p className={styles['hint-text']}>
             💡 Platform rules require mandatory assent
           </p>
-          <p className="hint-subtext">
+          <p className={styles['hint-subtext']}>
             Hint: You must agree to proceed. The truth is hidden after compliance.
           </p>
         </div>
@@ -142,56 +142,56 @@ export default function HarmonyButton({ onSolve }) {
   }
 
   return (
-    <div className="harmony-container">
-      <div className="harmony-header">
+    <div className={styles['harmony-container']}>
+      <div className={styles['harmony-header']}>
         <h3>🤖 VERIFICATION REQUIRED</h3>
-        <p className="verification-badge">PROVE YOU READ THE TERMS</p>
+        <p className={styles['verification-badge']}>PROVE YOU READ THE TERMS</p>
       </div>
 
-      <div className="captcha-container">
+      <div className={styles['captcha-container']}>
         <h4>Human Verification</h4>
-        <p className="captcha-instructions">
+        <p className={styles['captcha-instructions']}>
           To confirm you've read and understood our Terms of Service, please type
           the text shown below exactly as it appears:
         </p>
 
-        <div className="captcha-display">
-          <div className="captcha-text-container">
-            <span className="captcha-text distorted">{CAPTCHA_TEXT}</span>
+        <div className={styles['captcha-display']}>
+          <div className={styles['captcha-text-container']}>
+            <span className={`${styles['captcha-text']} ${styles.distorted}`}>{CAPTCHA_TEXT}</span>
           </div>
-          <p className="captcha-label">Type the text above</p>
+          <p className={styles['captcha-label']}>Type the text above</p>
         </div>
 
         <form onSubmit={handleCaptchaSubmit}>
           <input
             type="text"
-            className="captcha-input"
+            className={styles['captcha-input']}
             value={captchaInput}
             onChange={(e) => setCaptchaInput(e.target.value)}
             placeholder="Enter the text exactly..."
             autoFocus
           />
-          <button type="submit" className="verify-btn">
+          <button type="submit" className={styles['verify-btn']}>
             VERIFY
           </button>
         </form>
 
         {showError && (
-          <div className="error-message">
+          <div className={styles['error-message']}>
             ❌ Incorrect. Please try again.
           </div>
         )}
 
-        <div className="captcha-hint">
+        <div className={styles['captcha-hint']}>
           <p>💡 Look carefully. The CAPTCHA contains more than verification.</p>
         </div>
       </div>
 
-      <div className="harmony-hint">
-        <p className="hint-text">
+      <div className={styles['harmony-hint']}>
+        <p className={styles['hint-text']}>
           💡 Mandatory assent hides instructions in plain sight
         </p>
-        <p className="hint-subtext">
+        <p className={styles['hint-subtext']}>
           Hint: The distorted text is the actual artwork instruction
         </p>
       </div>

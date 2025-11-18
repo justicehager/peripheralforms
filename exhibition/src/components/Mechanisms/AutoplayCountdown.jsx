@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '../../store/useStore'
-import './AutoplayCountdown.module.css'
+import styles from './AutoplayCountdown.module.css'
 
 // Video specifications
 const VIDEO_DURATION = 180 // 3 minutes in seconds
@@ -68,33 +68,33 @@ export default function AutoplayCountdown({ onSolve }) {
 
   if (isSolved) {
     return (
-      <div className="autoplay-solved">
+      <div className={styles['autoplay-solved']}>
         <h3>🔓 Mechanism Solved</h3>
         <p>You caught the moment of truth in the official narrative.</p>
-        <p className="clue-revealed">The clue was hidden at {formatTime(CLUE_TIMESTAMP)}</p>
+        <p className={styles['clue-revealed']}>The clue was hidden at {formatTime(CLUE_TIMESTAMP)}</p>
       </div>
     )
   }
 
   return (
-    <div className="autoplay-container">
-      <div className="autoplay-header">
+    <div className={styles['autoplay-container']}>
+      <div className={styles['autoplay-header']}>
         <h3>OFFICIAL PRESS BRIEFING</h3>
-        <p className="official-badge">VERIFIED SOURCE</p>
+        <p className={styles['official-badge']}>VERIFIED SOURCE</p>
       </div>
 
-      <div className="video-player">
-        <div className="video-screen">
-          <div className="video-content">
+      <div className={styles['video-player']}>
+        <div className={styles['video-screen']}>
+          <div className={styles['video-content']}>
             {showClue && (
-              <div className="hidden-clue">
+              <div className={styles['hidden-clue']}>
                 PAUSE NOW
               </div>
             )}
-            <div className="official-text">
-              <p className="timestamp">{formatTime(currentTime)}</p>
-              <p className="speaker">Chief of Police, District Command</p>
-              <p className="transcript">
+            <div className={styles['official-text']}>
+              <p className={styles.timestamp}>{formatTime(currentTime)}</p>
+              <p className={styles.speaker}>Chief of Police, District Command</p>
+              <p className={styles.transcript}>
                 "...the incident was thoroughly investigated and all procedures
                 were followed to the letter. The narrative you may have heard
                 from other sources does not reflect the facts as documented
@@ -104,42 +104,42 @@ export default function AutoplayCountdown({ onSolve }) {
           </div>
         </div>
 
-        <div className="video-controls">
-          <div className="progress-bar">
+        <div className={styles['video-controls']}>
+          <div className={styles['progress-bar']}>
             <div
-              className="progress-fill"
+              className={styles['progress-fill']}
               style={{ width: `${(currentTime / VIDEO_DURATION) * 100}%` }}
             />
             {showClue && (
               <div
-                className="clue-marker"
+                className={styles['clue-marker']}
                 style={{ left: `${(CLUE_TIMESTAMP / VIDEO_DURATION) * 100}%` }}
               />
             )}
           </div>
 
-          <div className="control-buttons">
+          <div className={styles['control-buttons']}>
             {isPlaying ? (
-              <button className="btn btn-pause" onClick={handlePause}>
+              <button className={`${styles.btn} ${styles['btn-pause']}`} onClick={handlePause}>
                 ⏸ Pause
               </button>
             ) : (
-              <button className="btn btn-play" onClick={handlePlay}>
+              <button className={`${styles.btn} ${styles['btn-play']}`} onClick={handlePlay}>
                 ▶ Play
               </button>
             )}
-            <span className="time-display">
+            <span className={styles['time-display']}>
               {formatTime(currentTime)} / {formatTime(VIDEO_DURATION)}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="autoplay-hint">
-        <p className="hint-text">
+      <div className={styles['autoplay-hint']}>
+        <p className={styles['hint-text']}>
           💡 Watch carefully. The truth appears only for a moment.
         </p>
-        <p className="hint-subtext">
+        <p className={styles['hint-subtext']}>
           Hint: Official narratives contain brief contradictions
         </p>
       </div>
