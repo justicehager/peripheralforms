@@ -190,3 +190,114 @@
   font-size: 16px;
   line-height: 1.6;
 }
+
+/* Tablet responsive styles */
+@media (max-width: 768px) {
+  .timeout-container {
+    padding: 15px;
+  }
+
+  .timer-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .timer-text {
+    font-size: 28px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 640px) {
+  .timeout-container {
+    padding: 12px;
+  }
+
+  .timeout-header h3 {
+    font-size: 16px;
+  }
+
+  .timeout-content {
+    gap: 20px;
+  }
+
+  .wellness-message {
+    padding: 15px;
+  }
+
+  .wellness-message h4 {
+    font-size: 15px;
+  }
+
+  .wellness-message p {
+    font-size: 13px;
+  }
+
+  .timer-display {
+    padding: 20px 15px;
+  }
+
+  .timer-circle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .timer-text {
+    font-size: 24px;
+  }
+
+  .timer-label {
+    font-size: 13px;
+  }
+
+  .alternative-unlock {
+    padding: 15px;
+  }
+
+  .alternative-unlock h4 {
+    font-size: 15px;
+  }
+
+  .alternative-unlock p {
+    font-size: 13px;
+  }
+
+  .timeout-hint {
+    padding: 12px;
+  }
+
+  .timeout-solved {
+    padding: 20px;
+  }
+
+  .timeout-solved h3 {
+    font-size: 20px;
+  }
+
+  .timeout-solved p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeout-container {
+    padding: 10px;
+  }
+
+  .timer-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .timer-text {
+    font-size: 20px;
+  }
+
+  .progress-text {
+    font-size: 13px;
+  }
+
+  .progress-bar {
+    height: 8px;
+  }
+}
