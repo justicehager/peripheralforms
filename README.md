@@ -68,9 +68,9 @@ The open call site remains on the root (`/`) for continuous operation.
 
 ### Technology Stack
 
-- **Framework**: React 18 with Hooks
-- **Build Tool**: Vite
-- **Routing**: React Router v6
+- **Framework**: React 19 with Hooks
+- **Build Tool**: Vite 7
+- **Routing**: React Router v7
 - **State Management**: Zustand with localStorage persistence
 - **Styling**: CSS Modules + CSS Variables
 - **Animations**: Framer Motion
@@ -78,10 +78,37 @@ The open call site remains on the root (`/`) for continuous operation.
 
 ### Current Status
 
-Phase 1 architecture complete with:
-- ✅ Core React + Vite setup
-- ✅ Zustand store with persistence
-- ✅ Component architecture
-- ✅ Infrastructure monitoring panels
-- ✅ First mechanism (Confirmshaming) implemented
-- 🚧 Remaining 5 mechanisms in progress
+**🎉 PRODUCTION READY** - Core exhibition functionality complete!
+
+**✅ Phase 1: Core Architecture** - COMPLETE
+- React 19 + Vite 7 setup with subdirectory routing (/exhibition/)
+- Zustand store with localStorage persistence
+- Full component architecture with theme switching
+
+**✅ Phase 2: All 6 Mechanisms** - COMPLETE
+- Confirmshaming (Lynch)
+- Autoplay/Countdown (Weigel)
+- Time-Out (Gibbins)
+- Infinite Scroll (desire_engineering)
+- Surveillance UI (Perfect Users)
+- Harmony Button (Search Engine Scores)
+
+**✅ Phase 3: Infrastructure Visibility** - COMPLETE
+- NetworkMonitor, DatabaseLog, ConsoleErrors components
+- Progressive visibility based on solved mechanisms
+
+**✅ Phase 5: Ending State** - COMPLETE
+- LiberatedLayout with "people's internet" brutalist aesthetic
+- Theme transformation when all mechanisms solved
+
+**🚧 Phase 4: Artwork Integration** - PARTIAL
+- ArtworkPage component built
+- Need actual artwork assets (images, videos, PDFs)
+- Need artist statements and complete descriptions
+
+**📋 Phase 6: Testing & Polish** - IN PROGRESS
+- ✅ Deployment to /exhibition/ subdirectory working
+- ⏳ Cross-browser testing
+- ⏳ Mobile responsiveness
+- ⏳ Performance optimization
+- ⏳ Accessibility improvements
