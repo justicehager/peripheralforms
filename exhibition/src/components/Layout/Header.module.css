@@ -1,25 +1,37 @@
 .platform-header {
-  background-color: var(--bg-primary);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   border-bottom: 1px solid var(--border);
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-2xl) var(--spacing-md);
   text-align: center;
-  sticky: top 0;
   z-index: 100;
 }
 
 .header-content {
-  max-width: var(--max-width);
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .header-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.03em;
 }
 
 .header-subtitle {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 0;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .header-title {
+    font-size: 2.5rem;
+  }
+
+  .header-subtitle {
+    font-size: 1.1rem;
+  }
 }

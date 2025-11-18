@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useStore } from '../../store/useStore'
-import './Navigation.module.css'
+import styles from './Navigation.module.css'
 
 export default function Navigation() {
   const { resetExhibition } = useStore()
@@ -13,19 +13,19 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="platform-nav">
-      <div className="nav-content">
-        <Link to="/" className="nav-logo">
+    <nav className={styles['platform-nav']}>
+      <div className={styles['nav-content']}>
+        <Link to="/" className={styles['nav-logo']}>
           We Should Be Allowed to Think
         </Link>
-        <div className="nav-links">
-          <Link to="/" className="nav-link">
+        <div className={styles['nav-links']}>
+          <Link to="/" className={styles['nav-link']}>
             Home
           </Link>
-          <Link to="/about" className="nav-link">
+          <Link to="/about" className={styles['nav-link']}>
             About
           </Link>
-          <button onClick={handleReset} className="nav-reset">
+          <button onClick={handleReset} className={styles['nav-reset']}>
             Reset
           </button>
         </div>

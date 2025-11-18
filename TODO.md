@@ -6,69 +6,71 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 
 ## Phase 1: Core Architecture (Week 1)
 
-- [ ] Set up React 18 + Vite project with proper folder structure
-- [ ] Install dependencies (zustand, react-router-dom, framer-motion)
-- [ ] Create Zustand store with solved mechanisms tracking and persistence
-- [ ] Implement React Router structure with paths for /, /artwork/:id, /about
-- [ ] Build Feed component with mock artwork data and feed posts
-- [ ] Create FeedPost component with locked/unlocked states
-- [ ] Implement platform aesthetic (CSS variables, colors, typography, layout)
-- [ ] Build Layout component with conditional rendering (platform vs resistance)
-- [ ] Create ContextHelp component with exhibition explanation
-- [ ] Create data files for artworks metadata and mechanisms configuration
+- [x] Set up React 18 + Vite project with proper folder structure
+- [x] Install dependencies (zustand, react-router-dom, framer-motion)
+- [x] Create Zustand store with solved mechanisms tracking and persistence
+- [x] Implement React Router structure with paths for /, /artwork/:id, /about
+- [x] Build Feed component with mock artwork data and feed posts
+- [x] Create FeedPost component with locked/unlocked states (now with thumbnails!)
+- [x] Implement platform aesthetic (CSS variables, colors, typography, layout)
+- [x] Build Layout component with conditional rendering (platform vs resistance)
+- [x] Create ContextHelp component with exhibition explanation
+- [x] Create data files for artworks metadata and mechanisms configuration
+- [x] **NEW**: Created MechanismOverlay modal component for better UX
+- [x] **NEW**: Added emoji thumbnails to all artworks
 
 ---
 
 ## Phase 2: Mechanisms (Week 2-3)
 
 ### Custom Hooks
-- [ ] Create useScrollDepth custom hook for infinite scroll tracking
-- [ ] Create useMouseTracking custom hook for surveillance UI
-- [ ] Create useTimer custom hook for time-based mechanisms
+- [x] Create useScrollDepth custom hook for infinite scroll tracking
+- [x] Create useMouseTracking custom hook for surveillance UI
+- [x] Create useTimer custom hook for time-based mechanisms
 
 ### Mechanism 1: Lynch - Confirmshaming
-- [ ] Implement Confirmshaming mechanism (5 refuse screens required)
-- [ ] Add corporate press release content layer
-- [ ] Implement refusal tracking and unlock logic
+- [x] Implement Confirmshaming mechanism (5 refuse screens required)
+- [x] Add corporate press release content layer
+- [x] Implement refusal tracking and unlock logic
 
 ### Mechanism 2: Weigel - Autoplay/Countdown
-- [ ] Implement Autoplay/Countdown mechanism (pause at timestamp puzzle)
-- [ ] Create video player with hidden clue at specific timestamp
-- [ ] Implement pause detection and unlock trigger
+- [x] Implement Autoplay/Countdown mechanism (pause at timestamp puzzle)
+- [x] Create video player with hidden clue at specific timestamp
+- [x] Implement pause detection and unlock trigger
 
 ### Mechanism 3: Gibbins - Time-Out
-- [ ] Implement Time-Out mechanism (5 min wait OR unlock 2+ others)
-- [ ] Add timer display with countdown
-- [ ] Implement alternative unlock path via other mechanisms
+- [x] Implement Time-Out mechanism (5 min wait OR unlock 2+ others)
+- [x] Add timer display with countdown
+- [x] Implement alternative unlock path via other mechanisms
 
 ### Mechanism 4: desire_engineering - Infinite Scroll
-- [ ] Implement Infinite Scroll mechanism (scroll to pattern)
-- [ ] Implement procedural content generation for testimonials
-- [ ] Add scroll depth tracking and pattern detection
-- [ ] Create exit link reveal at target scroll depth
+- [x] Implement Infinite Scroll mechanism (scroll to pattern)
+- [x] Implement procedural content generation for testimonials
+- [x] Add scroll depth tracking and pattern detection
+- [x] Create exit link reveal at target scroll depth
 
 ### Mechanism 5: Perfect Users - Surveillance UI
-- [ ] Implement Surveillance UI mechanism (mouse pattern tracking)
-- [ ] Create real-time tracking display panel
-- [ ] Implement pattern validation for mouse movements/clicks
-- [ ] Add unlock trigger for correct pattern sequence
+- [x] Implement Surveillance UI mechanism (mouse pattern tracking)
+- [x] Create real-time tracking display panel
+- [x] Implement pattern validation for mouse movements/clicks
+- [x] Add unlock trigger for correct pattern sequence
 
 ### Mechanism 6: Search Engine Scores - Harmony Button + CAPTCHA
-- [ ] Implement Harmony Button mechanism (Terms of Service assent)
-- [ ] Create CAPTCHA with encoded instructions
-- [ ] Implement CAPTCHA solution validation
-- [ ] Add unlock trigger for solved CAPTCHA
+- [x] Implement Harmony Button mechanism (Terms of Service assent)
+- [x] Create CAPTCHA with encoded instructions
+- [x] Implement CAPTCHA solution validation
+- [x] Add unlock trigger for solved CAPTCHA
 
 ---
 
 ## Phase 3: Infrastructure Visibility (Week 4)
 
-- [ ] Create NetworkMonitor component showing fake API calls
-- [ ] Create DatabaseLog component showing database queries
-- [ ] Create ConsoleErrors component showing terminal-style errors
-- [ ] Create InfrastructureOverlay component with progressive visibility
-- [ ] Implement progressive infrastructure exposure (Level 1-3 based on mechanisms solved)
-- [ ] Add glitch effects and CSS corruption for infrastructure visibility
+- [x] Create NetworkMonitor component showing fake API calls
+- [x] Create DatabaseLog component showing database queries
+- [x] Create ConsoleErrors component showing terminal-style errors
+- [x] Create InfrastructureOverlay component with progressive visibility
+- [x] Implement progressive infrastructure exposure (Level 1-3 based on mechanisms solved)
+- [x] Add glitch effects and CSS corruption for infrastructure visibility
 
 ---
 
@@ -88,11 +90,11 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 
 ## Phase 5: Ending State (Week 6)
 
-- [ ] Create LiberatedLayout component (brutalist/1990s resistance aesthetic)
-- [ ] Implement resistance theme CSS (terminal green, hot pink accents, typography)
-- [ ] Add smooth theme transition animations from platform to resistance
-- [ ] Add ASCII art and brutalist design elements to resistance state
-- [ ] Implement reset functionality to clear solved mechanisms and reload
+- [x] Create LiberatedLayout component (brutalist/1990s resistance aesthetic)
+- [x] Implement resistance theme CSS (terminal green, hot pink accents, typography)
+- [x] Add smooth theme transition animations from platform to resistance
+- [x] Add ASCII art and brutalist design elements to resistance state
+- [x] Implement reset functionality to clear solved mechanisms and reload
 
 ---
 

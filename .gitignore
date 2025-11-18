@@ -1,5 +1,5 @@
 node_modules/
-dist/
+/dist/
 .DS_Store
 .env
 .env.local
@@ -7,4 +7,3 @@ dist/
 .vite/
 .eslintcache
 exhibition/node_modules/
-exhibition/dist/
