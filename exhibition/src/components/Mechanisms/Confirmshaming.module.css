@@ -1,8 +1,9 @@
 .confirmshaming-container {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-2xl);
   background: var(--bg-primary);
-  border: 2px solid var(--border);
+  border: none;
   border-radius: var(--radius-md);
+  width: 100%;
 }
 
 .confirmshaming-progress {
