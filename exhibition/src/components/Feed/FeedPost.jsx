@@ -20,10 +20,14 @@ const MECHANISM_COMPONENTS = {
 export default function FeedPost({ artwork, isUnlocked }) {
   const MechanismComponent = MECHANISM_COMPONENTS[artwork.mechanismType]
 
-  // Debug logging
-  if (!isUnlocked && !MechanismComponent) {
-    console.log('Missing mechanism for:', artwork.mechanismType, 'Available:', Object.keys(MECHANISM_COMPONENTS))
-  }
+  // Comprehensive debug logging
+  console.log('FeedPost Debug:', {
+    artworkId: artwork.id,
+    mechanismType: artwork.mechanismType,
+    isUnlocked,
+    hasComponent: !!MechanismComponent,
+    componentName: MechanismComponent?.name
+  })
 
   return (
     <article className="feed-post">

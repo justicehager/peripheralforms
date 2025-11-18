@@ -6,6 +6,9 @@ import './Feed.module.css'
 export default function Feed() {
   const { solvedMechanisms } = useStore()
 
+  // Debug: Log solved mechanisms
+  console.log('Feed - Solved mechanisms:', solvedMechanisms)
+
   return (
     <div className="feed-container">
       <div className="feed-grid">
