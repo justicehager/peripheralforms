@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useStore } from '../../store/useStore'
-import './TimeOut.module.css'
+import styles from './TimeOut.module.css'
 
 const WAIT_TIME_MS = 5 * 60 * 1000 // 5 minutes in milliseconds
 const REQUIRED_OTHER_SOLVES = 2
@@ -84,7 +84,7 @@ export default function TimeOut({ onSolve }) {
 
   if (isSolved) {
     return (
-      <div className="timeout-solved">
+      <div className={styles['timeout-solved']}>
         <h3>🔓 Mechanism Solved</h3>
         {unlockMethod === 'time' && (
           <p>You waited patiently. Time restrictions cannot stop thinking.</p>
@@ -97,14 +97,14 @@ export default function TimeOut({ onSolve }) {
   }
 
   return (
-    <div className="timeout-container">
-      <div className="timeout-header">
+    <div className={styles['timeout-container']}>
+      <div className={styles['timeout-header']}>
         <h3>⏱ SCREEN TIME MANAGEMENT</h3>
-        <p className="wellness-badge">FOR YOUR WELLBEING</p>
+        <p className={styles['wellness-badge']}>FOR YOUR WELLBEING</p>
       </div>
 
-      <div className="timeout-content">
-        <div className="wellness-message">
+      <div className={styles['timeout-content']}>
+        <div className={styles['wellness-message']}>
           <h4>Take a Healthy Break</h4>
           <p>
             Our platform cares about your digital wellness. Research shows that
@@ -116,9 +116,9 @@ export default function TimeOut({ onSolve }) {
           </p>
         </div>
 
-        <div className="timer-display">
-          <div className="timer-circle">
-            <svg viewBox="0 0 100 100" className="timer-svg">
+        <div className={styles['timer-display']}>
+          <div className={styles['timer-circle']}>
+            <svg viewBox="0 0 100 100" className={styles['timer-svg']}>
               <circle
                 cx="50"
                 cy="50"
@@ -137,40 +137,40 @@ export default function TimeOut({ onSolve }) {
                 strokeDasharray={`${2 * Math.PI * 45}`}
                 strokeDashoffset={`${2 * Math.PI * 45 * (1 - getProgressPercent() / 100)}`}
                 transform="rotate(-90 50 50)"
-                className="timer-progress"
+                className={styles['timer-progress']}
               />
             </svg>
-            <div className="timer-text">
+            <div className={styles['timer-text']}>
               {formatTimeRemaining(getRemainingTime())}
             </div>
           </div>
-          <p className="timer-label">Time until access granted</p>
+          <p className={styles['timer-label']}>Time until access granted</p>
         </div>
 
-        <div className="alternative-unlock">
+        <div className={styles['alternative-unlock']}>
           <h4>Alternative Path</h4>
           <p>
             Or demonstrate your commitment by unlocking {REQUIRED_OTHER_SOLVES} other
             artworks first.
           </p>
-          <div className="progress-indicator">
-            <div className="progress-text">
+          <div className={styles['progress-indicator']}>
+            <div className={styles['progress-text']}>
               Progress: {otherSolvedCount} / {REQUIRED_OTHER_SOLVES}
             </div>
-            <div className="progress-bar">
+            <div className={styles['progress-bar']}>
               <div
-                className="progress-fill"
+                className={styles['progress-fill']}
                 style={{ width: `${(otherSolvedCount / REQUIRED_OTHER_SOLVES) * 100}%` }}
               />
             </div>
           </div>
         </div>
 
-        <div className="timeout-hint">
-          <p className="hint-text">
+        <div className={styles['timeout-hint']}>
+          <p className={styles['hint-text']}>
             💡 Paternalistic control disguised as care
           </p>
-          <p className="hint-subtext">
+          <p className={styles['hint-subtext']}>
             Hint: Time limits serve the platform, not you. Wait or circumvent.
           </p>
         </div>

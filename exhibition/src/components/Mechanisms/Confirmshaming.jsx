@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useStore } from '../../store/useStore'
-import './Confirmshaming.module.css'
+import styles from './Confirmshaming.module.css'
 
 const CONFIRMSHAMING_SCREENS = [
   {
@@ -66,7 +66,7 @@ export default function Confirmshaming({ onSolve }) {
 
   if (isSolved) {
     return (
-      <div className="confirmshaming-solved">
+      <div className={styles['confirmshaming-solved']}>
         <h3>🔓 POLL REJECTED</h3>
         <p>You successfully resisted the manufactured consensus.</p>
       </div>
@@ -74,42 +74,42 @@ export default function Confirmshaming({ onSolve }) {
   }
 
   return (
-    <div className="confirmshaming-container">
-      <div className="confirmshaming-progress">
-        <div className="progress-bar">
+    <div className={styles['confirmshaming-container']}>
+      <div className={styles['confirmshaming-progress']}>
+        <div className={styles['progress-bar']}>
           <div
-            className="progress-fill"
+            className={styles['progress-fill']}
             style={{ width: `${(screenIndex / CONFIRMSHAMING_SCREENS.length) * 100}%` }}
           />
         </div>
-        <p className="progress-text">
+        <p className={styles['progress-text']}>
           Refusals: {refusalCount}/{REQUIRED_REFUSALS}
         </p>
       </div>
 
-      <div className="confirmshaming-screen">
-        <div className="screen-content">
-          <p className="corporate-text">{currentScreen.content}</p>
+      <div className={styles['confirmshaming-screen']}>
+        <div className={styles['screen-content']}>
+          <p className={styles['corporate-text']}>{currentScreen.content}</p>
         </div>
 
-        <div className="confirmshaming-buttons">
+        <div className={styles['confirmshaming-buttons']}>
           <button
-            className="btn btn-accept"
+            className={`${styles.btn} ${styles['btn-accept']}`}
             onClick={handleAccept}
           >
             {currentScreen.accept}
           </button>
           <button
-            className="btn btn-refuse"
+            className={`${styles.btn} ${styles['btn-refuse']}`}
             onClick={handleRefuse}
           >
             {currentScreen.refuse}
           </button>
         </div>
 
-        <div className="screen-info">
+        <div className={styles['screen-info']}>
           <p>Question {screenIndex + 1} of {CONFIRMSHAMING_SCREENS.length}</p>
-          <p className="hint">Your vote matters! (Hint: Resist the pressure)</p>
+          <p className={styles.hint}>Your vote matters! (Hint: Resist the pressure)</p>
         </div>
       </div>
     </div>
