@@ -1,7 +1,7 @@
 import { useStore } from '../../store/useStore'
 import FeedPost from './FeedPost'
 import { ARTWORKS } from '../../data/artworks'
-import './Feed.module.css'
+import styles from './Feed.module.css'
 
 export default function Feed() {
   const { solvedMechanisms } = useStore()
@@ -10,8 +10,8 @@ export default function Feed() {
   console.log('Feed - Solved mechanisms:', solvedMechanisms)
 
   return (
-    <div className="feed-container">
-      <div className="feed-grid">
+    <div className={styles['feed-container']}>
+      <div className={styles['feed-grid']}>
         {ARTWORKS.map(artwork => (
           <FeedPost
             key={artwork.id}

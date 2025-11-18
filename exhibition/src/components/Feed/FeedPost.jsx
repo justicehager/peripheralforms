@@ -5,7 +5,7 @@ import TimeOut from '../Mechanisms/TimeOut'
 import InfiniteScroll from '../Mechanisms/InfiniteScroll'
 import SurveillanceUI from '../Mechanisms/SurveillanceUI'
 import HarmonyButton from '../Mechanisms/HarmonyButton'
-import './FeedPost.module.css'
+import styles from './FeedPost.module.css'
 
 // Map mechanism types to components
 const MECHANISM_COMPONENTS = {
@@ -30,27 +30,27 @@ export default function FeedPost({ artwork, isUnlocked }) {
   })
 
   return (
-    <article className="feed-post">
-      <div className="post-header">
-        <div className="avatar-placeholder" />
-        <div className="header-info">
+    <article className={styles['feed-post']}>
+      <div className={styles['post-header']}>
+        <div className={styles['avatar-placeholder']} />
+        <div className={styles['header-info']}>
           <h3>{artwork.artistName}</h3>
-          <p className="verified">✓ Verified Artist</p>
+          <p className={styles['verified']}>✓ Verified Artist</p>
         </div>
       </div>
 
-      <div className="post-content">
+      <div className={styles['post-content']}>
         {isUnlocked ? (
-          <Link to={`/artwork/${artwork.id}`} className="artwork-link">
-            <div className="artwork-placeholder">{artwork.title}</div>
-            <div className="unlocked-badge">🔓 Unlocked</div>
+          <Link to={`/artwork/${artwork.id}`} className={styles['artwork-link']}>
+            <div className={styles['artwork-placeholder']}>{artwork.title}</div>
+            <div className={styles['unlocked-badge']}>🔓 Unlocked</div>
           </Link>
         ) : (
-          <div className="locked-content">
+          <div className={styles['locked-content']}>
             {MechanismComponent ? (
               <MechanismComponent />
             ) : (
-              <div className="mechanism-placeholder">
+              <div className={styles['mechanism-placeholder']}>
                 <div>Mechanism: {artwork.mechanismType}</div>
                 <div style={{color: 'red', fontSize: '12px', marginTop: '10px'}}>
                   DEBUG: Component {MechanismComponent ? 'FOUND' : 'NOT FOUND'}
@@ -58,13 +58,13 @@ export default function FeedPost({ artwork, isUnlocked }) {
                 </div>
               </div>
             )}
-            <div className="locked-badge">🔒 Locked</div>
+            <div className={styles['locked-badge']}>🔒 Locked</div>
           </div>
         )}
       </div>
 
-      <div className="post-footer">
-        <div className="engagement">
+      <div className={styles['post-footer']}>
+        <div className={styles['engagement']}>
           <span>❤️ {artwork.likes}</span>
           <span>💬 {artwork.comments}</span>
           <span>🔄 {artwork.shares}</span>
