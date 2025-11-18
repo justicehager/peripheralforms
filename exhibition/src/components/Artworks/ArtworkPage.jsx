@@ -1,6 +1,7 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getArtworkById } from '../../data/artworks'
 import './ArtworkPage.module.css'
+import './ArtworkPageThemes.css'
 import { getArtistTheme } from '../../data/artistThemes'
 
 export default function ArtworkPage() {
