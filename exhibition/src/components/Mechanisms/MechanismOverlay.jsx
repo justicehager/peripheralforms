@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../store/useStore'
 import { getMechanismTheme } from '../../data/mechanismThemes'
 import Confirmshaming from './Confirmshaming'
@@ -18,14 +19,18 @@ const MECHANISM_COMPONENTS = {
 }
 
 export default function MechanismOverlay({ artwork, onClose }) {
+  const navigate = useNavigate()
   const { solvedMechanisms } = useStore()
   const MechanismComponent = MECHANISM_COMPONENTS[artwork.mechanismType]
   const isUnlocked = solvedMechanisms.includes(artwork.mechanismId)
   const theme = getMechanismTheme(artwork.mechanismId)
 
-  // Close overlay if mechanism gets solved
+  // Redirect to artwork page if mechanism gets solved
   if (isUnlocked) {
-    setTimeout(() => onClose(), 500)
+    setTimeout(() => {
+      onClose()
+      navigate(`/artwork/${artwork.id}`)
+    }, 500)
   }
 
   return (
