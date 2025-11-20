@@ -14,8 +14,12 @@ export default function AutoplayCountdown({ onSolve }) {
   const [showClue, setShowClue] = useState(false)
   const playerRef = useRef(null)
   const iframeRef = useRef(null)
+  const isMountedRef = useRef(true)
+  const initTimeoutRef = useRef(null)
 
   useEffect(() => {
+    isMountedRef.current = true
+
     // Load YouTube IFrame API only if not already loaded
     if (!window.YT) {
       // Check if script tag already exists
@@ -31,7 +35,17 @@ export default function AutoplayCountdown({ onSolve }) {
 
     // Function to initialize player
     const initializePlayer = () => {
-      if (iframeRef.current && !playerRef.current) {
+      // Check if component is still mounted and element exists
+      if (!isMountedRef.current || !iframeRef.current) {
+        return
+      }
+
+      // Prevent double initialization
+      if (playerRef.current) {
+        return
+      }
+
+      try {
         playerRef.current = new window.YT.Player(iframeRef.current, {
           videoId: YOUTUBE_VIDEO_ID,
           playerVars: {
@@ -45,23 +59,47 @@ export default function AutoplayCountdown({ onSolve }) {
             onStateChange: onPlayerStateChange
           }
         })
+      } catch (error) {
+        console.error('Error initializing YouTube player:', error)
       }
     }
 
     // Create YouTube player when API is ready
     if (window.YT && window.YT.Player) {
-      // API already loaded
-      initializePlayer()
+      // API already loaded - delay initialization slightly to ensure DOM is ready
+      initTimeoutRef.current = setTimeout(() => {
+        if (isMountedRef.current) {
+          initializePlayer()
+        }
+      }, 100)
     } else {
       // Wait for API to load
+      const originalCallback = window.onYouTubeIframeAPIReady
       window.onYouTubeIframeAPIReady = () => {
-        initializePlayer()
+        if (originalCallback) originalCallback()
+        if (isMountedRef.current) {
+          initTimeoutRef.current = setTimeout(initializePlayer, 100)
+        }
       }
     }
 
     return () => {
-      if (playerRef.current && playerRef.current.destroy) {
-        playerRef.current.destroy()
+      isMountedRef.current = false
+
+      // Clear any pending initialization
+      if (initTimeoutRef.current) {
+        clearTimeout(initTimeoutRef.current)
+      }
+
+      // Destroy player if it exists
+      if (playerRef.current) {
+        try {
+          if (typeof playerRef.current.destroy === 'function') {
+            playerRef.current.destroy()
+          }
+        } catch (error) {
+          console.error('Error destroying YouTube player:', error)
+        }
         playerRef.current = null
       }
     }
@@ -70,15 +108,24 @@ export default function AutoplayCountdown({ onSolve }) {
   // Track current time and show clue
   useEffect(() => {
     const interval = setInterval(() => {
-      if (playerRef.current && playerRef.current.getCurrentTime) {
-        const time = playerRef.current.getCurrentTime()
-        setCurrentTime(time)
+      // Only update state if component is still mounted
+      if (!isMountedRef.current) {
+        return
+      }
 
-        // Show clue briefly at target timestamp
-        if (Math.abs(time - CLUE_TIMESTAMP) < 0.5) {
-          setShowClue(true)
-        } else {
-          setShowClue(false)
+      if (playerRef.current && playerRef.current.getCurrentTime) {
+        try {
+          const time = playerRef.current.getCurrentTime()
+          setCurrentTime(time)
+
+          // Show clue briefly at target timestamp
+          if (Math.abs(time - CLUE_TIMESTAMP) < 0.5) {
+            setShowClue(true)
+          } else {
+            setShowClue(false)
+          }
+        } catch (error) {
+          // Player might not be ready yet, ignore
         }
       }
     }, 100)
@@ -91,15 +138,24 @@ export default function AutoplayCountdown({ onSolve }) {
   }
 
   const onPlayerStateChange = (event) => {
-    // YT.PlayerState.PAUSED === 2
-    if (event.data === 2) {
-      const pauseTime = playerRef.current.getCurrentTime()
+    // Only process if component is still mounted
+    if (!isMountedRef.current) {
+      return
+    }
 
-      // Check if paused at correct timestamp
-      if (Math.abs(pauseTime - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
-        setIsSolved(true)
-        solveMechanism('autoplay')
-        onSolve?.()
+    // YT.PlayerState.PAUSED === 2
+    if (event.data === 2 && playerRef.current) {
+      try {
+        const pauseTime = playerRef.current.getCurrentTime()
+
+        // Check if paused at correct timestamp
+        if (Math.abs(pauseTime - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
+          setIsSolved(true)
+          solveMechanism('autoplay')
+          onSolve?.()
+        }
+      } catch (error) {
+        console.error('Error checking pause time:', error)
       }
     }
   }
