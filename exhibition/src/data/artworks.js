@@ -19,6 +19,13 @@ The executive order is not binding on U.S. state governments or the private sect
     thematicStatement: `Order 14172 changes natural landmark names that acknowledge indigenous cultures, in existence long before the establishment of the U.S., and are used in a global context. It is the action of a culture of control. The renaming of the Gulf of Mexico is especially problematic as it is shared by three countries: the U.S., Mexico and Cuba. The work, Restoring a Name to Grate American Honor, takes direct control of Google's own system/tools to hack and subvert its maps and deny the implementation of the name change. It is a counter action against U.S. government and corporate power's suppression of thought and identity, reclaiming both a mental space and a geographical place.`,
     websiteUrl: 'https://www.asquare.org/restoring-a-name-to-grate-american-honor/',
     portfolioUrl: 'https://www.asquare.org/',
+    downloadUrl: 'https://www.asquare.org/work/restoring-a-name-to-grate-american-honor/restoring-a-name-to-grate-american-honor.zip',
+    files: {
+      image: '/artworks/lynch/Restoring a Name to Grate American Honor image - Garrett Lynch IRL - Garrett Lynch IRL.png',
+      gif: '/artworks/lynch/Restoring a Name to Grate American Honor gif - Garrett Lynch IRL - Garrett Lynch IRL.gif',
+      video: '/artworks/lynch/Restoring a Name to Grate American Honor video - Garrett Lynch IRL - Garrett Lynch IRL.mp4',
+      pdf: '/artworks/lynch/Restoring a Name to Grate American Honor - Garrett Lynch IRL - Garrett Lynch IRL.pdf'
+    },
     imageUrl: '/artworks/lynch/thumbnail.jpg',
     contentUrl: '/artworks/lynch/content'
   },
@@ -38,7 +45,10 @@ The executive order is not binding on U.S. state governments or the private sect
     description: 'I am submitting a poem I wrote in response to a confrontation with the police in 2023 that I find resonant now. I have included a brif statement about the history of this writing on the page following the poem.',
     artistStatement: `My work touches on a myriad themes including activism and social discourse, often seeking to draw attention to and confront things happening in the world around me. I work in a huge range of media and have recently found myself writing more as a means of connecting with wider audiences. I have been represented in things curated through peripheral forms long before, but not so much in recent history, and I would like to join in doing so again. The Fall of Freedom initiative is very much needed and I am grateful that you are doing something for this.`,
     thematicStatement: `My writing is specifically about an interrogation by the police in which I felt like they were trying to make me admit to something which I didn't do - they already had the narrative well in place that they wanted to present and it didn't matter what I said, they acted as though they would not be swayed from their perceived outcome. It was anxiety-inducing to say the least, and the poem evolved out of this interaction to convey that sense of helplessness. I find it even more relevant now.`,
-    portfolioUrl: 'jenniferweigelart.com/',
+    portfolioUrl: 'https://jenniferweigelart.com/',
+    files: {
+      document: '/artworks/weigel/Interrogation - Jennifer Weigel.docx'
+    },
     imageUrl: '/artworks/weigel/thumbnail.jpg',
     contentUrl: '/artworks/weigel/content'
   },
@@ -80,6 +90,13 @@ The executive order is not binding on U.S. state governments or the private sect
     artistStatement: `I work in public across design and writing, testing how to best package my ideas and hypotheses into memes.`,
     thematicStatement: `The first image (DE-1) appears in my ongoing graduate research into CAPTCHAs as a human computation system where our data labeling work is both mysterious and unimportant. The other two images (DE-2, 3) respond more specifically to the broader technofascist`,
     portfolioUrl: 'https://liuleslie.github.io/portfolio/all',
+    files: {
+      images: [
+        '/artworks/desire_engineering/DE-1 - Les.png',
+        '/artworks/desire_engineering/DE-2 - Les.png',
+        '/artworks/desire_engineering/DE-3 - Les.png'
+      ]
+    },
     imageUrl: '/artworks/desire-engineering/thumbnail.jpg',
     contentUrl: '/artworks/desire-engineering/content'
   },
@@ -112,13 +129,16 @@ Thank you dear Justice for the emails and the initiative, I'm looking forward to
 
 best regards William Wolfgang Wunderbar
 and the other lovely perfect users`,
+    files: {
+      pdf: '/artworks/perfect_users/IMG_20251103_031618_519 - zrtlrnc sbstn (1).pdf'
+    },
     imageUrl: '/artworks/perfect-users/thumbnail.jpg',
     contentUrl: '/artworks/perfect-users/content'
   },
   {
     id: 'search-engine-scores',
     title: 'Search Engine Scores',
-    artistName: '[Your Name]',
+    artistName: 'Justice Alexander Hager',
     mechanismType: 'Harmony Button',
     mechanismId: 'harmony',
     year: 2025,
