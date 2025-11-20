@@ -47,15 +47,47 @@
 .media-placeholder {
   color: var(--text-secondary);
   font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.thumbnail-large {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+/* Responsive video embed container (16:9 aspect ratio) */
+.video-embed-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.video-embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .artwork-description,
-.artist-statement {
+.artist-statement,
+.thematic-statement,
+.presentation-notes {
   margin: var(--spacing-xl) 0;
 }
 
 .artwork-description h2,
-.artist-statement h2 {
+.artist-statement h2,
+.thematic-statement h2,
+.presentation-notes h2 {
   color: var(--text-primary);
   margin-bottom: var(--spacing-md);
   border-bottom: 2px solid var(--accent-blue);
@@ -63,10 +95,36 @@
 }
 
 .artwork-description p,
-.artist-statement p {
+.artist-statement p,
+.thematic-statement p,
+.presentation-notes p {
   color: var(--text-secondary);
   line-height: 1.8;
   font-size: 1rem;
+}
+
+.artwork-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border);
+}
+
+.artwork-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--accent-blue);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.artwork-link:hover {
+  opacity: 0.8;
 }
 
 .artwork-error {

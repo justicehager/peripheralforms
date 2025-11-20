@@ -105,12 +105,13 @@ The open call site remains on the root (`/`) for continuous operation.
 - Theme transformation when all mechanisms solved
 
 **✅ Phase 4: Artwork Integration** - MOSTLY COMPLETE
-- ArtworkPage component built
+- ArtworkPage component built with video embedding support
 - ✅ Artist submissions integrated from open call responses (5 of 6 artworks)
 - ✅ Complete artist statements and descriptions added to artworks.js
 - ✅ Artist-specific color themes redesigned based on artistic content
+- ✅ Video embeds for Vimeo/YouTube submissions (responsive 16:9 aspect ratio)
+- ✅ Thematic statements and presentation notes displayed on artwork pages
 - ⏳ Need to select 6th artwork for Search Engine Scores mechanism
-- ⏳ Need to implement video embeds for Vimeo/YouTube submissions
 
 **📋 Phase 6: Testing & Polish** - IN PROGRESS
 - ✅ Deployment to /exhibition/ subdirectory working
