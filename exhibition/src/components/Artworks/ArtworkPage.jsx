@@ -111,10 +111,6 @@ export default function ArtworkPage() {
               </div>
 
               <div className="media-gallery">
-                <video controls className="artwork-video">
-                  <source src={artwork.files.video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
                 <img src={artwork.files.gif} alt="Extension Demo" className="artwork-gif" />
               </div>
             </div>
@@ -153,23 +149,17 @@ export default function ArtworkPage() {
             </div>
           )}
 
-          {/* perfect_users: PDF viewer */}
-          {artworkId === 'perfect-users' && artwork.files && artwork.files.pdf && (
-            <div className="pdf-presentation">
-              <iframe
-                src={artwork.files.pdf}
-                className="pdf-viewer"
-                title={artwork.title}
-              ></iframe>
-              <a
-                href={artwork.files.pdf}
-                className="download-button"
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                📄 Download PDF
-              </a>
+          {/* perfect_users: Multiple images from PDF pages */}
+          {artworkId === 'perfect-users' && artwork.files && artwork.files.images && (
+            <div className="image-gallery">
+              {artwork.files.images.map((imagePath, index) => (
+                <img
+                  key={index}
+                  src={imagePath}
+                  alt={`${artwork.title} - Page ${index + 1}`}
+                  className="gallery-image"
+                />
+              ))}
             </div>
           )}
 
