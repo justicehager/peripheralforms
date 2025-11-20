@@ -14,11 +14,18 @@ export default function FeedPost({ artwork, isUnlocked }) {
     }
   }
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      handlePostClick()
+    }
+  }
+
   return (
     <>
-      <article className={styles['feed-post']}>
+      <article className={styles['feed-post']} aria-label={`Artwork by ${artwork.artistName}: ${artwork.title}`}>
         <div className={styles['post-header']}>
-          <div className={styles['avatar-placeholder']} />
+          <div className={styles['avatar-placeholder']} role="img" aria-label={`${artwork.artistName} avatar`} />
           <div className={styles['header-info']}>
             <h3>{artwork.artistName}</h3>
             <p className={styles['verified']}>✓ Verified Artist</p>
@@ -27,28 +34,39 @@ export default function FeedPost({ artwork, isUnlocked }) {
 
         <div className={styles['post-content']}>
           {isUnlocked ? (
-            <Link to={`/artwork/${artwork.id}`} className={styles['artwork-link']}>
-              <div className={styles['thumbnail']}>{artwork.thumbnail}</div>
+            <Link
+              to={`/artwork/${artwork.id}`}
+              className={styles['artwork-link']}
+              aria-label={`View unlocked artwork: ${artwork.title}`}
+            >
+              <div className={styles['thumbnail']} role="img" aria-label="Artwork thumbnail">{artwork.thumbnail}</div>
               <div className={styles['artwork-title']}>{artwork.title}</div>
-              <div className={styles['unlocked-badge']}>🔓 Unlocked</div>
+              <div className={styles['unlocked-badge']} role="status">🔓 Unlocked</div>
             </Link>
           ) : (
-            <div className={styles['locked-content']} onClick={handlePostClick}>
-              <div className={styles['thumbnail']}>{artwork.thumbnail}</div>
+            <div
+              className={styles['locked-content']}
+              onClick={handlePostClick}
+              onKeyPress={handleKeyPress}
+              role="button"
+              tabIndex={0}
+              aria-label={`View locked artwork: ${artwork.title}. Press Enter to unlock.`}
+            >
+              <div className={styles['thumbnail']} role="img" aria-label="Artwork thumbnail">{artwork.thumbnail}</div>
               <div className={styles['artwork-title']}>{artwork.title}</div>
-              <button className={styles['view-button']}>
+              <button className={styles['view-button']} aria-label={`View ${artwork.title}`}>
                 👁️ View
               </button>
-              <div className={styles['locked-badge']}>🔒 Locked</div>
+              <div className={styles['locked-badge']} role="status">🔒 Locked</div>
             </div>
           )}
         </div>
 
         <div className={styles['post-footer']}>
-          <div className={styles['engagement']}>
-            <span>❤️ {artwork.likes}</span>
-            <span>💬 {artwork.comments}</span>
-            <span>🔄 {artwork.shares}</span>
+          <div className={styles['engagement']} role="group" aria-label="Engagement metrics">
+            <span aria-label={`${artwork.likes} likes`}>❤️ {artwork.likes}</span>
+            <span aria-label={`${artwork.comments} comments`}>💬 {artwork.comments}</span>
+            <span aria-label={`${artwork.shares} shares`}>🔄 {artwork.shares}</span>
           </div>
           <button
             className={styles['test-toggle']}
@@ -57,7 +75,7 @@ export default function FeedPost({ artwork, isUnlocked }) {
               e.stopPropagation()
               toggleMechanism(artwork.mechanismId)
             }}
-            title="Toggle solved state (testing)"
+            aria-label={`Toggle ${artwork.title} solved state (testing only)`}
           >
             {isUnlocked ? '🔓 Unlock' : '🔒 Lock'}
           </button>

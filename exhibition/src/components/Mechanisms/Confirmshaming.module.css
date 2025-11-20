@@ -202,7 +202,7 @@
 .screen-info {
   text-align: center;
   color: #ffd60a;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.9rem */
   margin-top: var(--spacing-lg);
   font-weight: 700;
   text-transform: uppercase;
@@ -221,7 +221,7 @@
   font-style: italic;
   text-transform: none;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.875rem; /* Accessibility: Increased from 0.8rem */
   letter-spacing: 0;
 }
 
@@ -274,7 +274,7 @@
 
   .btn {
     padding: 14px 20px;
-    font-size: 0.95rem;
+    font-size: 1rem; /* Accessibility: Increased from 0.95rem */
     letter-spacing: 1px;
   }
 
@@ -321,7 +321,7 @@
   }
 
   .progress-text {
-    font-size: 0.8rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.8rem */
   }
 
   .confirmshaming-solved {
@@ -334,6 +334,6 @@
   }
 
   .confirmshaming-solved p {
-    font-size: 0.9rem;
+    font-size: 1rem; /* Accessibility: Increased from 0.9rem */
   }
 }

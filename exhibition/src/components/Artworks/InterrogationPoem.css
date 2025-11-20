@@ -26,7 +26,7 @@
   padding: 8px 16px;
   border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.9rem */
   transition: all 0.3s ease;
 }
 
@@ -233,7 +233,7 @@
   }
 
   .question-line {
-    font-size: 0.95rem;
+    font-size: 1rem; /* Accessibility: Increased from 0.95rem */
   }
 
   .surveillance-line {

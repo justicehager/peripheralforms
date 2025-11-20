@@ -33,14 +33,14 @@
 }
 
 .header-info h3 {
-  font-size: 0.95rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.95rem */
   font-weight: 600;
   margin: 0;
   color: var(--text-primary);
 }
 
 .verified {
-  font-size: 0.8rem;
+  font-size: 0.875rem; /* Accessibility: Increased from 0.8rem (minimum 14px) */
   color: var(--accent-blue);
   margin: 0;
   font-weight: 500;
@@ -117,11 +117,12 @@
   border: none;
   padding: 12px 24px;
   border-radius: 24px;
-  font-size: 0.95rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.95rem */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(24, 119, 242, 0.3);
+  min-height: 44px; /* Accessibility: Minimum touch target size */
 }
 
 .view-button:hover {
@@ -144,7 +145,7 @@
   backdrop-filter: blur(8px);
   color: white;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.875rem; /* Accessibility: Increased from 0.75rem (minimum 14px) */
   font-weight: 700;
   letter-spacing: 0.02em;
   z-index: 10;
@@ -172,7 +173,7 @@
 .engagement {
   display: flex;
   justify-content: space-around;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.9rem */
   color: var(--text-secondary);
   font-weight: 500;
   flex: 1;
@@ -181,8 +182,11 @@
 .engagement span {
   cursor: pointer;
   transition: all 0.2s ease;
-  padding: 4px 8px;
+  padding: 8px 12px; /* Accessibility: Increased from 4px 8px for better touch targets */
   border-radius: var(--radius-sm);
+  min-height: 44px; /* Accessibility: Minimum touch target size */
+  display: inline-flex;
+  align-items: center;
 }
 
 .engagement span:hover {
@@ -195,14 +199,15 @@
   background: var(--bg-secondary);
   color: var(--text-secondary);
   border: 1px solid var(--border);
-  padding: 6px 12px;
+  padding: 10px 16px; /* Accessibility: Increased from 6px 12px for better touch targets */
   border-radius: var(--radius-md);
-  font-size: 0.75rem;
+  font-size: 0.875rem; /* Accessibility: Increased from 0.75rem (minimum 14px) */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
   flex-shrink: 0;
+  min-height: 44px; /* Accessibility: Minimum touch target size */
 }
 
 .test-toggle:hover {
@@ -246,17 +251,17 @@
   }
 
   .verified {
-    font-size: 0.75rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.75rem (minimum 14px) */
   }
 
   .view-button {
     padding: 10px 20px;
-    font-size: 0.875rem;
+    font-size: 1rem; /* Accessibility: Increased from 0.875rem for better mobile readability */
   }
 
   .unlocked-badge,
   .locked-badge {
-    font-size: 0.7rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.7rem (minimum 14px) */
     padding: 5px 10px;
   }
 }

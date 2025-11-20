@@ -76,7 +76,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  font-size: 12px;
+  font-size: 14px; /* Accessibility: Increased from 12px */
 }
 
 .stat {
@@ -224,7 +224,7 @@
 
 .hint-subtext {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px; /* Accessibility: Increased from 12px */
   color: var(--text-secondary, #65676b);
   font-style: italic;
 }
@@ -325,13 +325,13 @@
   }
 
   .privacy-message p {
-    font-size: 13px;
+    font-size: 14px; /* Accessibility: Increased from 13px */
   }
 
   .tracking-display h4,
   .pattern-tracker p,
   .hint-text {
-    font-size: 13px;
+    font-size: 14px; /* Accessibility: Increased from 13px */
   }
 
   .surveillance-solved {
@@ -367,7 +367,7 @@
   }
 
   .tracking-stats {
-    font-size: 11px;
+    font-size: 14px; /* Accessibility: Increased from 11px */
   }
 
   .stat {
