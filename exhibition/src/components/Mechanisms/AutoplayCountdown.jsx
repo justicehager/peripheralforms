@@ -3,61 +3,101 @@ import { useStore } from '../../store/useStore'
 import styles from './AutoplayCountdown.module.css'
 
 // Video specifications
-const VIDEO_DURATION = 180 // 3 minutes in seconds
-const CLUE_TIMESTAMP = 127.3 // Hidden clue appears here
-const PAUSE_WINDOW = 0.5 // Acceptable margin for pausing
+const YOUTUBE_VIDEO_ID = 'j2Adh7SVw3Q' // Jennifer Weigel's video
+const CLUE_TIMESTAMP = 127.3 // Hidden clue appears here (in seconds)
+const PAUSE_WINDOW = 2.0 // Acceptable margin for pausing (in seconds)
 
 export default function AutoplayCountdown({ onSolve }) {
   const { solveMechanism } = useStore()
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isSolved, setIsSolved] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [showClue, setShowClue] = useState(false)
-  const [isSolved, setIsSolved] = useState(false)
-  const intervalRef = useRef(null)
+  const playerRef = useRef(null)
+  const iframeRef = useRef(null)
 
-  // Auto-play simulation (increments time every 100ms)
   useEffect(() => {
-    if (isPlaying && currentTime < VIDEO_DURATION) {
-      intervalRef.current = setInterval(() => {
-        setCurrentTime(prev => {
-          const newTime = prev + 0.1
+    // Load YouTube IFrame API
+    const tag = document.createElement('script')
+    tag.src = 'https://www.youtube.com/iframe_api'
+    const firstScriptTag = document.getElementsByTagName('script')[0]
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-          // Show clue briefly at target timestamp
-          if (Math.abs(newTime - CLUE_TIMESTAMP) < 0.2) {
-            setShowClue(true)
-          } else {
-            setShowClue(false)
-          }
+    // Create YouTube player when API is ready
+    window.onYouTubeIframeAPIReady = () => {
+      playerRef.current = new window.YT.Player(iframeRef.current, {
+        videoId: YOUTUBE_VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
+        }
+      })
+    }
 
-          // Loop video at end
-          if (newTime >= VIDEO_DURATION) {
-            return 0
-          }
-          return newTime
-        })
-      }, 100)
+    // If API already loaded, initialize player
+    if (window.YT && window.YT.Player) {
+      playerRef.current = new window.YT.Player(iframeRef.current, {
+        videoId: YOUTUBE_VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
+        }
+      })
     }
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
+      if (playerRef.current && playerRef.current.destroy) {
+        playerRef.current.destroy()
       }
     }
-  }, [isPlaying, currentTime])
+  }, [])
 
-  const handlePause = () => {
-    setIsPlaying(false)
+  // Track current time and show clue
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (playerRef.current && playerRef.current.getCurrentTime) {
+        const time = playerRef.current.getCurrentTime()
+        setCurrentTime(time)
 
-    // Check if paused at correct timestamp
-    if (Math.abs(currentTime - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
-      setIsSolved(true)
-      solveMechanism('autoplay')
-      onSolve?.()
-    }
+        // Show clue briefly at target timestamp
+        if (Math.abs(time - CLUE_TIMESTAMP) < 0.5) {
+          setShowClue(true)
+        } else {
+          setShowClue(false)
+        }
+      }
+    }, 100)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const onPlayerReady = (event) => {
+    // Auto-play is handled by playerVars
   }
 
-  const handlePlay = () => {
-    setIsPlaying(true)
+  const onPlayerStateChange = (event) => {
+    // YT.PlayerState.PAUSED === 2
+    if (event.data === 2) {
+      const pauseTime = playerRef.current.getCurrentTime()
+
+      // Check if paused at correct timestamp
+      if (Math.abs(pauseTime - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
+        setIsSolved(true)
+        solveMechanism('autoplay')
+        onSolve?.()
+      }
+    }
   }
 
   const formatTime = (seconds) => {
@@ -85,53 +125,12 @@ export default function AutoplayCountdown({ onSolve }) {
 
       <div className={styles['video-player']}>
         <div className={styles['video-screen']}>
-          <div className={styles['video-content']}>
-            {showClue && (
-              <div className={styles['hidden-clue']}>
-                PAUSE NOW
-              </div>
-            )}
-            <div className={styles['official-text']}>
-              <p className={styles.timestamp}>{formatTime(currentTime)}</p>
-              <p className={styles.speaker}>Chief of Police, District Command</p>
-              <p className={styles.transcript}>
-                "...the incident was thoroughly investigated and all procedures
-                were followed to the letter. The narrative you may have heard
-                from other sources does not reflect the facts as documented
-                in our official report..."
-              </p>
+          {showClue && (
+            <div className={styles['hidden-clue']}>
+              PAUSE NOW
             </div>
-          </div>
-        </div>
-
-        <div className={styles['video-controls']}>
-          <div className={styles['progress-bar']}>
-            <div
-              className={styles['progress-fill']}
-              style={{ width: `${(currentTime / VIDEO_DURATION) * 100}%` }}
-            />
-            {showClue && (
-              <div
-                className={styles['clue-marker']}
-                style={{ left: `${(CLUE_TIMESTAMP / VIDEO_DURATION) * 100}%` }}
-              />
-            )}
-          </div>
-
-          <div className={styles['control-buttons']}>
-            {isPlaying ? (
-              <button className={`${styles.btn} ${styles['btn-pause']}`} onClick={handlePause}>
-                ⏸ Pause
-              </button>
-            ) : (
-              <button className={`${styles.btn} ${styles['btn-play']}`} onClick={handlePlay}>
-                ▶ Play
-              </button>
-            )}
-            <span className={styles['time-display']}>
-              {formatTime(currentTime)} / {formatTime(VIDEO_DURATION)}
-            </span>
-          </div>
+          )}
+          <div ref={iframeRef} className={styles['youtube-player']}></div>
         </div>
       </div>
 
@@ -140,7 +139,7 @@ export default function AutoplayCountdown({ onSolve }) {
           💡 Watch carefully. The truth appears only for a moment.
         </p>
         <p className={styles['hint-subtext']}>
-          Hint: Official narratives contain brief contradictions
+          Hint: Pause at {formatTime(CLUE_TIMESTAMP)} when you see the clue
         </p>
       </div>
     </div>
