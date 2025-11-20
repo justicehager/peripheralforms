@@ -47,15 +47,6 @@ export default function MechanismOverlay({ artwork, onClose }) {
           ✕
         </button>
 
-        <div className={styles.header}>
-          <div className={styles.thumbnail}>{artwork.thumbnail}</div>
-          <div className={styles.info}>
-            <h2>{artwork.title}</h2>
-            <p className={styles.artist}>{artwork.artistName}</p>
-            <p className={styles.description}>{artwork.description}</p>
-          </div>
-        </div>
-
         <div className={styles.mechanismContainer}>
           {MechanismComponent ? (
             <MechanismComponent artworkId={artwork.id} mechanismId={artwork.mechanismId} />

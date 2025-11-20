@@ -25,7 +25,9 @@ export default function FeedPost({ artwork, isUnlocked }) {
     <>
       <article className={styles['feed-post']} aria-label={`Artwork by ${artwork.artistName}: ${artwork.title}`}>
         <div className={styles['post-header']}>
-          <div className={styles['avatar-placeholder']} role="img" aria-label={`${artwork.artistName} avatar`} />
+          <div className={styles['avatar-placeholder']} role="img" aria-label={`${artwork.artistName} avatar`}>
+            {artwork.avatar}
+          </div>
           <div className={styles['header-info']}>
             <h3>{artwork.artistName}</h3>
             <p className={styles['verified']}>✓ Verified Artist</p>
@@ -39,7 +41,7 @@ export default function FeedPost({ artwork, isUnlocked }) {
               className={styles['artwork-link']}
               aria-label={`View unlocked artwork: ${artwork.title}`}
             >
-              <div className={styles['thumbnail']} role="img" aria-label="Artwork thumbnail">{artwork.thumbnail}</div>
+              <img src={artwork.thumbnail} alt={artwork.title} className={styles['thumbnail']} />
               <div className={styles['artwork-title']}>{artwork.title}</div>
               <div className={styles['unlocked-badge']} role="status">🔓 Unlocked</div>
             </Link>
@@ -52,7 +54,7 @@ export default function FeedPost({ artwork, isUnlocked }) {
               tabIndex={0}
               aria-label={`View locked artwork: ${artwork.title}. Press Enter to unlock.`}
             >
-              <div className={styles['thumbnail']} role="img" aria-label="Artwork thumbnail">{artwork.thumbnail}</div>
+              <img src={artwork.thumbnail} alt={artwork.title} className={styles['thumbnail']} />
               <div className={styles['artwork-title']}>{artwork.title}</div>
               <button className={styles['view-button']} aria-label={`View ${artwork.title}`}>
                 👁️ View

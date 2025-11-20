@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom'
 import styles from './FloatingIcon.module.css'
 
 export default function FloatingIcon() {
   return (
-    <Link to="/" className={styles['floating-icon']} aria-label="Return to homepage">
-      <span className={styles['icon-text']}>pf</span>
-    </Link>
+    <a
+      href="https://peripheralforms.com"
+      className={styles['floating-icon']}
+      aria-label="Visit Peripheral Forms"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span className={styles['icon-text']}>PF</span>
+    </a>
   )
 }
