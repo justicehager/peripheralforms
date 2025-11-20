@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useStore } from '../../store/useStore'
+import FloatingIcon from '../Layout/FloatingIcon'
 import './LiberatedLayout.module.css'
 
 export default function LiberatedLayout({ children }) {
@@ -15,6 +16,7 @@ export default function LiberatedLayout({ children }) {
   return (
     <div className="liberated-layout">
       <a href="#main-content" className="skip-to-main">Skip to main content</a>
+      <FloatingIcon />
       <header className="liberated-header" role="banner">
         <h1>WE SHOULD BE ALLOWED TO THINK</h1>
         <marquee aria-label="Liberation achieved. Platform defeated.">LIBERATION ACHIEVED. PLATFORM DEFEATED.</marquee>
@@ -42,6 +44,11 @@ export default function LiberatedLayout({ children }) {
         `}</pre>
         <p>We Should Be Allowed to Think © 2025</p>
         <p>Curated by Justice Alexander Hager</p>
+        <p className="footer-links">
+          Part of <a href="https://falloffreedom.com" target="_blank" rel="noopener noreferrer">Fall of Freedom</a>
+          {' • '}
+          <a href="https://github.com/justicehager/peripheralforms" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </p>
       </footer>
     </div>
   )
