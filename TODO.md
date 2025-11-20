@@ -109,6 +109,9 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 
 ## Phase 6: Testing & Polish (Week 7)
 
+### Bug Fixes
+- [x] **Fixed Autoplay/Countdown Race Condition** - Resolved critical DOM error in AutoplayCountdown component where YouTube IFrame API was attempting to manipulate the DOM after React component unmounted. Added mount tracking, initialization delays, and proper cleanup to prevent "insertBefore" errors.
+
 ### Functionality Testing
 - [ ] Test all 6 mechanisms individually for functionality and solvability
 - [ ] Test state persistence across browser refreshes
