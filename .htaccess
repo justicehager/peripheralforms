@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Handle /exhibition/ SPA routing
+  # If request is for /exhibition/ and not an actual file or directory,
+  # serve /exhibition/index.html
+  RewriteCond %{REQUEST_URI} ^/exhibition/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ /exhibition/index.html [L]
+</IfModule>

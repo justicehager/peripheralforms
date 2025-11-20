@@ -1,0 +1,2 @@
+# SPA fallback for exhibition subdirectory (Netlify/Cloudflare Pages)
+/exhibition/*  /exhibition/index.html  200

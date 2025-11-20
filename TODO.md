@@ -111,7 +111,11 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 
 ### Bug Fixes
 - [x] **Fixed Autoplay/Countdown Race Condition** - Resolved critical DOM error in AutoplayCountdown component where YouTube IFrame API was attempting to manipulate the DOM after React component unmounted. Added mount tracking, initialization delays, and proper cleanup to prevent "insertBefore" errors.
-- [x] **Fixed Artwork Page 404 Errors on Reload** - Added `_redirects` and `.htaccess` files to handle SPA routing properly. Direct navigation and page reloads now work correctly for artwork URLs.
+- [x] **Fixed Artwork Page 404 Errors on Reload** - Added comprehensive SPA routing configuration:
+  - Root-level `.htaccess` and `_redirects` files for proper /exhibition/ subdirectory handling
+  - Fallback `404.html` for GitHub Pages compatibility
+  - Created `DEPLOYMENT.md` with detailed deployment instructions for various hosting platforms (Apache, Nginx, Netlify, Cloudflare Pages, GitHub Pages)
+  - Direct navigation and page reloads now work correctly for artwork URLs
 - [x] **Fixed Mechanism Layout Issues** - Removed excessive `min-height` values causing unnecessary black space and scrollbars in mechanism overlays. Mechanisms now fit content naturally without forced spacing.
 
 ### Functionality Testing

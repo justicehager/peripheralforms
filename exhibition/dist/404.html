@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We Should Be Allowed to Think - Exhibition</title>
+  <script>
+    // GitHub Pages SPA redirect workaround
+    // This handles 404s by redirecting to index.html with the path preserved
+    (function() {
+      var pathSegmentsToKeep = 1; // Keep '/exhibition' part
+      var path = window.location.pathname.split('/').slice(0, pathSegmentsToKeep + 1).join('/');
+      var route = window.location.pathname.slice(path.length);
+
+      if (route) {
+        var redirect = window.location.origin + path + '/#' + route + window.location.search + window.location.hash;
+        window.location.replace(redirect);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Loading...</p>
+</body>
+</html>
