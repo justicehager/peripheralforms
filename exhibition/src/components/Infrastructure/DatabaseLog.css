@@ -5,7 +5,7 @@
   background: rgba(0, 0, 0, 0.95);
   color: #888;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 14px; /* Accessibility: Increased from 10px (minimum 14pt) */
   padding: 8px;
   border: 1px solid #333;
   z-index: 9998;
@@ -23,7 +23,7 @@
   border-bottom: 1px solid #333;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 9px;
+  font-size: 14px; /* Accessibility: Increased from 9px (minimum 14pt) */
 }
 
 .database-query {
@@ -44,7 +44,7 @@
 
 .query-text {
   color: #555;
-  font-size: 9px;
+  font-size: 14px; /* Accessibility: Increased from 9px (minimum 14pt) */
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -54,7 +54,7 @@
 
 .query-time {
   color: #444;
-  font-size: 9px;
+  font-size: 14px; /* Accessibility: Increased from 9px (minimum 14pt) */
   flex-shrink: 0;
   white-space: nowrap;
 }
