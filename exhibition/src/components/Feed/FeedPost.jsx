@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useStore } from '../../store/useStore'
 import MechanismOverlay from '../Mechanisms/MechanismOverlay'
 import styles from './FeedPost.module.css'
 
 export default function FeedPost({ artwork, isUnlocked }) {
   const [showOverlay, setShowOverlay] = useState(false)
+  const toggleMechanism = useStore(state => state.toggleMechanism)
 
   const handlePostClick = () => {
     if (!isUnlocked) {
@@ -48,6 +50,17 @@ export default function FeedPost({ artwork, isUnlocked }) {
             <span>💬 {artwork.comments}</span>
             <span>🔄 {artwork.shares}</span>
           </div>
+          <button
+            className={styles['test-toggle']}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              toggleMechanism(artwork.mechanismId)
+            }}
+            title="Toggle solved state (testing)"
+          >
+            {isUnlocked ? '🔓 Unlock' : '🔒 Lock'}
+          </button>
         </div>
       </article>
 

@@ -18,6 +18,7 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 - [x] Create data files for artworks metadata and mechanisms configuration
 - [x] **NEW**: Created MechanismOverlay modal component for better UX
 - [x] **NEW**: Added emoji thumbnails to all artworks
+- [x] **NEW**: Added testing toggles to manually mark artworks as solved/unsolved
 
 ---
 
