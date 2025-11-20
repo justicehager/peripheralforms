@@ -1,14 +1,14 @@
-/* Platform Theme - Initial State */
+/* Platform Theme - Initial State - TikTok-inspired Dark Mode */
 
 :root[data-theme="platform"],
 :root:not([data-theme]) {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
-/* Resistance Theme - Liberated State */
+/* Resistance Theme - Liberated State - Neocities/Digital Garden */
 
 :root[data-theme="resistance"] {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* Smooth transitions between themes */
@@ -30,33 +30,53 @@ body {
   --infra-opacity: 1;
 }
 
-/* Glitch effect for resistance state */
-@keyframes glitch {
+/* Retro fun effects for resistance state */
+@keyframes rainbowText {
   0% {
-    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+    color: #ff0000;
   }
-  25% {
-    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  16% {
+    color: #ff9900;
+  }
+  33% {
+    color: #ffff00;
   }
   50% {
-    text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff;
+    color: #00ff00;
   }
-  75% {
-    text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff;
+  66% {
+    color: #0099ff;
+  }
+  83% {
+    color: #9900ff;
   }
   100% {
-    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+    color: #ff0000;
   }
 }
 
 [data-theme="resistance"] h1 {
-  animation: glitch 0.3s infinite;
-  text-decoration: underline;
+  text-decoration: underline wavy var(--accent-hotpink);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
+  font-family: var(--font-primary);
+  text-shadow:
+    2px 2px 0 var(--accent),
+    4px 4px 0 var(--accent-cyan),
+    6px 6px 0 var(--accent-lime);
 }
 
-/* Scanlines effect for resistance */
+[data-theme="resistance"] h2 {
+  font-family: var(--font-secondary);
+  font-style: italic;
+  color: var(--text-secondary);
+  border-bottom: 3px dotted var(--border-dotted);
+  padding-bottom: var(--spacing-sm);
+}
+
+/* Tiled background pattern for digital garden feel */
 [data-theme="resistance"]::before {
   content: '';
   position: fixed;
@@ -64,15 +84,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 255, 0, 0.05),
-    rgba(0, 255, 0, 0.05) 1px,
-    transparent 1px,
-    transparent 2px
-  );
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 0, 255, 0.03) 10px, rgba(255, 0, 255, 0.03) 20px),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0, 255, 255, 0.03) 10px, rgba(0, 255, 255, 0.03) 20px);
   pointer-events: none;
-  z-index: 999;
+  z-index: 0;
 }
 
 /* Infrastructure visibility classes */
@@ -132,6 +148,20 @@ body {
   color: var(--link);
   text-decoration: underline;
   border-bottom: 2px dotted var(--link);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+:root[data-theme="resistance"] a:visited {
+  color: var(--link-visited);
+  border-bottom-color: var(--link-visited);
+}
+
+:root[data-theme="resistance"] a:hover {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+  padding: 2px 4px;
+  border-radius: 2px;
 }
 
 :root[data-theme="resistance"] hr {
