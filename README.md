@@ -65,6 +65,7 @@ The open call site remains on the root (`/`) for continuous operation.
 - **Progressive Infrastructure Visibility**: Surveillance apparatus becomes visible as mechanisms are solved
 - **Theme Transformation**: Platform aesthetic shifts to "people's internet" brutalist design when all mechanisms solved
 - **Real Tracking Data**: Mouse movements and scroll depth tracked (in-browser only)
+- **Fully Responsive Design**: Optimized for desktop, tablet, and mobile devices with fluid typography and touch-friendly interactions
 
 ### Technology Stack
 
@@ -108,7 +109,7 @@ The open call site remains on the root (`/`) for continuous operation.
 
 **📋 Phase 6: Testing & Polish** - IN PROGRESS
 - ✅ Deployment to /exhibition/ subdirectory working
+- ✅ Mobile responsiveness (fluid typography, 3 breakpoints: 768px, 640px, 480px)
 - ⏳ Cross-browser testing
-- ⏳ Mobile responsiveness
 - ⏳ Performance optimization
 - ⏳ Accessibility improvements
