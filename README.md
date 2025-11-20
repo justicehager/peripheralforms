@@ -65,7 +65,7 @@ The exhibition contains actual artwork files (PDFs, DOCS, images, videos, etc.) 
 - **Gibbins** (`/artworks/gibbins/`): Video hosted on Vimeo (embedded)
 - **desire_engineering** (`/artworks/desire_engineering/`): 3 meme images (PNG)
 - **perfect_users** (`/artworks/perfect_users/`): 15 collaborative artworks (individual PNG images)
-- **search_engine_scores** (`/artworks/search_engine_scores/`): 7 search query screenshots (PNG) with interactive Google search links
+- **search_engine_scores** (`/artworks/search_engine_scores/`): 7 search query screenshots (PNG) with interactive Google search links, displayed in gallery shadowbox style with navigation
 
 **Display Features:**
 
@@ -154,7 +154,7 @@ The open call site remains on the root (`/`) for continuous operation.
 - ✅ Deployment to /exhibition/ subdirectory working
 - ✅ Mobile responsiveness (fluid typography, 3 breakpoints: 768px, 640px, 480px)
 - ✅ UI improvements with menacing aesthetic updates
-- ✅ Thumbnail galleries with lightbox/shadowbox functionality for multi-image artworks
+- ✅ Thumbnail galleries with lightbox/shadowbox functionality for multi-image artworks (desire_engineering, perfect_users, search_engine_scores)
 - ✅ Enhanced mechanism designs:
   - Interrogation: Forced propaganda with sticky video autoplay
   - Isolation Procedures: Institutional medical lock screen aesthetic

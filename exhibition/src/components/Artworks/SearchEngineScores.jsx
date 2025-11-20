@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './SearchEngineScores.css'
+import ImageLightbox from '../Artwork/ImageLightbox'
 
 const SEARCHES = [
   {
@@ -33,14 +34,16 @@ const SEARCHES = [
 ]
 
 export default function SearchEngineScores() {
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [lightboxImages, setLightboxImages] = useState(null)
+  const [lightboxStartIndex, setLightboxStartIndex] = useState(0)
 
-  const openLightbox = (image) => {
-    setSelectedImage(image)
+  const openLightbox = (startIndex) => {
+    setLightboxImages(SEARCHES.map(s => s.image))
+    setLightboxStartIndex(startIndex)
   }
 
   const closeLightbox = () => {
-    setSelectedImage(null)
+    setLightboxImages(null)
   }
 
   const getGoogleSearchUrl = (query) => {
@@ -57,9 +60,9 @@ export default function SearchEngineScores() {
         </p>
       </div>
 
-      <div className="ses-searches">
+      <div className="ses-searches thumbnail-gallery">
         {SEARCHES.map((search, index) => (
-          <div key={index} className="ses-search-item">
+          <div key={index} className="ses-search-item gallery-thumbnail">
             <div className="ses-search-header">
               <span className="ses-search-number">{index + 1}</span>
               <a
@@ -67,6 +70,7 @@ export default function SearchEngineScores() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ses-search-link"
+                onClick={(e) => e.stopPropagation()}
               >
                 <svg className="ses-google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -79,37 +83,34 @@ export default function SearchEngineScores() {
             </div>
             <div
               className="ses-screenshot-container"
-              onClick={() => openLightbox(search.image)}
+              onClick={() => openLightbox(index)}
               role="button"
               tabIndex={0}
               onKeyPress={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  openLightbox(search.image)
+                  openLightbox(index)
                 }
               }}
             >
               <img
                 src={search.image}
                 alt={`Search results for: ${search.query}`}
-                className="ses-screenshot"
+                className="ses-screenshot gallery-thumbnail-image"
               />
-              <div className="ses-screenshot-overlay">
-                <span className="ses-zoom-icon">🔍</span>
+              <div className="ses-screenshot-overlay gallery-overlay">
+                <span className="ses-zoom-icon gallery-icon">🔍</span>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {selectedImage && (
-        <div className="ses-lightbox" onClick={closeLightbox}>
-          <div className="ses-lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button className="ses-lightbox-close" onClick={closeLightbox}>
-              ✕
-            </button>
-            <img src={selectedImage} alt="Search result screenshot" className="ses-lightbox-image" />
-          </div>
-        </div>
+      {lightboxImages && (
+        <ImageLightbox
+          images={lightboxImages}
+          startIndex={lightboxStartIndex}
+          onClose={closeLightbox}
+        />
       )}
     </div>
   )
