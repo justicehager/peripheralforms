@@ -42,10 +42,38 @@ Output will be in `exhibition/dist/`
     │   ├── styles/            # CSS modules and themes
     │   └── data/              # Static data (artworks, mechanisms)
     ├── public/                # Static assets
+    │   └── artworks/          # Artwork files (PDFs, DOCS, images, videos)
+    │       ├── lynch/         # Garrett Lynch IRL artwork files
+    │       ├── weigel/        # Jennifer Weigel artwork files
+    │       ├── gibbins/       # Ian Gibbins artwork files
+    │       ├── desire_engineering/  # desire_engineering artwork files
+    │       ├── perfect_users/       # Perfect Users artwork files
+    │       └── search_engine_scores/  # [To be selected]
     ├── index.html             # Vite entry point
     ├── vite.config.js         # Vite configuration
     └── package.json           # Dependencies
 ```
+
+### Artwork Files
+
+The exhibition contains actual artwork files (PDFs, DOCS, images, videos, etc.) stored in the `/exhibition/public/artworks/` directory. Each artist has their own subdirectory for organizing their files.
+
+**Adding Artwork Files:**
+
+1. Navigate to the appropriate artist directory in `/exhibition/public/artworks/`
+2. Add your artwork files (PDFs, DOCS, images, etc.)
+3. Optionally add a thumbnail image (`thumbnail.jpg` or `thumbnail.png`)
+4. Update artwork metadata in `/exhibition/src/data/artworks.js` if needed
+
+**File Access:**
+
+Files are served statically and can be referenced with paths like:
+- `/artworks/lynch/document.pdf`
+- `/artworks/weigel/poem.pdf`
+
+Note: In production, paths will be `/exhibition/artworks/...` due to the subdirectory deployment.
+
+See `/exhibition/public/artworks/README.md` for detailed documentation.
 
 ### Deployment
 
