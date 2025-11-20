@@ -77,15 +77,15 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 
 ## Phase 4: Artwork Integration (Week 5)
 
-- [ ] Create ArtworkPage component for individual artwork display
-- [ ] Prepare/collect all 6 artwork assets (thumbnails, full content, artist statements)
-- [ ] Add mechanism-specific content (press releases, testimonials, guidelines, etc.)
-- [ ] Integrate Lynch artwork
-- [ ] Integrate Weigel artwork
-- [ ] Integrate Gibbins artwork
-- [ ] Integrate desire_engineering artwork
-- [ ] Integrate Perfect Users artwork
-- [ ] Integrate Search Engine Scores artwork
+- [x] Create ArtworkPage component for individual artwork display
+- [x] Prepare/collect all 6 artwork assets (thumbnails, full content, artist statements)
+- [x] Add mechanism-specific content (press releases, testimonials, guidelines, etc.)
+- [x] Integrate Lynch artwork - **COMPLETE** (Garrett Lynch IRL - "Restoring a Name to Grate American Honor")
+- [x] Integrate Weigel artwork - **COMPLETE** (Jennifer Weigel - "Interrogation")
+- [x] Integrate Gibbins artwork - **COMPLETE** (Ian Gibbins - "ISOLATION PROCEDURES")
+- [x] Integrate desire_engineering artwork - **COMPLETE** (desire_engineering - "Starter Questions for 21st Century Grovelers")
+- [x] Integrate Perfect Users artwork - **COMPLETE** (Perfect Users - "Perfect Censorship // Perfectly Unpublished")
+- [ ] Integrate Search Engine Scores artwork - **PENDING** (Need to select from remaining submissions)
 
 ---
 

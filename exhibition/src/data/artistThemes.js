@@ -3,72 +3,72 @@
 
 export const ARTIST_THEMES = {
   lynch: {
-    name: 'Garrett Lynch',
+    name: 'Garrett Lynch IRL',
     cssVariables: {
-      '--artist-primary': '#1a1a1a',
-      '--artist-secondary': '#f5f5f0',
-      '--artist-accent': '#d4a574',
-      '--artist-accent-light': '#e8d4b8',
-      '--artist-border': '#e8d4b8',
-      '--artist-bg': '#faf8f3',
-      '--artist-text': '#2c2c2c',
-      '--artist-text-light': '#666',
+      '--artist-primary': '#0a1628', // Deep cartographic blue
+      '--artist-secondary': '#e8ebe8',
+      '--artist-accent': '#ff4500', // Rebellious orange-red (resistance)
+      '--artist-accent-light': '#ff7f50',
+      '--artist-border': '#2a4a6a', // Border-like blue
+      '--artist-bg': '#f0f4f8', // Map paper background
+      '--artist-text': '#0a1628',
+      '--artist-text-light': '#4a5a6a',
     },
     className: 'artist-lynch'
   },
   weigel: {
     name: 'Jennifer Weigel',
     cssVariables: {
-      '--artist-primary': '#1a1a2e',
-      '--artist-secondary': '#e8e8f0',
-      '--artist-accent': '#ff006e',
-      '--artist-accent-light': '#ff85c0',
-      '--artist-border': '#d0d0e8',
-      '--artist-bg': '#f5f5fb',
-      '--artist-text': '#1a1a2e',
-      '--artist-text-light': '#4a4a6a',
+      '--artist-primary': '#2b2b2b', // Institutional dark gray
+      '--artist-secondary': '#d4d4d0',
+      '--artist-accent': '#e8d44d', // Harsh fluorescent yellow (anxiety)
+      '--artist-accent-light': '#f0e68c',
+      '--artist-border': '#8a8a80',
+      '--artist-bg': '#e8e8e0', // Institutional beige
+      '--artist-text': '#2b2b2b',
+      '--artist-text-light': '#5a5a50',
     },
     className: 'artist-weigel'
   },
   gibbins: {
     name: 'Ian Gibbins',
     cssVariables: {
-      '--artist-primary': '#0a0e27',
-      '--artist-secondary': '#f0f3ff',
-      '--artist-accent': '#00d9ff',
-      '--artist-accent-light': '#66e6ff',
-      '--artist-border': '#b3e5ff',
-      '--artist-bg': '#f7faff',
-      '--artist-text': '#0f1419',
-      '--artist-text-light': '#525672',
+      '--artist-primary': '#1a2e3e', // Clinical dark blue
+      '--artist-secondary': '#f5f5f5',
+      '--artist-accent': '#5da271', // Natural world green (watching)
+      '--artist-accent-light': '#8ec9a0',
+      '--artist-border': '#c8d8e0', // Sterile blue-gray
+      '--artist-bg': '#fafcfd', // Clinical white
+      '--artist-text': '#1a2e3e',
+      '--artist-text-light': '#607580',
     },
     className: 'artist-gibbins'
   },
   'desire-engineering': {
     name: 'desire_engineering',
     cssVariables: {
-      '--artist-primary': '#000',
-      '--artist-secondary': '#fff',
-      '--artist-accent': '#ff00ff',
-      '--artist-accent-light': '#ff66ff',
-      '--artist-border': '#cccccc',
-      '--artist-bg': '#fafafa',
-      '--artist-text': '#000',
-      '--artist-text-light': '#666',
+      '--artist-primary': '#1a1a1a', // System black
+      '--artist-secondary': '#e0e0e0',
+      '--artist-accent': '#4285f4', // CAPTCHA blue (checkbox culture)
+      '--artist-accent-light': '#8ab4f8',
+      '--artist-border': '#999999', // System gray
+      '--artist-bg': '#f5f5f5', // Form background
+      '--artist-text': '#1a1a1a',
+      '--artist-text-light': '#5f6368', // Muted system text
     },
     className: 'artist-desire-engineering'
   },
   'perfect-users': {
     name: 'Perfect Users',
     cssVariables: {
-      '--artist-primary': '#000080',
-      '--artist-secondary': '#c0c0c0',
-      '--artist-accent': '#00ff00',
-      '--artist-accent-light': '#80ff80',
-      '--artist-border': '#808080',
-      '--artist-bg': '#c0c0c0',
-      '--artist-text': '#000080',
-      '--artist-text-light': '#404040',
+      '--artist-primary': '#0e0e0e', // Dark mode background
+      '--artist-secondary': '#2a2a2a',
+      '--artist-accent': '#64b5f6', // Telegram blue (private chat)
+      '--artist-accent-light': '#90caf9',
+      '--artist-border': '#3a3a3a', // Encrypted border
+      '--artist-bg': '#1a1a1a', // Dark canvas
+      '--artist-text': '#e0e0e0', // Light text on dark
+      '--artist-text-light': '#a0a0a0',
     },
     className: 'artist-perfect-users'
   },
