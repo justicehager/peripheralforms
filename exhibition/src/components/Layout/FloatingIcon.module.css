@@ -1,0 +1,79 @@
+.floating-icon {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 2px solid var(--border);
+}
+
+.floating-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: var(--link);
+}
+
+.floating-icon:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.icon-text {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bg-primary);
+  text-transform: lowercase;
+  letter-spacing: -0.05em;
+  position: relative;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--bg-primary);
+}
+
+/* Accessibility: Focus styles */
+.floating-icon:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .floating-icon {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .icon-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Resistance theme variant */
+[data-theme="resistance"] .floating-icon {
+  background: var(--accent);
+  border: 3px solid var(--text-primary);
+  box-shadow: 0 0 0 3px var(--bg-primary), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="resistance"] .floating-icon:hover {
+  background: var(--link);
+  transform: translateY(-3px) rotate(5deg);
+}
+
+[data-theme="resistance"] .icon-text {
+  color: var(--bg-primary);
+  text-decoration-color: var(--bg-primary);
+  font-weight: 900;
+}
