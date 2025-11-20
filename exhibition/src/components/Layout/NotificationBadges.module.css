@@ -1,0 +1,146 @@
+/* Notification Badge System - Visual Noise */
+
+.notification {
+  position: fixed;
+  padding: 12px 20px;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  z-index: 9999;
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  border: 2px solid;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: floatIn 0.5s ease-out, pulse 2s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Positive / Encouraging (Early stage) */
+.notification.positive,
+.notification.reward,
+.notification.encouragement {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+  border-color: var(--accent-blue);
+  color: white;
+  box-shadow: var(--glow-purple), 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* FOMO / Urgency (Mid stage) */
+.notification.fomo,
+.notification.urgency,
+.notification.social-proof {
+  background: linear-gradient(135deg, #ff0844 0%, #ff6b00 100%);
+  border-color: #ffff00;
+  color: white;
+  box-shadow: 0 0 25px rgba(255, 8, 68, 0.7), 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: floatIn 0.5s ease-out, urgentPulse 1s ease-in-out infinite;
+}
+
+@keyframes urgentPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(255, 8, 68, 0.7), 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(255, 8, 68, 0.9), 0 6px 24px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Pressure / Awareness (Late-mid stage) */
+.notification.pressure,
+.notification.awareness,
+.notification.manipulation {
+  background: linear-gradient(135deg, #dc2626 0%, #7c2d12 100%);
+  border-color: #fbbf24;
+  color: white;
+  box-shadow: 0 0 30px rgba(220, 38, 38, 0.8), 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: floatIn 0.5s ease-out, shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  75% {
+    transform: translateX(2px) rotate(1deg);
+  }
+}
+
+/* Surveillance / Threat (Final stage) */
+.notification.surveillance,
+.notification.threat,
+.notification.control {
+  background: linear-gradient(135deg, #000000 0%, #1f1f1f 100%);
+  border-color: #ef4444;
+  color: #ff0000;
+  box-shadow: 0 0 40px rgba(239, 68, 68, 1), 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: floatIn 0.5s ease-out, glitch 0.3s ease-in-out infinite, intensePulse 1.5s ease-in-out infinite;
+  font-family: var(--font-mono);
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-2px, 2px);
+  }
+  66% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes intensePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 1), 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 60px rgba(239, 68, 68, 1), 0 8px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .notification {
+    font-size: 0.75rem;
+    padding: 10px 16px;
+    max-width: 200px;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .notification {
+    font-size: 0.7rem;
+    padding: 8px 12px;
+    max-width: 150px;
+  }
+}
