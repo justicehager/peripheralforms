@@ -1,181 +1,244 @@
 .timeout-container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 20px;
-  background: var(--bg-secondary, #f5f5f5);
-  border-radius: 8px;
+  padding: 0;
+  background: #f0f4f8;
+  border: 3px solid #003d5c;
+  box-shadow: 0 0 30px rgba(0, 61, 92, 0.3);
 }
 
-.timeout-header {
+.lockscreen-header {
   text-align: center;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid var(--border, #e4e6eb);
+  background: linear-gradient(180deg, #003d5c 0%, #005580 100%);
+  padding: 30px 20px;
+  border-bottom: 5px solid #00aaff;
 }
 
-.timeout-header h3 {
-  margin: 0 0 8px 0;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary, #000);
+.medical-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-.wellness-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 14px; /* Accessibility: Increased from 11px (minimum 14pt) */
-  font-weight: 600;
+.lockscreen-header h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.timeout-content {
+.facility-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffff00;
+  padding: 6px 16px;
+  border: 2px solid #ffff00;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lockscreen-content {
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.wellness-message {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid var(--border, #e4e6eb);
-}
-
-.wellness-message h4 {
-  margin: 0 0 12px 0;
-  font-size: 16px;
-  color: var(--text-primary, #000);
-}
-
-.wellness-message p {
-  margin: 0 0 10px 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-secondary, #65676b);
-}
-
-.wellness-message p:last-child {
-  margin-bottom: 0;
-}
-
-.timer-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 20px;
-  background: white;
-  border-radius: 8px;
-  border: 1px solid var(--border, #e4e6eb);
-}
-
-.timer-circle {
-  width: 180px;
-  height: 180px;
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.timer-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.timer-progress {
-  transition: stroke-dashoffset 1s linear;
-}
-
-.timer-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'SF Mono', 'Roboto Mono', monospace;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--text-primary, #000);
-}
-
-.timer-label {
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-secondary, #65676b);
-  text-align: center;
-}
-
-.alternative-unlock {
-  background: rgba(255, 215, 0, 0.1);
-  border-left: 4px solid #ffd700;
-  padding: 20px;
+.medical-notice {
+  background: #ffffff;
+  border: 2px solid #003d5c;
   border-radius: 4px;
-}
-
-.alternative-unlock h4 {
-  margin: 0 0 10px 0;
-  font-size: 16px;
-  color: var(--text-primary, #000);
-}
-
-.alternative-unlock p {
-  margin: 0 0 15px 0;
-  font-size: 14px;
-  color: var(--text-secondary, #65676b);
-}
-
-.progress-indicator {
-  margin-top: 15px;
-}
-
-.progress-text {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--text-primary, #000);
-}
-
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: #e4e6eb;
-  border-radius: 5px;
+  padding: 0;
   overflow: hidden;
 }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  transition: width 0.3s ease;
-  border-radius: 5px;
+.warning-bar {
+  background: linear-gradient(90deg, #ff6b00 0%, #ff8c00 100%);
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  border-bottom: 3px solid #cc5500;
 }
 
-.timeout-hint {
-  background: rgba(0, 150, 255, 0.1);
-  border-left: 4px solid #0096ff;
-  padding: 15px;
-  border-radius: 4px;
+.medical-notice h4 {
+  margin: 20px 20px 15px 20px;
+  font-size: 1.1rem;
+  color: #003d5c;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-.hint-text {
-  margin: 0 0 5px 0;
+.medical-notice p {
+  margin: 0 20px 15px 20px;
   font-size: 14px;
-  color: var(--text-primary, #000);
+  line-height: 1.6;
+  color: #333333;
 }
 
-.hint-subtext {
-  margin: 0;
-  font-size: 14px; /* Accessibility: Increased from 12px */
-  color: var(--text-secondary, #65676b);
+.institutional-seal {
+  background: #003d5c;
+  padding: 15px;
+  text-align: center;
+  margin-top: 20px;
+  border-top: 3px solid #00aaff;
+}
+
+.seal-text {
+  color: #00aaff;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.timer-lockscreen {
+  background: #1a2530;
+  border: 3px solid #003d5c;
+  border-radius: 4px;
+  padding: 25px;
+}
+
+.clinical-display {
+  background: #000000;
+  border: 2px solid #00ff00;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.vital-monitor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.monitor-label {
+  color: #00ff00;
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.digital-timer {
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00ff00;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  letter-spacing: 4px;
+}
+
+.progress-strip {
+  width: 100%;
+  height: 20px;
+  background: #001a00;
+  border: 1px solid #00ff00;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-indicator {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff00 0%, #00aa00 100%);
+  transition: width 1s linear;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+.clinical-note {
+  margin: 15px 0 0 0;
+  font-size: 14px;
+  color: #b0c4de;
+  text-align: center;
   font-style: italic;
 }
 
+.override-notice {
+  background: #ffffff;
+  border: 2px solid #003d5c;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.medical-form {
+  padding: 20px;
+}
+
+.medical-form h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  color: #003d5c;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.medical-form p {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333333;
+}
+
+.clearance-status {
+  background: #f0f4f8;
+  padding: 15px;
+  border: 2px solid #003d5c;
+  border-radius: 4px;
+}
+
+.status-label {
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #003d5c;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.clearance-bar {
+  width: 100%;
+  height: 15px;
+  background: #dde6ed;
+  border: 1px solid #003d5c;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.clearance-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00aaff 0%, #0088cc 100%);
+  transition: width 0.3s ease;
+}
+
+.override-ready {
+  background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  color: #000000;
+  padding: 12px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 2px solid #00aa44;
+  letter-spacing: 1px;
+}
+
 .timeout-solved {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 40px;
   background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
-  border-radius: 8px;
+  border: 3px solid #00aa44;
   text-align: center;
   color: #000;
 }
@@ -183,6 +246,8 @@
 .timeout-solved h3 {
   margin: 0 0 15px 0;
   font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .timeout-solved p {
@@ -194,80 +259,64 @@
 /* Tablet responsive styles */
 @media (max-width: 768px) {
   .timeout-container {
-    padding: 15px;
+    border-width: 2px;
   }
 
-  .timer-circle {
-    width: 160px;
-    height: 160px;
+  .lockscreen-header {
+    padding: 25px 15px;
   }
 
-  .timer-text {
-    font-size: 28px;
+  .lockscreen-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .digital-timer {
+    font-size: 2.5rem;
   }
 }
 
 /* Mobile responsive styles */
 @media (max-width: 640px) {
   .timeout-container {
-    padding: 12px;
+    border-width: 2px;
   }
 
-  .timeout-header h3 {
-    font-size: 16px;
-  }
-
-  .timeout-content {
-    gap: 20px;
-  }
-
-  .wellness-message {
-    padding: 15px;
-  }
-
-  .wellness-message h4 {
-    font-size: 15px;
-  }
-
-  .wellness-message p {
-    font-size: 14px; /* Accessibility: Increased from 13px */
-  }
-
-  .timer-display {
+  .lockscreen-header {
     padding: 20px 15px;
   }
 
-  .timer-circle {
-    width: 140px;
-    height: 140px;
+  .medical-icon {
+    font-size: 2.5rem;
   }
 
-  .timer-text {
-    font-size: 24px;
+  .lockscreen-header h3 {
+    font-size: 1.1rem;
   }
 
-  .timer-label {
-    font-size: 14px; /* Accessibility: Increased from 13px */
+  .lockscreen-content {
+    padding: 20px 15px;
+    gap: 20px;
   }
 
-  .alternative-unlock {
+  .medical-notice h4,
+  .medical-form h4 {
+    font-size: 1rem;
+  }
+
+  .timer-lockscreen {
+    padding: 20px 15px;
+  }
+
+  .clinical-display {
     padding: 15px;
   }
 
-  .alternative-unlock h4 {
-    font-size: 15px;
-  }
-
-  .alternative-unlock p {
-    font-size: 14px; /* Accessibility: Increased from 13px */
-  }
-
-  .timeout-hint {
-    padding: 12px;
+  .digital-timer {
+    font-size: 2rem;
   }
 
   .timeout-solved {
-    padding: 20px;
+    padding: 30px 20px;
   }
 
   .timeout-solved h3 {
@@ -280,24 +329,20 @@
 }
 
 @media (max-width: 480px) {
-  .timeout-container {
-    padding: 10px;
+  .lockscreen-header {
+    padding: 15px 10px;
   }
 
-  .timer-circle {
-    width: 120px;
-    height: 120px;
+  .lockscreen-content {
+    padding: 15px 10px;
   }
 
-  .timer-text {
-    font-size: 20px;
+  .digital-timer {
+    font-size: 1.8rem;
   }
 
-  .progress-text {
-    font-size: 14px; /* Accessibility: Increased from 13px */
-  }
-
-  .progress-bar {
-    height: 8px;
+  .warning-bar {
+    font-size: 0.9rem;
+    padding: 8px;
   }
 }
