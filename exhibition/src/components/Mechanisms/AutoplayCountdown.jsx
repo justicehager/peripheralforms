@@ -122,28 +122,37 @@ export default function AutoplayCountdown({ onSolve }) {
 
   return (
     <div className={styles['autoplay-container']}>
-      <div className={styles['autoplay-header']}>
-        <h3>OFFICIAL PRESS BRIEFING</h3>
-        <p className={styles['official-badge']}>VERIFIED SOURCE</p>
-      </div>
-
-      <div className={styles['video-player']}>
-        <div className={styles['video-screen']}>
-          {showClue && (
-            <div className={styles['hidden-clue']}>
-              PAUSE NOW
-            </div>
-          )}
-          <div ref={iframeRef} className={styles['youtube-player']}></div>
+      <div className={styles['propaganda-overlay']}>
+        <div className={styles['urgent-banner']}>
+          ⚠️ MANDATORY VIEWING ⚠️
         </div>
       </div>
 
-      <div className={styles['autoplay-hint']}>
-        <p className={styles['hint-text']}>
-          💡 Watch carefully. The truth appears only for a moment.
+      <div className={styles['sticky-video-wrapper']}>
+        <div className={styles['video-player']}>
+          <div className={styles['video-screen']}>
+            {showClue && (
+              <div className={styles['hidden-clue']}>
+                PAUSE NOW
+              </div>
+            )}
+            <div ref={iframeRef} className={styles['youtube-player']}></div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles['propaganda-text']}>
+        <p className={styles['compliance-message']}>
+          YOU MUST WATCH TO COMPLETION
         </p>
-        <p className={styles['hint-subtext']}>
-          Hint: Pause at {formatTime(CLUE_TIMESTAMP)} when you see the clue
+        <p className={styles['warning-text']}>
+          Scrolling will not stop this message
+        </p>
+        <p className={styles['filler-text']}>
+          This is for your own safety. The information contained in this briefing is critical to your understanding of current events. Failure to comply with viewing requirements may result in restricted access. Your viewing is being monitored. Pay close attention. The truth is being presented to you. Accept what you see. Do not question the narrative. This message will follow you. You cannot escape. Compliance is mandatory.
+        </p>
+        <p className={styles['filler-text']}>
+          We remind you that this is official information from verified sources. Any attempt to circumvent this viewing requirement will be logged. Your cooperation is appreciated. The platform values your attention. Continue watching. The content will unlock when compliance is confirmed. Trust the process. Accept the message. Stay focused.
         </p>
       </div>
     </div>

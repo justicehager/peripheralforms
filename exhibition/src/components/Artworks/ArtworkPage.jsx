@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getArtworkById } from '../../data/artworks'
 import './ArtworkPage.css'
 import './ArtworkPageThemes.css'
 import { getArtistTheme } from '../../data/artistThemes'
 import InterrogationPoem from './InterrogationPoem'
+import ImageLightbox from '../Artwork/ImageLightbox'
 
 // Helper function to parse video URLs and generate embed codes
 function getVideoEmbedUrl(url) {
@@ -46,6 +48,17 @@ export default function ArtworkPage() {
   const navigate = useNavigate()
   const artwork = getArtworkById(artworkId)
   const artistTheme = getArtistTheme(artworkId)
+  const [lightboxImages, setLightboxImages] = useState(null)
+  const [lightboxStartIndex, setLightboxStartIndex] = useState(0)
+
+  const openLightbox = (images, startIndex = 0) => {
+    setLightboxImages(images)
+    setLightboxStartIndex(startIndex)
+  }
+
+  const closeLightbox = () => {
+    setLightboxImages(null)
+  }
 
   if (!artwork) {
     return (
@@ -135,30 +148,60 @@ export default function ArtworkPage() {
             </div>
           )}
 
-          {/* desire_engineering: Multiple images */}
+          {/* desire_engineering: Multiple images with lightbox */}
           {artworkId === 'desire-engineering' && artwork.files && artwork.files.images && (
-            <div className="image-gallery">
+            <div className="image-gallery thumbnail-gallery">
               {artwork.files.images.map((imagePath, index) => (
-                <img
+                <div
                   key={index}
-                  src={imagePath}
-                  alt={`${artwork.title} - Image ${index + 1}`}
-                  className="gallery-image"
-                />
+                  className="gallery-thumbnail"
+                  onClick={() => openLightbox(artwork.files.images, index)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      openLightbox(artwork.files.images, index)
+                    }
+                  }}
+                >
+                  <img
+                    src={imagePath}
+                    alt={`${artwork.title} - Image ${index + 1}`}
+                    className="gallery-thumbnail-image"
+                  />
+                  <div className="gallery-overlay">
+                    <span className="gallery-icon">🔍</span>
+                  </div>
+                </div>
               ))}
             </div>
           )}
 
-          {/* perfect_users: Multiple images from PDF pages */}
+          {/* perfect_users: Multiple images from PDF pages with lightbox */}
           {artworkId === 'perfect-users' && artwork.files && artwork.files.images && (
-            <div className="image-gallery">
+            <div className="image-gallery thumbnail-gallery">
               {artwork.files.images.map((imagePath, index) => (
-                <img
+                <div
                   key={index}
-                  src={imagePath}
-                  alt={`${artwork.title} - Page ${index + 1}`}
-                  className="gallery-image"
-                />
+                  className="gallery-thumbnail"
+                  onClick={() => openLightbox(artwork.files.images, index)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      openLightbox(artwork.files.images, index)
+                    }
+                  }}
+                >
+                  <img
+                    src={imagePath}
+                    alt={`${artwork.title} - Page ${index + 1}`}
+                    className="gallery-thumbnail-image"
+                  />
+                  <div className="gallery-overlay">
+                    <span className="gallery-icon">🔍</span>
+                  </div>
+                </div>
               ))}
             </div>
           )}
@@ -224,6 +267,14 @@ export default function ArtworkPage() {
           )}
         </div>
       </article>
+
+      {lightboxImages && (
+        <ImageLightbox
+          images={lightboxImages}
+          startIndex={lightboxStartIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </div>
   )
 }

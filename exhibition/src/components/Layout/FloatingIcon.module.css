@@ -31,13 +31,13 @@
   font-family: var(--font-primary);
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--bg-primary);
-  text-transform: lowercase;
+  color: #ffffff;
+  text-transform: uppercase;
   letter-spacing: -0.05em;
   position: relative;
   text-decoration: line-through;
   text-decoration-thickness: 2px;
-  text-decoration-color: var(--bg-primary);
+  text-decoration-color: #ffffff;
 }
 
 /* Accessibility: Focus styles */
@@ -73,7 +73,7 @@
 }
 
 [data-theme="resistance"] .icon-text {
-  color: var(--bg-primary);
-  text-decoration-color: var(--bg-primary);
+  color: #ffffff;
+  text-decoration-color: #ffffff;
   font-weight: 900;
 }

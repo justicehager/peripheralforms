@@ -235,15 +235,6 @@ export default function SurveillanceUI({ onSolve }) {
           </p>
         </div>
       </div>
-
-      <div className={styles['surveillance-hint']}>
-        <p className={styles['hint-text']}>
-          💡 Maximum surveillance requires maximum compliance
-        </p>
-        <p className={styles['hint-subtext']}>
-          Hint: Click the zones in numerical order (1 → 2 → 3 → 4 → 5)
-        </p>
-      </div>
     </div>
   )
 }

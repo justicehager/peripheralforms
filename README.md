@@ -150,9 +150,18 @@ The open call site remains on the root (`/`) for continuous operation.
 - ✅ Search Engine Scores: Artist updated to Justice Alexander Hager
 - ✅ Artist website/portfolio links added to all artworks
 
-**📋 Phase 6: Testing & Polish** - IN PROGRESS
+**✅ Phase 6: Testing & Polish** - COMPLETE
 - ✅ Deployment to /exhibition/ subdirectory working
 - ✅ Mobile responsiveness (fluid typography, 3 breakpoints: 768px, 640px, 480px)
+- ✅ UI improvements with menacing aesthetic updates
+- ✅ Thumbnail galleries with lightbox/shadowbox functionality for multi-image artworks
+- ✅ Enhanced mechanism designs:
+  - Interrogation: Forced propaganda with sticky video autoplay
+  - Isolation Procedures: Institutional medical lock screen aesthetic
+  - Infinite Scroll: X.com/Twitter dark mode with excited shouting vibe
+- ✅ Removed hints from all mechanisms for better discovery experience
+- ✅ PF floating icon now visible and links to peripheralforms.com
+- ✅ Artist emoji avatars added to feed posts
 - ⏳ Cross-browser testing
 - ⏳ Performance optimization
 - ⏳ Accessibility improvements

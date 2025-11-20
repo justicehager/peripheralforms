@@ -12,15 +12,16 @@ export default function TimeOut({ onSolve }) {
   const [isSolved, setIsSolved] = useState(false)
   const [unlockMethod, setUnlockMethod] = useState(null)
 
-  // Record first visit time
+  // Record first visit time when mechanism opens
   useEffect(() => {
-    const storedTime = localStorage.getItem('timeout-first-visit')
+    const storedTime = localStorage.getItem('timeout-mechanism-opened')
     if (storedTime) {
       setFirstVisitTime(parseInt(storedTime, 10))
     } else {
+      // Timer starts NOW when mechanism is opened
       const now = Date.now()
       setFirstVisitTime(now)
-      localStorage.setItem('timeout-first-visit', now.toString())
+      localStorage.setItem('timeout-mechanism-opened', now.toString())
     }
   }, [])
 
@@ -55,7 +56,7 @@ export default function TimeOut({ onSolve }) {
     setIsSolved(true)
     setUnlockMethod(method)
     solveMechanism('timeout')
-    localStorage.removeItem('timeout-first-visit')
+    localStorage.removeItem('timeout-mechanism-opened')
     onSolve?.()
   }
 
@@ -98,81 +99,73 @@ export default function TimeOut({ onSolve }) {
 
   return (
     <div className={styles['timeout-container']}>
-      <div className={styles['timeout-header']}>
-        <h3>⏱ SCREEN TIME MANAGEMENT</h3>
-        <p className={styles['wellness-badge']}>FOR YOUR WELLBEING</p>
+      <div className={styles['lockscreen-header']}>
+        <div className={styles['medical-icon']}>🏥</div>
+        <h3>ISOLATION PROTOCOL ACTIVE</h3>
+        <p className={styles['facility-badge']}>INSTITUTIONAL QUARANTINE</p>
       </div>
 
-      <div className={styles['timeout-content']}>
-        <div className={styles['wellness-message']}>
-          <h4>Take a Healthy Break</h4>
+      <div className={styles['lockscreen-content']}>
+        <div className={styles['medical-notice']}>
+          <div className={styles['warning-bar']}>⚠️ MANDATORY ISOLATION ⚠️</div>
+          <h4>Patient Restriction Notice</h4>
           <p>
-            Our platform cares about your digital wellness. Research shows that
-            continuous engagement can lead to fatigue and reduced attention quality.
+            For your safety and the safety of others, you have been placed under
+            temporary content isolation. This is a standard medical procedure.
           </p>
           <p>
-            We've temporarily restricted access to this content to ensure you're
-            engaging mindfully with our platform.
+            Access to requested materials has been suspended pending completion
+            of the mandatory observation period.
           </p>
-        </div>
-
-        <div className={styles['timer-display']}>
-          <div className={styles['timer-circle']}>
-            <svg viewBox="0 0 100 100" className={styles['timer-svg']}>
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                stroke="#e4e6eb"
-                strokeWidth="8"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                stroke="#1877f2"
-                strokeWidth="8"
-                strokeDasharray={`${2 * Math.PI * 45}`}
-                strokeDashoffset={`${2 * Math.PI * 45 * (1 - getProgressPercent() / 100)}`}
-                transform="rotate(-90 50 50)"
-                className={styles['timer-progress']}
-              />
-            </svg>
-            <div className={styles['timer-text']}>
-              {formatTimeRemaining(getRemainingTime())}
-            </div>
-          </div>
-          <p className={styles['timer-label']}>Time until access granted</p>
-        </div>
-
-        <div className={styles['alternative-unlock']}>
-          <h4>Alternative Path</h4>
-          <p>
-            Or demonstrate your commitment by unlocking {REQUIRED_OTHER_SOLVES} other
-            artworks first.
-          </p>
-          <div className={styles['progress-indicator']}>
-            <div className={styles['progress-text']}>
-              Progress: {otherSolvedCount} / {REQUIRED_OTHER_SOLVES}
-            </div>
-            <div className={styles['progress-bar']}>
-              <div
-                className={styles['progress-fill']}
-                style={{ width: `${(otherSolvedCount / REQUIRED_OTHER_SOLVES) * 100}%` }}
-              />
-            </div>
+          <div className={styles['institutional-seal']}>
+            <span className={styles['seal-text']}>AUTHORIZED RESTRICTION</span>
           </div>
         </div>
 
-        <div className={styles['timeout-hint']}>
-          <p className={styles['hint-text']}>
-            💡 Paternalistic control disguised as care
+        <div className={styles['timer-lockscreen']}>
+          <div className={styles['clinical-display']}>
+            <div className={styles['vital-monitor']}>
+              <div className={styles['monitor-label']}>ISOLATION TIME REMAINING</div>
+              <div className={styles['digital-timer']}>
+                {formatTimeRemaining(getRemainingTime())}
+              </div>
+              <div className={styles['progress-strip']}>
+                <div
+                  className={styles['progress-indicator']}
+                  style={{ width: `${getProgressPercent()}%` }}
+                />
+              </div>
+            </div>
+          </div>
+          <p className={styles['clinical-note']}>
+            Restriction will be automatically lifted upon completion of observation period
           </p>
-          <p className={styles['hint-subtext']}>
-            Hint: Time limits serve the platform, not you. Wait or circumvent.
-          </p>
+        </div>
+
+        <div className={styles['override-notice']}>
+          <div className={styles['medical-form']}>
+            <h4>⚕️ ADMINISTRATIVE OVERRIDE</h4>
+            <p>
+              Medical staff may authorize early release with sufficient documentation.
+              Complete {REQUIRED_OTHER_SOLVES} additional clearance procedures to request override.
+            </p>
+            <div className={styles['clearance-status']}>
+              <div className={styles['status-label']}>
+                CLEARANCES OBTAINED: {otherSolvedCount} / {REQUIRED_OTHER_SOLVES}
+              </div>
+              <div className={styles['clearance-bar']}>
+                <div
+                  className={styles['clearance-fill']}
+                  style={{ width: `${(otherSolvedCount / REQUIRED_OTHER_SOLVES) * 100}%` }}
+                />
+              </div>
+              {otherSolvedCount >= REQUIRED_OTHER_SOLVES && (
+                <div className={styles['override-ready']}>
+                  ✓ OVERRIDE AUTHORIZED - ACCESS GRANTED
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

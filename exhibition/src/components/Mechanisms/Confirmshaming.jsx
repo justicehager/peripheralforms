@@ -106,11 +106,6 @@ export default function Confirmshaming({ onSolve }) {
             {currentScreen.refuse}
           </button>
         </div>
-
-        <div className={styles['screen-info']}>
-          <p>Question {screenIndex + 1} of {CONFIRMSHAMING_SCREENS.length}</p>
-          <p className={styles.hint}>Your vote matters! (Hint: Resist the pressure)</p>
-        </div>
       </div>
     </div>
   )

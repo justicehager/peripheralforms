@@ -47,6 +47,11 @@
   flex-shrink: 0;
   box-shadow: var(--glow-purple);
   animation: pulseGlow 3s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 @keyframes pulseGlow {
@@ -138,9 +143,13 @@
 }
 
 .thumbnail {
-  font-size: 6rem;
-  line-height: 1;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
   user-select: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--border);
 }
 
 .artwork-title {
@@ -310,7 +319,8 @@
   }
 
   .thumbnail {
-    font-size: 4rem;
+    width: 150px;
+    height: 150px;
   }
 
   .artwork-link,
