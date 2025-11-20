@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './DatabaseLog.module.css'
+import './DatabaseLog.css'
 
 export default function DatabaseLog() {
   const [queries, setQueries] = useState([])
