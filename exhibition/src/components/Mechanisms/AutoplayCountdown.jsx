@@ -16,49 +16,53 @@ export default function AutoplayCountdown({ onSolve }) {
   const iframeRef = useRef(null)
 
   useEffect(() => {
-    // Load YouTube IFrame API
-    const tag = document.createElement('script')
-    tag.src = 'https://www.youtube.com/iframe_api'
-    const firstScriptTag = document.getElementsByTagName('script')[0]
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+    // Load YouTube IFrame API only if not already loaded
+    if (!window.YT) {
+      // Check if script tag already exists
+      const existingScript = document.querySelector('script[src*="youtube.com/iframe_api"]')
 
-    // Create YouTube player when API is ready
-    window.onYouTubeIframeAPIReady = () => {
-      playerRef.current = new window.YT.Player(iframeRef.current, {
-        videoId: YOUTUBE_VIDEO_ID,
-        playerVars: {
-          autoplay: 1,
-          controls: 1,
-          modestbranding: 1,
-          rel: 0
-        },
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange
-        }
-      })
+      if (!existingScript) {
+        const tag = document.createElement('script')
+        tag.src = 'https://www.youtube.com/iframe_api'
+        tag.async = true
+        document.head.appendChild(tag)
+      }
     }
 
-    // If API already loaded, initialize player
+    // Function to initialize player
+    const initializePlayer = () => {
+      if (iframeRef.current && !playerRef.current) {
+        playerRef.current = new window.YT.Player(iframeRef.current, {
+          videoId: YOUTUBE_VIDEO_ID,
+          playerVars: {
+            autoplay: 1,
+            controls: 1,
+            modestbranding: 1,
+            rel: 0
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
+          }
+        })
+      }
+    }
+
+    // Create YouTube player when API is ready
     if (window.YT && window.YT.Player) {
-      playerRef.current = new window.YT.Player(iframeRef.current, {
-        videoId: YOUTUBE_VIDEO_ID,
-        playerVars: {
-          autoplay: 1,
-          controls: 1,
-          modestbranding: 1,
-          rel: 0
-        },
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange
-        }
-      })
+      // API already loaded
+      initializePlayer()
+    } else {
+      // Wait for API to load
+      window.onYouTubeIframeAPIReady = () => {
+        initializePlayer()
+      }
     }
 
     return () => {
       if (playerRef.current && playerRef.current.destroy) {
         playerRef.current.destroy()
+        playerRef.current = null
       }
     }
   }, [])
