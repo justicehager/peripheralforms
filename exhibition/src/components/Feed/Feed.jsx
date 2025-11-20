@@ -6,9 +6,6 @@ import styles from './Feed.module.css'
 export default function Feed() {
   const { solvedMechanisms } = useStore()
 
-  // Debug: Log solved mechanisms
-  console.log('Feed - Solved mechanisms:', solvedMechanisms)
-
   return (
     <div className={styles['feed-container']}>
       <div className={styles['feed-grid']}>
