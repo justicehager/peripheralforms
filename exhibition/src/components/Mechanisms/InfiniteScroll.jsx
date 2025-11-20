@@ -20,12 +20,12 @@ const COMPANIES = [
 ]
 
 const TEMPLATES = [
-  "Thrilled to announce our platform reached {metric} users! This milestone proves that {buzzword} is the future.",
-  "Just wrapped an inspiring keynote on {topic}. The future of work is {buzzword}!",
-  "Grateful to be recognized as a {award}. None of this would be possible without {buzzword}.",
-  "Excited to share that we're {action}. This is what {buzzword} looks like in practice.",
-  "Reflecting on my journey from {past} to {present}. Key lesson: embrace {buzzword}.",
-  "Had an amazing conversation with {connection} about {topic}. Innovation requires {buzzword}!"
+  "🚀 JUST HIT {metric} USERS!!! This is INSANE!! {buzzword} is LITERALLY THE FUTURE!! 🔥🔥",
+  "OMG just finished the MOST INCREDIBLE keynote on {topic}!! The energy was UNREAL!! {buzzword} is EVERYTHING!! 💯",
+  "SO GRATEFUL to be named {award}!! THANK YOU to everyone who believed!! {buzzword} CHANGED MY LIFE!! 🙏✨",
+  "EXCITING NEWS!! We're {action} and I'm LITERALLY SHAKING!! This is what {buzzword} looks like!! 🎉🎉",
+  "WOW. Just WOW. From {past} to {present}!! The journey has been CRAZY!! Key lesson: {buzzword} is NON-NEGOTIABLE!! 💪",
+  "MIND. BLOWN. 🤯 Just had the BEST conversation with {connection} about {topic}!! {buzzword} is the ONLY WAY!! 🚀"
 ]
 
 const BUZZWORDS = [
@@ -132,20 +132,13 @@ export default function InfiniteScroll({ onSolve }) {
   return (
     <div className={styles['infinitescroll-container']}>
       <div className={styles['infinitescroll-header']}>
-        <h3>SUCCESS STORIES</h3>
-        <p className={styles['trending-badge']}>TRENDING IN YOUR NETWORK</p>
+        <h3>🔥 For You</h3>
+        <p className={styles['trending-badge']}>TRENDING NOW</p>
       </div>
 
-      <div className={styles['scroll-progress']}>
-        <div className={styles['progress-bar']}>
-          <div
-            className={styles['progress-fill']}
-            style={{ width: `${scrollDepth}%` }}
-          />
-        </div>
-        <p className={styles['progress-text']}>
-          Viewing {visibleCount} of {TOTAL_ITEMS} testimonials
-        </p>
+      <div className={styles['scroll-stats']}>
+        <span className={styles['stat-item']}>🔥 {visibleCount} posts loaded</span>
+        <span className={styles['stat-item']}>👀 Keep scrolling</span>
       </div>
 
       <div
@@ -174,13 +167,18 @@ export default function InfiniteScroll({ onSolve }) {
             {index === EXIT_PATTERN_INDEX - 1 && showExit && (
               <div className={styles['pattern-break']}>
                 <div className={styles['pattern-notice']}>
-                  ⚠️ PATTERN DETECTED ⚠️
-                  <p>The testimonials repeat. The success is manufactured. The performance is compulsory.</p>
+                  <div className={styles['glitch-text']}>⚠️ PATTERN DETECTED ⚠️</div>
+                  <p className={styles['pattern-message']}>
+                    They're all saying the same thing.<br />
+                    The excitement is manufactured.<br />
+                    The performance is compulsory.<br />
+                    The scroll never ends.
+                  </p>
                   <button
                     className={styles['exit-button']}
                     onClick={handleExitClick}
                   >
-                    EXIT THE SCROLL
+                    🚪 ESCAPE THE FEED
                   </button>
                 </div>
               </div>
