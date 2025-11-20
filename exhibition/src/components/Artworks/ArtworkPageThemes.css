@@ -457,10 +457,44 @@
   margin: -8px -8px 1.5rem -8px;
 }
 
+[data-artist="perfect-users"] .artwork-meta {
+  color: black;
+  background: white;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+
 [data-artist="perfect-users"] .artwork-media {
   border: 2px solid;
   border-color: #dfdfdf #808080 #808080 #dfdfdf;
   background: #c0c0c0;
+  box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+}
+
+[data-artist="perfect-users"] .artwork-description h2,
+[data-artist="perfect-users"] .artist-statement h2,
+[data-artist="perfect-users"] .thematic-statement h2,
+[data-artist="perfect-users"] .presentation-notes h2 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #000080, #1084d7);
+  color: white;
+  padding: 2px 4px;
+  border: none;
+  margin-top: 1.5rem;
+}
+
+[data-artist="perfect-users"] .artwork-description p,
+[data-artist="perfect-users"] .artist-statement p,
+[data-artist="perfect-users"] .thematic-statement p,
+[data-artist="perfect-users"] .presentation-notes p {
+  color: black;
+  background: white;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  padding: 1rem;
   box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
 }
 
