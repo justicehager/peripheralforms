@@ -85,7 +85,7 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
   - [x] Weigel: Document download link for poetry (DOCX)
   - [x] Gibbins: Vimeo video embed (16:9 responsive)
   - [x] desire_engineering: Multi-image gallery (3 meme images)
-  - [x] Perfect Users: PDF viewer with 15 collaborative artworks
+  - [x] Perfect Users: Image gallery with 15 collaborative artworks
   - [x] Search Engine Scores: Placeholder for Justice Alexander Hager's work
 - [x] Add artist portfolio/website links for all artworks
 - [x] Style all presentation types with responsive CSS
@@ -93,7 +93,7 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 - [x] Integrate Weigel artwork - **COMPLETE** (Jennifer Weigel - "Interrogation" - Poetry document download)
 - [x] Integrate Gibbins artwork - **COMPLETE** (Ian Gibbins - "ISOLATION PROCEDURES" - Vimeo video embed)
 - [x] Integrate desire_engineering artwork - **COMPLETE** (desire_engineering - "Starter Questions for 21st Century Grovelers" - 3-image gallery)
-- [x] Integrate Perfect Users artwork - **COMPLETE** (Perfect Users - "Perfect Censorship // Perfectly Unpublished" - PDF with 15 artworks)
+- [x] Integrate Perfect Users artwork - **COMPLETE** (Perfect Users - "Perfect Censorship // Perfectly Unpublished" - Image gallery with 15 artworks)
 - [x] Integrate Search Engine Scores artwork - **COMPLETE** (Justice Alexander Hager - Artist name updated)
 
 ---
