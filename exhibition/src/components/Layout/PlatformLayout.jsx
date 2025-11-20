@@ -1,18 +1,13 @@
-import { useStore } from '../../store/useStore'
 import Header from './Header'
 import Navigation from './Navigation'
 import FloatingIcon from './FloatingIcon'
 import NotificationBadges from './NotificationBadges'
-import InfrastructureOverlay from '../Infrastructure/InfrastructureOverlay'
 import styles from './PlatformLayout.module.css'
 
 export default function PlatformLayout({ children }) {
-  const { infrastructureVisibility } = useStore()
-
   return (
     <div className={styles['platform-layout']}>
       <a href="#main-content" className="skip-to-main">Skip to main content</a>
-      <InfrastructureOverlay visibility={infrastructureVisibility} />
       <NotificationBadges />
       <FloatingIcon />
       <Header />
