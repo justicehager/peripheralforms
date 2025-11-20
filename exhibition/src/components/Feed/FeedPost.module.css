@@ -185,3 +185,47 @@
   background: var(--bg-secondary);
   transform: scale(1.05);
 }
+
+/* Mobile responsive styles */
+@media (max-width: 640px) {
+  .post-content {
+    min-height: 250px;
+  }
+
+  .thumbnail {
+    font-size: 4rem;
+  }
+
+  .artwork-link,
+  .locked-content {
+    padding: var(--spacing-lg);
+  }
+
+  .post-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .avatar-placeholder {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-info h3 {
+    font-size: 0.875rem;
+  }
+
+  .verified {
+    font-size: 0.75rem;
+  }
+
+  .view-button {
+    padding: 10px 20px;
+    font-size: 0.875rem;
+  }
+
+  .unlocked-badge,
+  .locked-badge {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+}

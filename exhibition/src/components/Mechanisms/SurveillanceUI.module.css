@@ -258,3 +258,119 @@
   background: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
+
+/* Tablet responsive styles */
+@media (max-width: 768px) {
+  .surveillance-container {
+    padding: 15px;
+  }
+
+  .zone-grid {
+    height: 300px;
+    gap: 12px;
+  }
+
+  .interaction-zone {
+    min-height: 350px;
+    padding: 15px;
+  }
+
+  .zone-label {
+    font-size: 28px;
+  }
+
+  .tracking-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 640px) {
+  .surveillance-container {
+    padding: 12px;
+  }
+
+  .zone-grid {
+    height: 250px;
+    gap: 10px;
+  }
+
+  .interaction-zone {
+    min-height: 300px;
+    padding: 12px;
+  }
+
+  .zone {
+    border-width: 2px;
+    /* Larger touch targets for mobile */
+    min-height: 60px;
+  }
+
+  .zone-label {
+    font-size: 24px;
+  }
+
+  .privacy-message,
+  .tracking-display,
+  .surveillance-hint {
+    padding: 12px;
+  }
+
+  .surveillance-header h3 {
+    font-size: 16px;
+  }
+
+  .privacy-message h4 {
+    font-size: 14px;
+  }
+
+  .privacy-message p {
+    font-size: 13px;
+  }
+
+  .tracking-display h4,
+  .pattern-tracker p,
+  .hint-text {
+    font-size: 13px;
+  }
+
+  .surveillance-solved {
+    padding: 20px;
+  }
+
+  .surveillance-solved h3 {
+    font-size: 20px;
+  }
+
+  .surveillance-solved p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .surveillance-container {
+    padding: 10px;
+  }
+
+  .zone-grid {
+    height: 220px;
+    gap: 8px;
+  }
+
+  .interaction-zone {
+    min-height: 260px;
+    padding: 10px;
+  }
+
+  .zone-label {
+    font-size: 20px;
+  }
+
+  .tracking-stats {
+    font-size: 11px;
+  }
+
+  .stat {
+    padding: 6px;
+  }
+}
