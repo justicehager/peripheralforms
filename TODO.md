@@ -66,11 +66,10 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 
 ## Phase 3: Infrastructure Visibility (Week 4)
 
-- [x] Create NetworkMonitor component showing fake API calls
 - [x] Create DatabaseLog component showing database queries
 - [x] Create ConsoleErrors component showing terminal-style errors
 - [x] Create InfrastructureOverlay component with progressive visibility
-- [x] Implement progressive infrastructure exposure (Level 1-3 based on mechanisms solved)
+- [x] Implement progressive infrastructure exposure (Level 1-2 based on mechanisms solved)
 - [x] Add glitch effects and CSS corruption for infrastructure visibility
 
 ---

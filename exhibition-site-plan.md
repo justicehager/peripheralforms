@@ -77,7 +77,6 @@ A web-based art exhibition exploring pre-emptive control and tactical evasion in
 │   │   │   ├── SearchEngineScores.jsx
 │   │   │   └── [ArtworkName].module.css
 │   │   ├── Infrastructure/
-│   │   │   ├── NetworkMonitor.jsx
 │   │   │   ├── DatabaseLog.jsx
 │   │   │   ├── ConsoleErrors.jsx
 │   │   │   └── InfrastructureOverlay.jsx
@@ -404,16 +403,15 @@ const handleCaptchaSolve = (decoded) => {
 
 **Level 1** (1-2 mechanisms solved, 17-33% infrastructure visibility):
 - Occasional `<div>` tags visible in margins
-- Network requests appear briefly in corner
+- Database queries appear in margins
 - Single console log message
 
-**Level 3** (3-4 mechanisms solved, 50-67% infrastructure visibility):
-- Persistent network monitor panel (side or top)
+**Level 2** (3-4 mechanisms solved, 50-67% infrastructure visibility):
 - Database queries visible in margins
 - Multiple console errors
 - CSS occasionally "breaking"
 
-**Level 5** (5-6 mechanisms solved, 83-100% infrastructure visibility):
+**Level 3** (5-6 mechanisms solved, 83-100% infrastructure visibility):
 - Full technical apparatus visible
 - Multiple monitoring panels
 - Code comments everywhere
@@ -423,9 +421,8 @@ const handleCaptchaSolve = (decoded) => {
 **Visual Elements**:
 ```jsx
 // Infrastructure components appear based on visibility level
-{infrastructureVisibility > 30 && <NetworkMonitor />}
-{infrastructureVisibility > 50 && <DatabaseLog />}
-{infrastructureVisibility > 70 && <ConsoleErrors />}
+{infrastructureVisibility > 30 && <DatabaseLog />}
+{infrastructureVisibility > 60 && <ConsoleErrors />}
 ```
 
 **Styling for Infrastructure**:
@@ -606,44 +603,6 @@ export default function FeedPost({ artwork, isUnlocked }) {
 }
 ```
 
-### Network Monitor Component
-
-```jsx
-// components/Infrastructure/NetworkMonitor.jsx
-import { useState, useEffect } from 'react'
-
-export default function NetworkMonitor() {
-  const [requests, setRequests] = useState([])
-  
-  useEffect(() => {
-    // Simulate API calls
-    const interval = setInterval(() => {
-      const fakeRequest = {
-        method: 'POST',
-        endpoint: '/api/track-engagement',
-        payload: { user_id: 'xxx', action: 'scroll', depth: Math.random() },
-        timestamp: new Date().toISOString()
-      }
-      setRequests(prev => [fakeRequest, ...prev].slice(0, 10))
-    }, 2000)
-    
-    return () => clearInterval(interval)
-  }, [])
-  
-  return (
-    <div className="network-monitor">
-      <div className="monitor-header">NETWORK ACTIVITY</div>
-      {requests.map((req, i) => (
-        <div key={i} className="network-request">
-          <span className="method">{req.method}</span>
-          <span className="endpoint">{req.endpoint}</span>
-          <span className="time">{req.timestamp}</span>
-        </div>
-      ))}
-    </div>
-  )
-}
-```
 
 ---
 
@@ -763,7 +722,6 @@ function Layout() {
 - [ ] Implement Harmony Button mechanism (Search Engine Scores)
 
 ### Phase 3: Infrastructure Visibility (Week 4)
-- [ ] Create NetworkMonitor component
 - [ ] Create DatabaseLog component
 - [ ] Create ConsoleErrors component
 - [ ] Implement progressive exposure based on solve count

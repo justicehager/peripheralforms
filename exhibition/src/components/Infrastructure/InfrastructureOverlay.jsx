@@ -1,5 +1,4 @@
 import { useStore } from '../../store/useStore'
-import NetworkMonitor from './NetworkMonitor'
 import DatabaseLog from './DatabaseLog'
 import ConsoleErrors from './ConsoleErrors'
 import './InfrastructureOverlay.css'
@@ -9,9 +8,8 @@ export default function InfrastructureOverlay({ visibility }) {
 
   return (
     <>
-      {level >= 1 && <NetworkMonitor />}
-      {level >= 2 && <DatabaseLog />}
-      {level >= 3 && <ConsoleErrors />}
+      {level >= 1 && <DatabaseLog />}
+      {level >= 2 && <ConsoleErrors />}
     </>
   )
 }

@@ -128,7 +128,7 @@ The open call site remains on the root (`/`) for continuous operation.
 - Harmony Button (Search Engine Scores)
 
 **✅ Phase 3: Infrastructure Visibility** - COMPLETE
-- NetworkMonitor, DatabaseLog, ConsoleErrors components
+- DatabaseLog, ConsoleErrors components
 - Progressive visibility based on solved mechanisms
 
 **✅ Phase 5: Ending State** - COMPLETE
