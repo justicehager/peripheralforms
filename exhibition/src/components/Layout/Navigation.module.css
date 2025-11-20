@@ -40,7 +40,7 @@
 .nav-link {
   color: var(--text-primary);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.95rem */
   font-weight: 500;
   transition: color 0.2s ease;
   position: relative;
@@ -71,7 +71,7 @@
   border: none;
   padding: 8px 16px;
   border-radius: var(--radius-md);
-  font-size: 0.9rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.9rem */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -114,7 +114,7 @@
 
   .nav-reset {
     padding: 6px 12px;
-    font-size: 0.85rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.85rem (minimum 14px) */
   }
 }
 
@@ -124,11 +124,11 @@
   }
 
   .nav-link {
-    font-size: 0.8rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.8rem (minimum 14px) */
   }
 
   .nav-reset {
     padding: 6px 10px;
-    font-size: 0.8rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.8rem (minimum 14px) */
   }
 }

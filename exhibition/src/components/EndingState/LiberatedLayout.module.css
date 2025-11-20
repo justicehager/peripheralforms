@@ -56,7 +56,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.95rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.95rem */
 }
 
 .liberated-nav a:hover {
@@ -74,7 +74,7 @@
   background-color: var(--bg-secondary);
   padding: var(--spacing-2xl) var(--spacing-xl);
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.9rem */
 }
 
 .liberated-footer pre {
@@ -120,7 +120,7 @@
 }
 
 [data-theme="resistance"] td {
-  font-size: 0.9rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.9rem */
 }
 
 /* Hr styling */

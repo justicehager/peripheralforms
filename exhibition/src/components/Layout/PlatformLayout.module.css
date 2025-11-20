@@ -26,7 +26,7 @@
   padding: var(--spacing-2xl);
   text-align: center;
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.875rem; /* Accessibility: Increased from 0.85rem (minimum 14px) */
 }
 
 .platform-footer p {

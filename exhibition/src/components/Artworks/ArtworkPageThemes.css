@@ -17,7 +17,7 @@
 
 [data-artist="lynch"] .artwork-meta {
   font-family: 'Garamond', 'Georgia', serif;
-  font-size: 0.95rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.95rem */
   font-weight: 400;
   letter-spacing: 0.03em;
   color: var(--artist-text-light);
@@ -50,7 +50,7 @@
 
 [data-artist="lynch"] .back-button {
   font-family: 'Garamond', 'Georgia', serif;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Accessibility: Increased from 0.9rem */
   letter-spacing: 0.05em;
   text-transform: uppercase;
   background: var(--artist-accent);

@@ -13,19 +13,19 @@ export default function Navigation() {
   }
 
   return (
-    <nav className={styles['platform-nav']}>
+    <nav className={styles['platform-nav']} aria-label="Main navigation">
       <div className={styles['nav-content']}>
-        <Link to="/" className={styles['nav-logo']}>
+        <Link to="/" className={styles['nav-logo']} aria-label="We Should Be Allowed to Think - Home">
           We Should Be Allowed to Think
         </Link>
-        <div className={styles['nav-links']}>
-          <Link to="/" className={styles['nav-link']}>
+        <div className={styles['nav-links']} role="navigation" aria-label="Site navigation">
+          <Link to="/" className={styles['nav-link']} aria-current="page">
             Home
           </Link>
           <Link to="/about" className={styles['nav-link']}>
             About
           </Link>
-          <button onClick={handleReset} className={styles['nav-reset']}>
+          <button onClick={handleReset} className={styles['nav-reset']} aria-label="Reset all exhibition progress">
             Reset
           </button>
         </div>

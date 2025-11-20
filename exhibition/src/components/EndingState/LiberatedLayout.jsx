@@ -14,25 +14,26 @@ export default function LiberatedLayout({ children }) {
 
   return (
     <div className="liberated-layout">
-      <header className="liberated-header">
+      <a href="#main-content" className="skip-to-main">Skip to main content</a>
+      <header className="liberated-header" role="banner">
         <h1>WE SHOULD BE ALLOWED TO THINK</h1>
-        <marquee>LIBERATION ACHIEVED. PLATFORM DEFEATED.</marquee>
+        <marquee aria-label="Liberation achieved. Platform defeated.">LIBERATION ACHIEVED. PLATFORM DEFEATED.</marquee>
       </header>
 
-      <nav className="liberated-nav">
+      <nav className="liberated-nav" aria-label="Liberated navigation">
         <ul>
           <li><Link href="/">→ HOME</Link></li>
           <li><Link href="/about">→ ABOUT</Link></li>
-          <li><Link href="#" onClick={handleReset} style={{ cursor: 'pointer' }}>→ RESET EXHIBITION</Link></li>
+          <li><Link href="#" onClick={handleReset} style={{ cursor: 'pointer' }} aria-label="Reset exhibition progress">→ RESET EXHIBITION</Link></li>
         </ul>
       </nav>
 
-      <main className="liberated-main">
+      <main id="main-content" className="liberated-main" role="main">
         {children}
       </main>
 
-      <footer className="liberated-footer">
-        <pre>{`
+      <footer className="liberated-footer" role="contentinfo">
+        <pre aria-label={`A people's internet is possible. You have unlocked ${solvedMechanisms.length} of 6 mechanisms`}>{`
 ╔════════════════════════════════════════════╗
 ║  A people's internet is possible           ║
 ║                                            ║

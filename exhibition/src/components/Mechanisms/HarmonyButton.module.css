@@ -83,7 +83,7 @@
 
 .terms-scroll p {
   margin: 0;
-  font-size: 13px;
+  font-size: 14px; /* Accessibility: Increased from 13px */
   line-height: 1.6;
   color: var(--text-secondary, #65676b);
 }
@@ -117,7 +117,7 @@
 
 .mandatory-notice {
   margin: 10px 0 0 0;
-  font-size: 12px;
+  font-size: 14px; /* Accessibility: Increased from 12px */
   color: var(--text-secondary, #65676b);
   font-style: italic;
 }
@@ -181,7 +181,7 @@
 
 .captcha-label {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px; /* Accessibility: Increased from 12px */
   color: var(--text-secondary, #65676b);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -247,7 +247,7 @@
 
 .captcha-hint p {
   margin: 0;
-  font-size: 13px;
+  font-size: 14px; /* Accessibility: Increased from 13px */
   color: var(--text-primary, #000);
 }
 
@@ -266,7 +266,7 @@
 
 .hint-subtext {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px; /* Accessibility: Increased from 12px */
   color: var(--text-secondary, #65676b);
   font-style: italic;
 }
@@ -318,7 +318,7 @@
 }
 
 .meta-note {
-  font-size: 12px;
+  font-size: 14px; /* Accessibility: Increased from 12px */
   font-style: italic;
   margin-top: 15px;
   padding-top: 15px;
@@ -364,11 +364,11 @@
   }
 
   .terms-scroll h5 {
-    font-size: 13px;
+    font-size: 14px; /* Accessibility: Increased from 13px */
   }
 
   .terms-scroll p {
-    font-size: 12px;
+    font-size: 14px; /* Accessibility: Increased from 12px */
   }
 
   .terms-footer {
@@ -389,7 +389,7 @@
   }
 
   .captcha-instructions {
-    font-size: 13px;
+    font-size: 14px; /* Accessibility: Increased from 13px */
     margin-bottom: 20px;
   }
 
@@ -408,12 +408,12 @@
 
   .captcha-input {
     padding: 10px;
-    font-size: 13px;
+    font-size: 14px; /* Accessibility: Increased from 13px */
   }
 
   .verify-btn {
     padding: 10px;
-    font-size: 13px;
+    font-size: 14px; /* Accessibility: Increased from 13px */
   }
 
   .harmony-hint,
@@ -442,7 +442,7 @@
   }
 
   .instructions-revealed p {
-    font-size: 13px;
+    font-size: 14px; /* Accessibility: Increased from 13px */
   }
 }
 
