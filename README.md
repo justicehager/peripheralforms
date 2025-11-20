@@ -65,7 +65,7 @@ The exhibition contains actual artwork files (PDFs, DOCS, images, videos, etc.) 
 - **Gibbins** (`/artworks/gibbins/`): Video hosted on Vimeo (embedded)
 - **desire_engineering** (`/artworks/desire_engineering/`): 3 meme images (PNG)
 - **perfect_users** (`/artworks/perfect_users/`): 15 collaborative artworks (individual PNG images)
-- **search_engine_scores** (`/artworks/search_engine_scores/`): Work in progress
+- **search_engine_scores** (`/artworks/search_engine_scores/`): 7 search query screenshots (PNG) with interactive Google search links
 
 **Display Features:**
 
