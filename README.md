@@ -60,11 +60,11 @@ The exhibition contains actual artwork files (PDFs, DOCS, images, videos, etc.) 
 
 **Current Artwork Files:**
 
-- **Lynch** (`/artworks/lynch/`): Browser extension files (PDF, PNG, GIF, MP4)
+- **Lynch** (`/artworks/lynch/`): Browser extension files (PDF, PNG, GIF)
 - **Weigel** (`/artworks/weigel/`): Poetry document (DOCX)
 - **Gibbins** (`/artworks/gibbins/`): Video hosted on Vimeo (embedded)
 - **desire_engineering** (`/artworks/desire_engineering/`): 3 meme images (PNG)
-- **perfect_users** (`/artworks/perfect_users/`): PDF with 15 collaborative artworks
+- **perfect_users** (`/artworks/perfect_users/`): 15 collaborative artworks (individual PNG images)
 - **search_engine_scores** (`/artworks/search_engine_scores/`): Work in progress
 
 **Display Features:**
@@ -146,7 +146,7 @@ The open call site remains on the root (`/`) for continuous operation.
 - ✅ Weigel: Document download (DOCX poem)
 - ✅ Gibbins: Vimeo video embed
 - ✅ desire_engineering: Multi-image gallery (3 meme images)
-- ✅ Perfect Users: PDF viewer with 15 collaborative artworks
+- ✅ Perfect Users: Image gallery with 15 collaborative artworks
 - ✅ Search Engine Scores: Artist updated to Justice Alexander Hager
 - ✅ Artist website/portfolio links added to all artworks
 

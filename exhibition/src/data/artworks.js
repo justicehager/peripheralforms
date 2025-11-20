@@ -23,7 +23,6 @@ The executive order is not binding on U.S. state governments or the private sect
     files: {
       image: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor image - Garrett Lynch IRL - Garrett Lynch IRL.png',
       gif: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor gif - Garrett Lynch IRL - Garrett Lynch IRL.gif',
-      video: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor video - Garrett Lynch IRL - Garrett Lynch IRL.mp4',
       pdf: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor - Garrett Lynch IRL - Garrett Lynch IRL.pdf'
     },
     imageUrl: '/artworks/lynch/thumbnail.jpg',
@@ -130,7 +129,23 @@ Thank you dear Justice for the emails and the initiative, I'm looking forward to
 best regards William Wolfgang Wunderbar
 and the other lovely perfect users`,
     files: {
-      pdf: '/exhibition/artworks/perfect_users/IMG_20251103_031618_519 - zrtlrnc sbstn (1).pdf'
+      images: [
+        '/exhibition/artworks/perfect_users/page_01.png',
+        '/exhibition/artworks/perfect_users/page_02.png',
+        '/exhibition/artworks/perfect_users/page_03.png',
+        '/exhibition/artworks/perfect_users/page_04.png',
+        '/exhibition/artworks/perfect_users/page_05.png',
+        '/exhibition/artworks/perfect_users/page_06.png',
+        '/exhibition/artworks/perfect_users/page_07.png',
+        '/exhibition/artworks/perfect_users/page_08.png',
+        '/exhibition/artworks/perfect_users/page_09.png',
+        '/exhibition/artworks/perfect_users/page_10.png',
+        '/exhibition/artworks/perfect_users/page_11.png',
+        '/exhibition/artworks/perfect_users/page_12.png',
+        '/exhibition/artworks/perfect_users/page_13.png',
+        '/exhibition/artworks/perfect_users/page_14.png',
+        '/exhibition/artworks/perfect_users/page_15.png'
+      ]
     },
     imageUrl: '/artworks/perfect-users/thumbnail.jpg',
     contentUrl: '/artworks/perfect-users/content'
