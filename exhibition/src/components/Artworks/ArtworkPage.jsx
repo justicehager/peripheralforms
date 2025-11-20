@@ -3,6 +3,7 @@ import { getArtworkById } from '../../data/artworks'
 import './ArtworkPage.css'
 import './ArtworkPageThemes.css'
 import { getArtistTheme } from '../../data/artistThemes'
+import InterrogationPoem from './InterrogationPoem'
 
 // Helper function to parse video URLs and generate embed codes
 function getVideoEmbedUrl(url) {
@@ -119,21 +120,9 @@ export default function ArtworkPage() {
             </div>
           )}
 
-          {/* Weigel: Document download */}
+          {/* Weigel: Interactive poem experience */}
           {artworkId === 'weigel' && artwork.files && (
-            <div className="document-presentation">
-              <div className="document-icon">
-                <span className="thumbnail-large">📄</span>
-              </div>
-              <p className="document-description">This work is a poem about a police interrogation.</p>
-              <a
-                href={artwork.files.document}
-                className="download-button"
-                download
-              >
-                📖 Download Poem (DOCX)
-              </a>
-            </div>
+            <InterrogationPoem />
           )}
 
           {/* Gibbins: Video embed (already handled) */}

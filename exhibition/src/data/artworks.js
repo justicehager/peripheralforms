@@ -21,10 +21,10 @@ The executive order is not binding on U.S. state governments or the private sect
     portfolioUrl: 'https://www.asquare.org/',
     downloadUrl: 'https://www.asquare.org/work/restoring-a-name-to-grate-american-honor/restoring-a-name-to-grate-american-honor.zip',
     files: {
-      image: '/artworks/lynch/Restoring a Name to Grate American Honor image - Garrett Lynch IRL - Garrett Lynch IRL.png',
-      gif: '/artworks/lynch/Restoring a Name to Grate American Honor gif - Garrett Lynch IRL - Garrett Lynch IRL.gif',
-      video: '/artworks/lynch/Restoring a Name to Grate American Honor video - Garrett Lynch IRL - Garrett Lynch IRL.mp4',
-      pdf: '/artworks/lynch/Restoring a Name to Grate American Honor - Garrett Lynch IRL - Garrett Lynch IRL.pdf'
+      image: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor image - Garrett Lynch IRL - Garrett Lynch IRL.png',
+      gif: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor gif - Garrett Lynch IRL - Garrett Lynch IRL.gif',
+      video: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor video - Garrett Lynch IRL - Garrett Lynch IRL.mp4',
+      pdf: '/exhibition/artworks/lynch/Restoring a Name to Grate American Honor - Garrett Lynch IRL - Garrett Lynch IRL.pdf'
     },
     imageUrl: '/artworks/lynch/thumbnail.jpg',
     contentUrl: '/artworks/lynch/content'
@@ -47,7 +47,7 @@ The executive order is not binding on U.S. state governments or the private sect
     thematicStatement: `My writing is specifically about an interrogation by the police in which I felt like they were trying to make me admit to something which I didn't do - they already had the narrative well in place that they wanted to present and it didn't matter what I said, they acted as though they would not be swayed from their perceived outcome. It was anxiety-inducing to say the least, and the poem evolved out of this interaction to convey that sense of helplessness. I find it even more relevant now.`,
     portfolioUrl: 'https://jenniferweigelart.com/',
     files: {
-      document: '/artworks/weigel/Interrogation - Jennifer Weigel.docx'
+      document: '/exhibition/artworks/weigel/Interrogation - Jennifer Weigel.docx'
     },
     imageUrl: '/artworks/weigel/thumbnail.jpg',
     contentUrl: '/artworks/weigel/content'
@@ -92,9 +92,9 @@ The executive order is not binding on U.S. state governments or the private sect
     portfolioUrl: 'https://liuleslie.github.io/portfolio/all',
     files: {
       images: [
-        '/artworks/desire_engineering/DE-1 - Les.png',
-        '/artworks/desire_engineering/DE-2 - Les.png',
-        '/artworks/desire_engineering/DE-3 - Les.png'
+        '/exhibition/artworks/desire_engineering/DE-1 - Les.png',
+        '/exhibition/artworks/desire_engineering/DE-2 - Les.png',
+        '/exhibition/artworks/desire_engineering/DE-3 - Les.png'
       ]
     },
     imageUrl: '/artworks/desire-engineering/thumbnail.jpg',
@@ -130,7 +130,7 @@ Thank you dear Justice for the emails and the initiative, I'm looking forward to
 best regards William Wolfgang Wunderbar
 and the other lovely perfect users`,
     files: {
-      pdf: '/artworks/perfect_users/IMG_20251103_031618_519 - zrtlrnc sbstn (1).pdf'
+      pdf: '/exhibition/artworks/perfect_users/IMG_20251103_031618_519 - zrtlrnc sbstn (1).pdf'
     },
     imageUrl: '/artworks/perfect-users/thumbnail.jpg',
     contentUrl: '/artworks/perfect-users/content'
