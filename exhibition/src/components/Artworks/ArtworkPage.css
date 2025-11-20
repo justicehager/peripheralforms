@@ -141,3 +141,216 @@
   color: var(--accent-blue);
   font-weight: 500;
 }
+
+/* Lynch Presentation Styles */
+.lynch-presentation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.artwork-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.installation-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+}
+
+.installation-box h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.installation-box p {
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.05rem;
+  opacity: 0.95;
+}
+
+.download-button {
+  display: inline-block;
+  background: white;
+  color: #667eea;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: var(--spacing-lg);
+}
+
+.download-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.installation-instructions {
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-lg);
+}
+
+.installation-instructions h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  font-size: 1.1rem;
+}
+
+.installation-instructions ol {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+.installation-instructions li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.installation-instructions code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95em;
+}
+
+.media-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.artwork-video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.artwork-gif {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Document Presentation (Weigel) */
+.document-presentation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-2xl);
+}
+
+.document-icon {
+  margin-bottom: var(--spacing-md);
+}
+
+.document-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 500px;
+}
+
+/* Image Gallery (desire_engineering) */
+.image-gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.02);
+}
+
+/* PDF Presentation (perfect_users) */
+.pdf-presentation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 800px;
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .artwork-page {
+    padding: var(--spacing-md);
+  }
+
+  .artwork-media {
+    padding: var(--spacing-lg);
+    min-height: 300px;
+  }
+
+  .installation-box {
+    padding: var(--spacing-lg);
+  }
+
+  .download-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .pdf-viewer {
+    height: 600px;
+  }
+
+  .thumbnail-large {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .artwork-media {
+    padding: var(--spacing-md);
+  }
+
+  .installation-box {
+    padding: var(--spacing-md);
+  }
+
+  .installation-box h3 {
+    font-size: 1.25rem;
+  }
+
+  .pdf-viewer {
+    height: 400px;
+  }
+
+  .thumbnail-large {
+    font-size: 3rem;
+  }
+}

@@ -58,20 +58,23 @@ Output will be in `exhibition/dist/`
 
 The exhibition contains actual artwork files (PDFs, DOCS, images, videos, etc.) stored in the `/exhibition/public/artworks/` directory. Each artist has their own subdirectory for organizing their files.
 
-**Adding Artwork Files:**
+**Current Artwork Files:**
 
-1. Navigate to the appropriate artist directory in `/exhibition/public/artworks/`
-2. Add your artwork files (PDFs, DOCS, images, etc.)
-3. Optionally add a thumbnail image (`thumbnail.jpg` or `thumbnail.png`)
-4. Update artwork metadata in `/exhibition/src/data/artworks.js` if needed
+- **Lynch** (`/artworks/lynch/`): Browser extension files (PDF, PNG, GIF, MP4)
+- **Weigel** (`/artworks/weigel/`): Poetry document (DOCX)
+- **Gibbins** (`/artworks/gibbins/`): Video hosted on Vimeo (embedded)
+- **desire_engineering** (`/artworks/desire_engineering/`): 3 meme images (PNG)
+- **perfect_users** (`/artworks/perfect_users/`): PDF with 15 collaborative artworks
+- **search_engine_scores** (`/artworks/search_engine_scores/`): Work in progress
 
-**File Access:**
+**Display Features:**
 
-Files are served statically and can be referenced with paths like:
-- `/artworks/lynch/document.pdf`
-- `/artworks/weigel/poem.pdf`
-
-Note: In production, paths will be `/exhibition/artworks/...` due to the subdirectory deployment.
+1. **Custom presentation** for each artwork type (images, videos, PDFs, documents)
+2. **Download buttons** for browser extensions and documents
+3. **Installation instructions** for Lynch's Chrome extension
+4. **Image galleries** for multiple-image works
+5. **PDF viewers** for collections
+6. **Artist portfolio/website links** for all submissions
 
 See `/exhibition/public/artworks/README.md` for detailed documentation.
 
@@ -132,14 +135,20 @@ The open call site remains on the root (`/`) for continuous operation.
 - LiberatedLayout with "people's internet" brutalist aesthetic
 - Theme transformation when all mechanisms solved
 
-**✅ Phase 4: Artwork Integration** - MOSTLY COMPLETE
-- ArtworkPage component built with video embedding support
-- ✅ Artist submissions integrated from open call responses (5 of 6 artworks)
+**✅ Phase 4: Artwork Integration** - COMPLETE
+- ArtworkPage component built with comprehensive file display support
+- ✅ All 6 artist submissions integrated from open call responses
 - ✅ Complete artist statements and descriptions added to artworks.js
 - ✅ Artist-specific color themes redesigned based on artistic content
 - ✅ Video embeds for Vimeo/YouTube submissions (responsive 16:9 aspect ratio)
 - ✅ Thematic statements and presentation notes displayed on artwork pages
-- ⏳ Need to select 6th artwork for Search Engine Scores mechanism
+- ✅ Lynch: Browser extension with download links and installation instructions
+- ✅ Weigel: Document download (DOCX poem)
+- ✅ Gibbins: Vimeo video embed
+- ✅ desire_engineering: Multi-image gallery (3 meme images)
+- ✅ Perfect Users: PDF viewer with 15 collaborative artworks
+- ✅ Search Engine Scores: Artist updated to Justice Alexander Hager
+- ✅ Artist website/portfolio links added to all artworks
 
 **📋 Phase 6: Testing & Polish** - IN PROGRESS
 - ✅ Deployment to /exhibition/ subdirectory working

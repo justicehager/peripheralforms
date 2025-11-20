@@ -76,7 +76,68 @@ export default function ArtworkPage() {
         </p>
 
         <div className="artwork-media">
-          {videoEmbedUrl ? (
+          {/* Lynch: Special presentation with download and installation */}
+          {artworkId === 'lynch' && artwork.files && (
+            <div className="lynch-presentation">
+              <img
+                src={artwork.files.image}
+                alt={artwork.title}
+                className="artwork-main-image"
+              />
+
+              <div className="installation-box">
+                <h3>📦 Install the Browser Extension</h3>
+                <p>This work is a Google Chrome extension that corrects Google Maps by restoring the Gulf of Mexico name.</p>
+
+                <a
+                  href={artwork.downloadUrl}
+                  className="download-button"
+                  download
+                >
+                  ⬇️ Download Extension (.zip)
+                </a>
+
+                <div className="installation-instructions">
+                  <h4>Installation Instructions:</h4>
+                  <ol>
+                    <li>Download the extension using the button above and unzip it to a folder</li>
+                    <li>Open Google Chrome and navigate to <code>chrome://extensions/</code></li>
+                    <li>Enable "Developer Mode" by toggling the slider in the top right</li>
+                    <li>Drag and drop the unzipped extension folder into the Extensions window</li>
+                    <li>The extension should now be active on Google Maps</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div className="media-gallery">
+                <video controls className="artwork-video">
+                  <source src={artwork.files.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <img src={artwork.files.gif} alt="Extension Demo" className="artwork-gif" />
+              </div>
+            </div>
+          )}
+
+          {/* Weigel: Document download */}
+          {artworkId === 'weigel' && artwork.files && (
+            <div className="document-presentation">
+              <div className="document-icon">
+                <span className="thumbnail-large">📄</span>
+              </div>
+              <p className="document-description">This work is a poem about a police interrogation.</p>
+              <a
+                href={artwork.files.document}
+                className="download-button"
+                download
+              >
+                📖 Download Poem (DOCX)
+              </a>
+            </div>
+          )}
+
+          {/* Gibbins: Video embed (already handled) */}
+          {artworkId === 'gibbins' && videoEmbedUrl && (
             <div className="video-embed-container">
               <iframe
                 src={videoEmbedUrl}
@@ -87,10 +148,47 @@ export default function ArtworkPage() {
                 className="video-embed"
               ></iframe>
             </div>
-          ) : (
+          )}
+
+          {/* desire_engineering: Multiple images */}
+          {artworkId === 'desire-engineering' && artwork.files && artwork.files.images && (
+            <div className="image-gallery">
+              {artwork.files.images.map((imagePath, index) => (
+                <img
+                  key={index}
+                  src={imagePath}
+                  alt={`${artwork.title} - Image ${index + 1}`}
+                  className="gallery-image"
+                />
+              ))}
+            </div>
+          )}
+
+          {/* perfect_users: PDF viewer */}
+          {artworkId === 'perfect-users' && artwork.files && artwork.files.pdf && (
+            <div className="pdf-presentation">
+              <iframe
+                src={artwork.files.pdf}
+                className="pdf-viewer"
+                title={artwork.title}
+              ></iframe>
+              <a
+                href={artwork.files.pdf}
+                className="download-button"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📄 Download PDF
+              </a>
+            </div>
+          )}
+
+          {/* search-engine-scores: Placeholder or future content */}
+          {artworkId === 'search-engine-scores' && (
             <div className="media-placeholder">
               <span className="thumbnail-large">{artwork.thumbnail}</span>
-              <p>[Artwork content would display here]</p>
+              <p>Work in progress</p>
             </div>
           )}
         </div>
@@ -138,6 +236,11 @@ export default function ArtworkPage() {
           {artwork.youtubeUrl && (
             <a href={artwork.youtubeUrl} target="_blank" rel="noopener noreferrer" className="artwork-link">
               Watch on YouTube →
+            </a>
+          )}
+          {artwork.telegramUrl && (
+            <a href={artwork.telegramUrl} target="_blank" rel="noopener noreferrer" className="artwork-link">
+              Join Telegram Group →
             </a>
           )}
         </div>
