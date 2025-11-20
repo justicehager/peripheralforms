@@ -129,7 +129,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .notification {
-    font-size: 0.75rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.75rem (minimum 14pt) */
     padding: 10px 16px;
     max-width: 200px;
     white-space: normal;
@@ -139,7 +139,7 @@
 
 @media (max-width: 480px) {
   .notification {
-    font-size: 0.7rem;
+    font-size: 0.875rem; /* Accessibility: Increased from 0.7rem (minimum 14pt) */
     padding: 8px 12px;
     max-width: 150px;
   }

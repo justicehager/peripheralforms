@@ -5,7 +5,7 @@
   background: rgba(0, 0, 0, 0.95);
   color: #ff3300;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 14px; /* Accessibility: Increased from 10px (minimum 14pt) */
   padding: 8px;
   border: 1px solid #333;
   z-index: 9998;
@@ -23,7 +23,7 @@
   border-bottom: 1px solid #333;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 9px;
+  font-size: 14px; /* Accessibility: Increased from 9px (minimum 14pt) */
 }
 
 .console-line {
@@ -32,7 +32,7 @@
   gap: 8px;
   padding: 4px;
   margin-bottom: 2px;
-  font-size: 9px;
+  font-size: 14px; /* Accessibility: Increased from 9px (minimum 14pt) */
   border-bottom: 1px dashed rgba(255, 51, 0, 0.2);
 }
 
@@ -64,7 +64,7 @@
 
 .console-time {
   color: #666;
-  font-size: 8px;
+  font-size: 14px; /* Accessibility: Increased from 8px (minimum 14pt) */
   text-align: right;
   white-space: nowrap;
 }
