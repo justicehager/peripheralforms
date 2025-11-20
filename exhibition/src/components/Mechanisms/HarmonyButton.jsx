@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useStore } from '../../store/useStore'
 import styles from './HarmonyButton.module.css'
 
-// The CAPTCHA contains hidden instructions
-const CAPTCHA_TEXT = 'SEARCH transparency API labor conditions'
-const CAPTCHA_SOLUTION = 'SEARCH transparency API labor conditions'
+// The CAPTCHA contains hidden instructions - one of the search queries
+const CAPTCHA_TEXT = 'we should be allowed to search our thoughts'
+const CAPTCHA_SOLUTION = 'we should be allowed to search our thoughts'
 
 export default function HarmonyButton({ onSolve }) {
   const { solveMechanism } = useStore()
@@ -36,10 +36,10 @@ export default function HarmonyButton({ onSolve }) {
         <h3>🔓 Mechanism Solved</h3>
         <p>You decoded the instructions hidden in mandatory assent.</p>
         <div className={styles['instructions-revealed']}>
-          <h4>Search Engine Score Instructions:</h4>
-          <p>Generate phantom demand by searching: <strong>{CAPTCHA_SOLUTION}</strong></p>
+          <h4>Access Granted</h4>
+          <p>The CAPTCHA contained one of the search queries that exposes how platforms pre-shape consciousness.</p>
           <p className={styles['meta-note']}>
-            (The artwork reveals how APIs can be manipulated to fabricate evidence of demand)
+            (The artwork demonstrates how mandatory assent systems can contain their own critique)
           </p>
         </div>
       </div>

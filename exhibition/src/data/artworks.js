@@ -163,13 +163,25 @@ and the other lovely perfect users`,
     mechanismType: 'Harmony Button',
     mechanismId: 'harmony',
     year: 2025,
-    medium: 'Phantom API / Search',
+    medium: 'Search queries / Screenshots',
     likes: 634,
     comments: 38,
     shares: 156,
     thumbnail: '/exhibition/thumbnails/6.jpg',
-    description: 'Work about fabricating demand trapped behind mandatory assent to platform rules.',
-    artistStatement: 'Exploring the phantom demand generation and phantom APIs.',
+    description: 'These searches attempt to find tools, APIs, or documentation for infrastructure that would expose how search algorithms pre-shape consciousness. Each query triggers a different mechanism of algorithmic control. The searches are both artwork and evidence—generating phantom demand for cognitive liberation tools while documenting why such tools cannot exist within the systems that would need to provide them.',
+    thematicStatement: 'The searches demonstrate how platforms admit control mechanisms through their own correction systems. Results vary based on personalization settings, showing that control mechanisms adapt to each user while maintaining the same underlying structure. Instructions are provided for others to perform these searches themselves.',
+    portfolioUrl: 'https://justicehager.com/',
+    files: {
+      images: [
+        '/exhibition/artworks/search_engine_scores/APIs for cognitive security protecting intelligence from neurohazards.png',
+        '/exhibition/artworks/search_engine_scores/downranked results booster chrome extension.png',
+        '/exhibition/artworks/search_engine_scores/facist in my head, facist in my search.png',
+        '/exhibition/artworks/search_engine_scores/stop autocorrecting my impulse.png',
+        '/exhibition/artworks/search_engine_scores/we should be allowed to search our thoughts.png',
+        '/exhibition/artworks/search_engine_scores/search results im not allowed to see.png',
+        '/exhibition/artworks/search_engine_scores/the policeman in my head is also in my search results.png'
+      ]
+    },
     imageUrl: '/artworks/search-engine-scores/thumbnail.jpg',
     contentUrl: '/artworks/search-engine-scores/content'
   }

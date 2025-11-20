@@ -6,6 +6,7 @@ import './ArtworkPageThemes.css'
 import { getArtistTheme } from '../../data/artistThemes'
 import InterrogationPoem from './InterrogationPoem'
 import ImageLightbox from '../Artwork/ImageLightbox'
+import SearchEngineScores from './SearchEngineScores'
 
 // Helper function to parse video URLs and generate embed codes
 function getVideoEmbedUrl(url) {
@@ -206,12 +207,9 @@ export default function ArtworkPage() {
             </div>
           )}
 
-          {/* search-engine-scores: Placeholder or future content */}
+          {/* search-engine-scores: Interactive search queries with Google links */}
           {artworkId === 'search-engine-scores' && (
-            <div className="media-placeholder">
-              <span className="thumbnail-large">{artwork.thumbnail}</span>
-              <p>Work in progress</p>
-            </div>
+            <SearchEngineScores />
           )}
         </div>
 
@@ -220,10 +218,12 @@ export default function ArtworkPage() {
           <p>{artwork.description}</p>
         </section>
 
-        <section className="artist-statement">
-          <h2>Artist Statement</h2>
-          <p style={{ whiteSpace: 'pre-line' }}>{artwork.artistStatement}</p>
-        </section>
+        {artwork.artistStatement && (
+          <section className="artist-statement">
+            <h2>Artist Statement</h2>
+            <p style={{ whiteSpace: 'pre-line' }}>{artwork.artistStatement}</p>
+          </section>
+        )}
 
         {artwork.thematicStatement && (
           <section className="thematic-statement">
