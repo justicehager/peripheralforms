@@ -35,6 +35,20 @@ export const useStore = create(
         }
       },
 
+      // Toggle mechanism for testing purposes
+      toggleMechanism: (mechanismId) => {
+        const solved = get().solvedMechanisms
+        const newSolved = solved.includes(mechanismId)
+          ? solved.filter(id => id !== mechanismId)
+          : [...solved, mechanismId]
+
+        set({
+          solvedMechanisms: newSolved,
+          infrastructureVisibility: Math.min(100, (newSolved.length / 6) * 100),
+          currentTheme: newSolved.length === 6 ? 'resistance' : 'platform'
+        })
+      },
+
       trackSurveillance: (data) => {
         set(state => ({
           surveillanceData: {

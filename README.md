@@ -66,6 +66,7 @@ The open call site remains on the root (`/`) for continuous operation.
 - **Theme Transformation**: Platform aesthetic shifts to "people's internet" brutalist design when all mechanisms solved
 - **Real Tracking Data**: Mouse movements and scroll depth tracked (in-browser only)
 - **Fully Responsive Design**: Optimized for desktop, tablet, and mobile devices with fluid typography and touch-friendly interactions
+- **Testing Toggles**: Each artwork has a toggle button to manually mark it as solved/unsolved for testing purposes
 
 ### Technology Stack
 
@@ -85,6 +86,7 @@ The open call site remains on the root (`/`) for continuous operation.
 - React 19 + Vite 7 setup with subdirectory routing (/exhibition/)
 - Zustand store with localStorage persistence
 - Full component architecture with theme switching
+- Testing toggles for individual artwork solved states
 
 **✅ Phase 2: All 6 Mechanisms** - COMPLETE
 - Confirmshaming (Lynch)
