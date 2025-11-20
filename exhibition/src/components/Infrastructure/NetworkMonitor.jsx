@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './NetworkMonitor.module.css'
+import './NetworkMonitor.css'
 
 export default function NetworkMonitor() {
   const [requests, setRequests] = useState([])

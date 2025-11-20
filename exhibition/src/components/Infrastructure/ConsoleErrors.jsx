@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './ConsoleErrors.module.css'
+import './ConsoleErrors.css'
 
 export default function ConsoleErrors() {
   const [errors, setErrors] = useState([])
