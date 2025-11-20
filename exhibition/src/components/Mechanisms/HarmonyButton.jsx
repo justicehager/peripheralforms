@@ -128,15 +128,6 @@ export default function HarmonyButton({ onSolve }) {
             </p>
           </div>
         </div>
-
-        <div className={styles['harmony-hint']}>
-          <p className={styles['hint-text']}>
-            💡 Platform rules require mandatory assent
-          </p>
-          <p className={styles['hint-subtext']}>
-            Hint: You must agree to proceed. The truth is hidden after compliance.
-          </p>
-        </div>
       </div>
     )
   }
@@ -181,19 +172,6 @@ export default function HarmonyButton({ onSolve }) {
             ❌ Incorrect. Please try again.
           </div>
         )}
-
-        <div className={styles['captcha-hint']}>
-          <p>💡 Look carefully. The CAPTCHA contains more than verification.</p>
-        </div>
-      </div>
-
-      <div className={styles['harmony-hint']}>
-        <p className={styles['hint-text']}>
-          💡 Mandatory assent hides instructions in plain sight
-        </p>
-        <p className={styles['hint-subtext']}>
-          Hint: The distorted text is the actual artwork instruction
-        </p>
       </div>
     </div>
   )

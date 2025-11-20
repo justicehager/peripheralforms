@@ -195,15 +195,6 @@ export default function InfiniteScroll({ onSolve }) {
           </div>
         )}
       </div>
-
-      <div className={styles['infinitescroll-hint']}>
-        <p className={styles['hint-text']}>
-          💡 Keep scrolling. Pattern recognition is key.
-        </p>
-        <p className={styles['hint-subtext']}>
-          Hint: Corporate testimonials are procedurally generated
-        </p>
-      </div>
     </div>
   )
 }

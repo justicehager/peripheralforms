@@ -165,15 +165,6 @@ export default function TimeOut({ onSolve }) {
             </div>
           </div>
         </div>
-
-        <div className={styles['timeout-hint']}>
-          <p className={styles['hint-text']}>
-            💡 Paternalistic control disguised as care
-          </p>
-          <p className={styles['hint-subtext']}>
-            Hint: Time limits serve the platform, not you. Wait or circumvent.
-          </p>
-        </div>
       </div>
     </div>
   )
