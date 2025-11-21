@@ -59,6 +59,9 @@ export const useStore = create(
       },
 
       resetExhibition: () => {
+        // Clear mechanism-specific localStorage data
+        localStorage.removeItem('timeout-mechanism-accumulated-time')
+
         set({
           solvedMechanisms: [],
           infrastructureVisibility: 0,
