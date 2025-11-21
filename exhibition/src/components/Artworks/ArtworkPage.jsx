@@ -232,13 +232,6 @@ export default function ArtworkPage() {
           </section>
         )}
 
-        {artwork.presentationNotes && (
-          <section className="presentation-notes">
-            <h2>Presentation Notes</h2>
-            <p style={{ whiteSpace: 'pre-line' }}>{artwork.presentationNotes}</p>
-          </section>
-        )}
-
         <div className="artwork-links">
           {artwork.websiteUrl && (
             <a href={artwork.websiteUrl} target="_blank" rel="noopener noreferrer" className="artwork-link">

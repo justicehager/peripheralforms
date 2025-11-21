@@ -4,7 +4,7 @@ import styles from './InfiniteScroll.module.css'
 
 // Configuration
 const TOTAL_ITEMS = 250
-const EXIT_PATTERN_INDEX = 187 // Where the pattern/exit appears
+const EXIT_PATTERN_INDEX = 123 // Where the pattern/exit appears
 const ITEMS_PER_BATCH = 20
 
 // Templates for procedural generation
