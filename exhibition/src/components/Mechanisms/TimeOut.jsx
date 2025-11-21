@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useStore } from '../../store/useStore'
 import styles from './TimeOut.module.css'
 
-const WAIT_TIME_MS = 5 * 60 * 1000 // 5 minutes in milliseconds
+const WAIT_TIME_MS = 45 * 1000 // 45 seconds in milliseconds
 const REQUIRED_OTHER_SOLVES = 2
 
 export default function TimeOut({ onSolve }) {

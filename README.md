@@ -161,6 +161,7 @@ The open call site remains on the root (`/`) for continuous operation.
 - ✅ Removed hints from all mechanisms for better discovery experience
 - ✅ PF floating icon now visible and links to peripheralforms.com
 - ✅ Artist emoji avatars added to feed posts
+- ✅ Performance optimization (InfiniteScroll and SurveillanceUI mechanisms optimized with throttling and reduced re-renders)
+- ✅ Isolation timer adjusted to 45 seconds for better exhibition flow
 - ⏳ Cross-browser testing
-- ⏳ Performance optimization
 - ⏳ Accessibility improvements

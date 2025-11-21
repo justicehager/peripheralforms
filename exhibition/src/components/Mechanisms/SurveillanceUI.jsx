@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useStore } from '../../store/useStore'
 import styles from './SurveillanceUI.module.css'
 
@@ -20,8 +20,9 @@ export default function SurveillanceUI({ onSolve }) {
   const containerRef = useRef(null)
   const hoverStartRef = useRef(null)
   const trackingIntervalRef = useRef(null)
+  const throttleTimeoutRef = useRef(null)
 
-  // Track time
+  // Track time and cleanup
   useEffect(() => {
     trackingIntervalRef.current = setInterval(() => {
       setTrackingData(prev => ({
@@ -34,12 +35,22 @@ export default function SurveillanceUI({ onSolve }) {
       if (trackingIntervalRef.current) {
         clearInterval(trackingIntervalRef.current)
       }
+      if (throttleTimeoutRef.current) {
+        clearTimeout(throttleTimeoutRef.current)
+      }
     }
   }, [])
 
-  // Handle mouse movement
-  const handleMouseMove = (e) => {
+  // Handle mouse movement with throttling
+  const handleMouseMove = useCallback((e) => {
     if (!containerRef.current) return
+
+    // Throttle to 50ms (20 updates per second instead of 100+)
+    if (throttleTimeoutRef.current) return
+
+    throttleTimeoutRef.current = setTimeout(() => {
+      throttleTimeoutRef.current = null
+    }, 50)
 
     const rect = containerRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -51,9 +62,12 @@ export default function SurveillanceUI({ onSolve }) {
       totalMoves: prev.totalMoves + 1
     }))
 
-    trackSurveillance({
-      mouseMovements: [{ x, y, timestamp: Date.now() }]
-    })
+    // Only update store every 10th move to reduce overhead
+    if (Math.random() < 0.1) {
+      trackSurveillance({
+        mouseMovements: [{ x, y, timestamp: Date.now() }]
+      })
+    }
 
     // Determine which zone the mouse is in
     const zone = getZone(x, y, rect.width, rect.height)
@@ -62,14 +76,14 @@ export default function SurveillanceUI({ onSolve }) {
       hoverStartRef.current = Date.now()
       setHoverDuration(0)
     }
-  }
+  }, [hoverZone, trackSurveillance])
 
-  // Track hover duration
+  // Track hover duration (reduced frequency for performance)
   useEffect(() => {
     if (hoverZone && hoverStartRef.current) {
       const interval = setInterval(() => {
         setHoverDuration(Date.now() - hoverStartRef.current)
-      }, 100)
+      }, 250)
       return () => clearInterval(interval)
     }
   }, [hoverZone])
