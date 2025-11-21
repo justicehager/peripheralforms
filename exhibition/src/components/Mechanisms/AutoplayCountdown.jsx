@@ -16,6 +16,7 @@ export default function AutoplayCountdown({ onSolve }) {
   const iframeRef = useRef(null)
   const isMountedRef = useRef(true)
   const initTimeoutRef = useRef(null)
+  const rafRef = useRef(null)
 
   useEffect(() => {
     isMountedRef.current = true
@@ -37,6 +38,11 @@ export default function AutoplayCountdown({ onSolve }) {
     const initializePlayer = () => {
       // Check if component is still mounted and element exists
       if (!isMountedRef.current || !iframeRef.current) {
+        return
+      }
+
+      // Ensure element is still in the document (not detached by React)
+      if (!document.body.contains(iframeRef.current)) {
         return
       }
 
@@ -66,25 +72,35 @@ export default function AutoplayCountdown({ onSolve }) {
 
     // Create YouTube player when API is ready
     if (window.YT && window.YT.Player) {
-      // API already loaded - delay initialization slightly to ensure DOM is ready
-      initTimeoutRef.current = setTimeout(() => {
-        if (isMountedRef.current) {
-          initializePlayer()
-        }
-      }, 100)
+      // API already loaded - delay initialization to ensure DOM is ready
+      // Use requestAnimationFrame + timeout to ensure React has fully rendered
+      rafRef.current = requestAnimationFrame(() => {
+        initTimeoutRef.current = setTimeout(() => {
+          if (isMountedRef.current) {
+            initializePlayer()
+          }
+        }, 200)
+      })
     } else {
       // Wait for API to load
       const originalCallback = window.onYouTubeIframeAPIReady
       window.onYouTubeIframeAPIReady = () => {
         if (originalCallback) originalCallback()
         if (isMountedRef.current) {
-          initTimeoutRef.current = setTimeout(initializePlayer, 100)
+          rafRef.current = requestAnimationFrame(() => {
+            initTimeoutRef.current = setTimeout(initializePlayer, 200)
+          })
         }
       }
     }
 
     return () => {
       isMountedRef.current = false
+
+      // Clear any pending animation frame
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
 
       // Clear any pending initialization
       if (initTimeoutRef.current) {
