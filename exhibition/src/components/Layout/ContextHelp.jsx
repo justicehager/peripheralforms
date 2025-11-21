@@ -1,9 +1,9 @@
-import './ContextHelp.module.css'
+import styles from './ContextHelp.module.css'
 
 export default function ContextHelp() {
   return (
-    <div className="context-help">
-      <article className="help-content">
+    <div className={styles['context-help']}>
+      <article className={styles['help-content']}>
         <h1>We Should Be Allowed to Think</h1>
 
         <section>
