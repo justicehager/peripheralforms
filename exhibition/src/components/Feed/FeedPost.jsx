@@ -6,7 +6,6 @@ import styles from './FeedPost.module.css'
 
 export default function FeedPost({ artwork, isUnlocked }) {
   const [showOverlay, setShowOverlay] = useState(false)
-  const toggleMechanism = useStore(state => state.toggleMechanism)
 
   const handlePostClick = () => {
     if (!isUnlocked) {
@@ -70,17 +69,6 @@ export default function FeedPost({ artwork, isUnlocked }) {
             <span aria-label={`${artwork.comments} comments`}>💬 {artwork.comments}</span>
             <span aria-label={`${artwork.shares} shares`}>🔄 {artwork.shares}</span>
           </div>
-          <button
-            className={styles['test-toggle']}
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              toggleMechanism(artwork.mechanismId)
-            }}
-            aria-label={`Toggle ${artwork.title} solved state (testing only)`}
-          >
-            {isUnlocked ? '🔓 Unlock' : '🔒 Lock'}
-          </button>
         </div>
       </article>
 
