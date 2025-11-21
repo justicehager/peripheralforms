@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../store/useStore'
 import { getMechanismTheme } from '../../data/mechanismThemes'
@@ -25,13 +26,17 @@ export default function MechanismOverlay({ artwork, onClose }) {
   const isUnlocked = solvedMechanisms.includes(artwork.mechanismId)
   const theme = getMechanismTheme(artwork.mechanismId)
 
-  // Redirect to artwork page if mechanism gets solved
-  if (isUnlocked) {
-    setTimeout(() => {
-      onClose()
-      navigate(`/artwork/${artwork.id}`)
-    }, 500)
-  }
+  // Redirect to artwork page when mechanism gets solved
+  useEffect(() => {
+    if (isUnlocked) {
+      const timer = setTimeout(() => {
+        onClose()
+        navigate(`/artwork/${artwork.id}`)
+      }, 500)
+
+      return () => clearTimeout(timer)
+    }
+  }, [isUnlocked, navigate, artwork.id, onClose])
 
   return (
     <div className={styles.overlay} onClick={onClose}>
