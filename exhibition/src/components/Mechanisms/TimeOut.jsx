@@ -7,39 +7,51 @@ const REQUIRED_OTHER_SOLVES = 2
 
 export default function TimeOut({ onSolve }) {
   const { solveMechanism, solvedMechanisms } = useStore()
-  const [firstVisitTime, setFirstVisitTime] = useState(null)
+  const [accumulatedTime, setAccumulatedTime] = useState(0)
+  const [sessionStartTime, setSessionStartTime] = useState(Date.now())
   const [currentTime, setCurrentTime] = useState(Date.now())
   const [isSolved, setIsSolved] = useState(false)
   const [unlockMethod, setUnlockMethod] = useState(null)
 
-  // Record first visit time when mechanism opens
+  // Load accumulated time from previous sessions when mechanism opens
   useEffect(() => {
-    const storedTime = localStorage.getItem('timeout-mechanism-opened')
-    if (storedTime) {
-      setFirstVisitTime(parseInt(storedTime, 10))
-    } else {
-      // Timer starts NOW when mechanism is opened
-      const now = Date.now()
-      setFirstVisitTime(now)
-      localStorage.setItem('timeout-mechanism-opened', now.toString())
+    const storedAccumulatedTime = localStorage.getItem('timeout-mechanism-accumulated-time')
+    if (storedAccumulatedTime) {
+      setAccumulatedTime(parseInt(storedAccumulatedTime, 10))
     }
+    // Set session start time
+    setSessionStartTime(Date.now())
   }, [])
 
-  // Update current time every second
+  // Update current time every second and save accumulated time
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(Date.now())
+
+      // Calculate total time spent (accumulated + current session)
+      const currentSessionTime = Date.now() - sessionStartTime
+      const totalTime = accumulatedTime + currentSessionTime
+
+      // Save accumulated time periodically
+      localStorage.setItem('timeout-mechanism-accumulated-time', totalTime.toString())
     }, 1000)
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => {
+      clearInterval(interval)
+      // Save accumulated time when component unmounts (mechanism closes)
+      const currentSessionTime = Date.now() - sessionStartTime
+      const totalTime = accumulatedTime + currentSessionTime
+      localStorage.setItem('timeout-mechanism-accumulated-time', totalTime.toString())
+    }
+  }, [accumulatedTime, sessionStartTime])
 
   // Check unlock conditions
   useEffect(() => {
-    if (!firstVisitTime || isSolved) return
+    if (isSolved) return
 
-    const timePassed = currentTime - firstVisitTime
-    const timeUnlocked = timePassed >= WAIT_TIME_MS
+    const currentSessionTime = currentTime - sessionStartTime
+    const totalTimePassed = accumulatedTime + currentSessionTime
+    const timeUnlocked = totalTimePassed >= WAIT_TIME_MS
 
     // Exclude this mechanism from the count
     const otherSolvedCount = solvedMechanisms.filter(id => id !== 'timeout').length
@@ -50,21 +62,20 @@ export default function TimeOut({ onSolve }) {
     } else if (progressUnlocked) {
       handleUnlock('progress')
     }
-  }, [currentTime, solvedMechanisms, firstVisitTime, isSolved])
+  }, [currentTime, solvedMechanisms, accumulatedTime, sessionStartTime, isSolved])
 
   const handleUnlock = (method) => {
     setIsSolved(true)
     setUnlockMethod(method)
     solveMechanism('timeout')
-    localStorage.removeItem('timeout-mechanism-opened')
+    localStorage.removeItem('timeout-mechanism-accumulated-time')
     onSolve?.()
   }
 
   const getRemainingTime = () => {
-    if (!firstVisitTime) return WAIT_TIME_MS
-
-    const elapsed = currentTime - firstVisitTime
-    const remaining = WAIT_TIME_MS - elapsed
+    const currentSessionTime = currentTime - sessionStartTime
+    const totalElapsed = accumulatedTime + currentSessionTime
+    const remaining = WAIT_TIME_MS - totalElapsed
     return Math.max(0, remaining)
   }
 
@@ -76,9 +87,9 @@ export default function TimeOut({ onSolve }) {
   }
 
   const getProgressPercent = () => {
-    if (!firstVisitTime) return 0
-    const elapsed = currentTime - firstVisitTime
-    return Math.min(100, (elapsed / WAIT_TIME_MS) * 100)
+    const currentSessionTime = currentTime - sessionStartTime
+    const totalElapsed = accumulatedTime + currentSessionTime
+    return Math.min(100, (totalElapsed / WAIT_TIME_MS) * 100)
   }
 
   const otherSolvedCount = solvedMechanisms.filter(id => id !== 'timeout').length

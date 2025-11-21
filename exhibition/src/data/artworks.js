@@ -72,7 +72,6 @@ The executive order is not binding on U.S. state governments or the private sect
     thematicStatement: `The work used advanced video compositing methods and digital audio production to create the imagined inner space of an individual finding their way through an authoritarian environment that seeks to homogenise and restrict their lived experience. In the end, after the credits, we are reminded that the natural world can provide us with a way out, if only we give it a chance.`,
     vimeoUrl: 'https://vimeo.com/408259816',
     portfolioUrl: 'https://www.iangibbins.com.au/',
-    presentationNotes: 'Work can be screened in any HD format: projection / screen, etc. Audio is essential.',
     imageUrl: '/artworks/gibbins/thumbnail.jpg',
     contentUrl: '/artworks/gibbins/content'
   },
@@ -127,12 +126,6 @@ in the privacy of a private chat self censorship isn't required, neither is the 
 
 the revolution will not be pixelized`,
     telegramUrl: 'http://t.me/+wlHfzlNNIigwZWE0',
-    presentationNotes: `I made a selection of 15 images (attached in funky pdf but also findable between the other selected images in the portfolio kinda url) from the selection that suited this shows theme most, in my humble poetic opinion, they can be shown in any way (alone or together, in context or out of context), either online or offline, preferably on a screen or projection, as pixels need to shine.
-
-Thank you dear Justice for the emails and the initiative, I'm looking forward to seeing more about the show when it takes shape and it's peripheral forms.
-
-best regards William Wolfgang Wunderbar
-and the other lovely perfect users`,
     files: {
       images: [
         '/exhibition/artworks/perfect_users/page_01.png',
