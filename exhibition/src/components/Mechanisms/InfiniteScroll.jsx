@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useStore } from '../../store/useStore'
 import styles from './InfiniteScroll.module.css'
 
@@ -81,8 +81,8 @@ export default function InfiniteScroll({ onSolve }) {
     setItems(initialItems)
   }, [])
 
-  // Handle scroll depth tracking
-  const handleScroll = () => {
+  // Handle scroll depth tracking with throttling
+  const handleScroll = useCallback(() => {
     if (!scrollContainerRef.current) return
 
     const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current
@@ -101,15 +101,28 @@ export default function InfiniteScroll({ onSolve }) {
     if (visibleCount >= EXIT_PATTERN_INDEX && !showExit) {
       setShowExit(true)
     }
-  }
+  }, [visibleCount, showExit])
 
   useEffect(() => {
     const container = scrollContainerRef.current
-    if (container) {
-      container.addEventListener('scroll', handleScroll)
-      return () => container.removeEventListener('scroll', handleScroll)
+    if (!container) return
+
+    // Throttle scroll handler to 100ms
+    let throttleTimeout = null
+    const throttledScroll = () => {
+      if (throttleTimeout) return
+      throttleTimeout = setTimeout(() => {
+        handleScroll()
+        throttleTimeout = null
+      }, 100)
     }
-  }, [visibleCount, showExit])
+
+    container.addEventListener('scroll', throttledScroll, { passive: true })
+    return () => {
+      container.removeEventListener('scroll', throttledScroll)
+      if (throttleTimeout) clearTimeout(throttleTimeout)
+    }
+  }, [handleScroll])
 
   const handleExitClick = () => {
     setIsSolved(true)
