@@ -4,6 +4,7 @@ import styles from './TimeOut.module.css'
 
 const WAIT_TIME_MS = 45 * 1000 // 45 seconds in milliseconds
 const REQUIRED_OTHER_SOLVES = 2
+const UNLOCK_CHECK_DELAY_MS = 2000 // 2 seconds delay before checking unlock conditions
 
 export default function TimeOut({ onSolve }) {
   const { solveMechanism, solvedMechanisms } = useStore()
@@ -12,6 +13,7 @@ export default function TimeOut({ onSolve }) {
   const [currentTime, setCurrentTime] = useState(Date.now())
   const [isSolved, setIsSolved] = useState(false)
   const [unlockMethod, setUnlockMethod] = useState(null)
+  const [canCheckUnlock, setCanCheckUnlock] = useState(false)
 
   // Load accumulated time from previous sessions when mechanism opens
   useEffect(() => {
@@ -21,6 +23,13 @@ export default function TimeOut({ onSolve }) {
     }
     // Set session start time
     setSessionStartTime(Date.now())
+
+    // Delay unlock check to give user time to see the mechanism
+    const delayTimer = setTimeout(() => {
+      setCanCheckUnlock(true)
+    }, UNLOCK_CHECK_DELAY_MS)
+
+    return () => clearTimeout(delayTimer)
   }, [])
 
   // Update current time every second and save accumulated time
@@ -45,9 +54,9 @@ export default function TimeOut({ onSolve }) {
     }
   }, [accumulatedTime, sessionStartTime])
 
-  // Check unlock conditions
+  // Check unlock conditions (only after delay)
   useEffect(() => {
-    if (isSolved) return
+    if (isSolved || !canCheckUnlock) return
 
     const currentSessionTime = currentTime - sessionStartTime
     const totalTimePassed = accumulatedTime + currentSessionTime
@@ -62,7 +71,7 @@ export default function TimeOut({ onSolve }) {
     } else if (progressUnlocked) {
       handleUnlock('progress')
     }
-  }, [currentTime, solvedMechanisms, accumulatedTime, sessionStartTime, isSolved])
+  }, [currentTime, solvedMechanisms, accumulatedTime, sessionStartTime, isSolved, canCheckUnlock])
 
   const handleUnlock = (method) => {
     setIsSolved(true)
