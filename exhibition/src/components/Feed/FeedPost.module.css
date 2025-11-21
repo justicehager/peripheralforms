@@ -285,33 +285,6 @@
   transform: scale(1.05);
 }
 
-.test-toggle {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  padding: 10px 16px; /* Accessibility: Increased from 6px 12px for better touch targets */
-  border-radius: var(--radius-md);
-  font-size: 0.875rem; /* Accessibility: Increased from 0.75rem (minimum 14px) */
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-  min-height: 44px; /* Accessibility: Minimum touch target size */
-}
-
-.test-toggle:hover {
-  background: var(--accent-blue);
-  color: white;
-  border-color: var(--accent-blue);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(24, 119, 242, 0.3);
-}
-
-.test-toggle:active {
-  transform: translateY(0);
-}
-
 /* Mobile responsive styles */
 @media (max-width: 640px) {
   .post-content {
