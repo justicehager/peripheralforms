@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useStore } from '../../store/useStore'
 import styles from './AutoplayCountdown.module.css'
 
@@ -7,52 +7,43 @@ const YOUTUBE_VIDEO_ID = 'j2Adh7SVw3Q' // Jennifer Weigel's video
 const CLUE_TIMESTAMP = 127.3 // Hidden clue appears here (in seconds)
 const PAUSE_WINDOW = 2.0 // Acceptable margin for pausing (in seconds)
 
+// Generate a unique ID for this instance
+let instanceCounter = 0
+
 export default function AutoplayCountdown({ onSolve }) {
   const { solveMechanism } = useStore()
   const [isSolved, setIsSolved] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [showClue, setShowClue] = useState(false)
   const playerRef = useRef(null)
-  const iframeRef = useRef(null)
   const isMountedRef = useRef(true)
-  const initTimeoutRef = useRef(null)
-  const rafRef = useRef(null)
+  const containerRef = useRef(null)
+  const playerIdRef = useRef(`yt-player-${++instanceCounter}`)
 
-  useEffect(() => {
-    isMountedRef.current = true
+  // Callback ref that initializes the YouTube player when element is mounted
+  const setPlayerElement = useCallback((element) => {
+    if (!element || playerRef.current) return
 
-    // Load YouTube IFrame API only if not already loaded
-    if (!window.YT) {
-      // Check if script tag already exists
-      const existingScript = document.querySelector('script[src*="youtube.com/iframe_api"]')
+    containerRef.current = element
 
-      if (!existingScript) {
-        const tag = document.createElement('script')
-        tag.src = 'https://www.youtube.com/iframe_api'
-        tag.async = true
-        document.head.appendChild(tag)
-      }
-    }
-
-    // Function to initialize player
     const initializePlayer = () => {
-      // Check if component is still mounted and element exists
-      if (!isMountedRef.current || !iframeRef.current) {
+      if (!isMountedRef.current || !containerRef.current || playerRef.current) {
         return
       }
 
-      // Ensure element is still in the document (not detached by React)
-      if (!document.body.contains(iframeRef.current)) {
-        return
-      }
-
-      // Prevent double initialization
-      if (playerRef.current) {
+      // Verify element is in the document
+      if (!document.body.contains(containerRef.current)) {
         return
       }
 
       try {
-        playerRef.current = new window.YT.Player(iframeRef.current, {
+        // Create a div for YouTube to replace
+        const playerDiv = document.createElement('div')
+        playerDiv.id = playerIdRef.current
+        containerRef.current.appendChild(playerDiv)
+
+        // Initialize YouTube player on the created div
+        playerRef.current = new window.YT.Player(playerDiv, {
           videoId: YOUTUBE_VIDEO_ID,
           playerVars: {
             autoplay: 1,
@@ -70,42 +61,35 @@ export default function AutoplayCountdown({ onSolve }) {
       }
     }
 
-    // Create YouTube player when API is ready
+    // Wait for YouTube API to be ready
     if (window.YT && window.YT.Player) {
-      // API already loaded - delay initialization to ensure DOM is ready
-      // Use requestAnimationFrame + timeout to ensure React has fully rendered
-      rafRef.current = requestAnimationFrame(() => {
-        initTimeoutRef.current = setTimeout(() => {
-          if (isMountedRef.current) {
-            initializePlayer()
-          }
-        }, 200)
-      })
+      // API is loaded, wait a bit for React to finish rendering
+      setTimeout(initializePlayer, 100)
     } else {
-      // Wait for API to load
+      // Load the API first
+      if (!window.YT) {
+        const existingScript = document.querySelector('script[src*="youtube.com/iframe_api"]')
+        if (!existingScript) {
+          const tag = document.createElement('script')
+          tag.src = 'https://www.youtube.com/iframe_api'
+          tag.async = true
+          document.head.appendChild(tag)
+        }
+      }
+
       const originalCallback = window.onYouTubeIframeAPIReady
       window.onYouTubeIframeAPIReady = () => {
         if (originalCallback) originalCallback()
-        if (isMountedRef.current) {
-          rafRef.current = requestAnimationFrame(() => {
-            initTimeoutRef.current = setTimeout(initializePlayer, 200)
-          })
-        }
+        setTimeout(initializePlayer, 100)
       }
     }
+  }, [])
+
+  useEffect(() => {
+    isMountedRef.current = true
 
     return () => {
       isMountedRef.current = false
-
-      // Clear any pending animation frame
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current)
-      }
-
-      // Clear any pending initialization
-      if (initTimeoutRef.current) {
-        clearTimeout(initTimeoutRef.current)
-      }
 
       // Destroy player if it exists
       if (playerRef.current) {
@@ -114,7 +98,7 @@ export default function AutoplayCountdown({ onSolve }) {
             playerRef.current.destroy()
           }
         } catch (error) {
-          console.error('Error destroying YouTube player:', error)
+          // Ignore errors during cleanup
         }
         playerRef.current = null
       }
@@ -208,7 +192,7 @@ export default function AutoplayCountdown({ onSolve }) {
                 PAUSE NOW
               </div>
             )}
-            <div ref={iframeRef} className={styles['youtube-player']}></div>
+            <div ref={setPlayerElement} className={styles['youtube-player']}></div>
           </div>
         </div>
       </div>
