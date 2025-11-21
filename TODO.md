@@ -136,8 +136,8 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
 - [ ] Add screen reader descriptions for visual mechanisms
 
 ### Performance
-- [ ] Optimize performance for infinite scroll with 1000+ items
-- [ ] Optimize mouse tracking performance for Surveillance UI
+- [x] Optimize performance for infinite scroll with 1000+ items - **COMPLETE** (Added throttling to scroll handler, reduced re-renders, passive event listeners)
+- [x] Optimize mouse tracking performance for Surveillance UI - **COMPLETE** (Throttled mousemove to 50ms, reduced store updates, optimized hover tracking)
 
 ### Documentation
 - [ ] Write utility functions for puzzle solution validation
