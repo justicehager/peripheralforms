@@ -14,7 +14,6 @@ export default function AutoplayCountdown({ onSolve }) {
   const { solveMechanism } = useStore()
   const [isSolved, setIsSolved] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
-  const [showClue, setShowClue] = useState(false)
   const [needsInteraction, setNeedsInteraction] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const playerRef = useRef(null)
@@ -116,55 +115,26 @@ export default function AutoplayCountdown({ onSolve }) {
     }
   }, [])
 
-  // Track current time and show clue
-  // Also check for pause state continuously (iOS Safari workaround)
+  // Track current time and unlock when target timestamp is reached
   useEffect(() => {
-    let lastTime = 0
-    let stuckCount = 0
-
     const interval = setInterval(() => {
       // Only update state if component is still mounted
       if (!isMountedRef.current) {
         return
       }
 
-      if (playerRef.current && playerRef.current.getCurrentTime && playerRef.current.getPlayerState) {
+      if (playerRef.current && playerRef.current.getCurrentTime) {
         try {
           const time = playerRef.current.getCurrentTime()
-          const state = playerRef.current.getPlayerState()
-
           setCurrentTime(time)
 
-          // Show clue briefly at target timestamp
-          if (Math.abs(time - CLUE_TIMESTAMP) < 0.5) {
-            setShowClue(true)
-          } else {
-            setShowClue(false)
-          }
-
-          // iOS Safari workaround: Check if video is paused (state === 2)
-          // OR if time is stuck (not advancing) near the target timestamp
-          const timeDiff = Math.abs(time - lastTime)
-          const isPaused = state === 2
-          const isStuck = timeDiff < 0.05 && time > 1 // Video time not advancing
-
-          if (isStuck) {
-            stuckCount++
-          } else {
-            stuckCount = 0
-          }
-
-          // Detect pause at correct timestamp through either:
-          // 1. Explicit pause event (state === 2)
-          // 2. Video stuck at timestamp for multiple checks (iOS Safari fallback)
-          if (!hasSolvedRef.current && (isPaused || stuckCount >= 3) && Math.abs(time - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
+          // Unlock when video reaches the target timestamp
+          if (!hasSolvedRef.current && time >= CLUE_TIMESTAMP && time <= CLUE_TIMESTAMP + PAUSE_WINDOW) {
             hasSolvedRef.current = true
             setIsSolved(true)
             solveMechanism('autoplay')
             onSolve?.()
           }
-
-          lastTime = time
         } catch (error) {
           // Player might not be ready yet, ignore
         }
@@ -220,23 +190,6 @@ export default function AutoplayCountdown({ onSolve }) {
       setIsPlaying(true)
       setNeedsInteraction(false)
     }
-
-    // YT.PlayerState.PAUSED === 2
-    if (event.data === 2 && playerRef.current && !hasSolvedRef.current) {
-      try {
-        const pauseTime = playerRef.current.getCurrentTime()
-
-        // Check if paused at correct timestamp
-        if (Math.abs(pauseTime - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
-          hasSolvedRef.current = true
-          setIsSolved(true)
-          solveMechanism('autoplay')
-          onSolve?.()
-        }
-      } catch (error) {
-        console.error('Error checking pause time:', error)
-      }
-    }
   }
 
   const formatTime = (seconds) => {
@@ -249,8 +202,8 @@ export default function AutoplayCountdown({ onSolve }) {
     return (
       <div className={styles['autoplay-solved']}>
         <h3>🔓 Mechanism Solved</h3>
-        <p>You caught the moment of truth in the official narrative.</p>
-        <p className={styles['clue-revealed']}>The clue was hidden at {formatTime(CLUE_TIMESTAMP)}</p>
+        <p>You witnessed the mandatory viewing to completion.</p>
+        <p className={styles['clue-revealed']}>The truth was revealed at {formatTime(CLUE_TIMESTAMP)}</p>
       </div>
     )
   }
@@ -266,11 +219,6 @@ export default function AutoplayCountdown({ onSolve }) {
       <div className={styles['sticky-video-wrapper']}>
         <div className={styles['video-player']}>
           <div className={styles['video-screen']}>
-            {showClue && (
-              <div className={styles['hidden-clue']}>
-                PAUSE NOW
-              </div>
-            )}
             {needsInteraction && (
               <div className={styles['interaction-overlay']}>
                 <button
