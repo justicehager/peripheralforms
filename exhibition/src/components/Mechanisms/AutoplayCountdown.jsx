@@ -14,11 +14,14 @@ export default function AutoplayCountdown({ onSolve }) {
   const { solveMechanism } = useStore()
   const [isSolved, setIsSolved] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
-  const [showClue, setShowClue] = useState(false)
+  const [needsInteraction, setNeedsInteraction] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const playerRef = useRef(null)
   const isMountedRef = useRef(true)
   const containerRef = useRef(null)
   const playerIdRef = useRef(`yt-player-${++instanceCounter}`)
+  const autoplayCheckRef = useRef(null)
+  const hasSolvedRef = useRef(false)
 
   // Callback ref that initializes the YouTube player when element is mounted
   const setPlayerElement = useCallback((element) => {
@@ -43,10 +46,12 @@ export default function AutoplayCountdown({ onSolve }) {
         containerRef.current.appendChild(playerDiv)
 
         // Initialize YouTube player on the created div
+        // Start muted to allow autoplay on iOS
         playerRef.current = new window.YT.Player(playerDiv, {
           videoId: YOUTUBE_VIDEO_ID,
           playerVars: {
             autoplay: 1,
+            mute: 1,  // Start muted to enable autoplay on iOS
             controls: 1,
             modestbranding: 1,
             rel: 0
@@ -91,6 +96,11 @@ export default function AutoplayCountdown({ onSolve }) {
     return () => {
       isMountedRef.current = false
 
+      // Clear autoplay check timeout
+      if (autoplayCheckRef.current) {
+        clearTimeout(autoplayCheckRef.current)
+      }
+
       // Destroy player if it exists
       if (playerRef.current) {
         try {
@@ -105,7 +115,7 @@ export default function AutoplayCountdown({ onSolve }) {
     }
   }, [])
 
-  // Track current time and show clue
+  // Track current time and unlock when target timestamp is reached
   useEffect(() => {
     const interval = setInterval(() => {
       // Only update state if component is still mounted
@@ -118,11 +128,12 @@ export default function AutoplayCountdown({ onSolve }) {
           const time = playerRef.current.getCurrentTime()
           setCurrentTime(time)
 
-          // Show clue briefly at target timestamp
-          if (Math.abs(time - CLUE_TIMESTAMP) < 0.5) {
-            setShowClue(true)
-          } else {
-            setShowClue(false)
+          // Unlock when video reaches the target timestamp
+          if (!hasSolvedRef.current && time >= CLUE_TIMESTAMP && time <= CLUE_TIMESTAMP + PAUSE_WINDOW) {
+            hasSolvedRef.current = true
+            setIsSolved(true)
+            solveMechanism('autoplay')
+            onSolve?.()
           }
         } catch (error) {
           // Player might not be ready yet, ignore
@@ -134,7 +145,38 @@ export default function AutoplayCountdown({ onSolve }) {
   }, [])
 
   const onPlayerReady = (event) => {
-    // Auto-play is handled by playerVars
+    // Check if autoplay actually started after a delay
+    // If not, we need user interaction (iOS Safari requirement)
+    autoplayCheckRef.current = setTimeout(() => {
+      if (!isMountedRef.current || !playerRef.current) return
+
+      try {
+        const state = playerRef.current.getPlayerState()
+        // YT.PlayerState.PLAYING === 1
+        if (state !== 1) {
+          setNeedsInteraction(true)
+        } else {
+          setIsPlaying(true)
+        }
+      } catch (error) {
+        console.error('Error checking player state:', error)
+        setNeedsInteraction(true)
+      }
+    }, 1000)
+  }
+
+  const handleUserInteraction = () => {
+    if (!playerRef.current) return
+
+    try {
+      // Unmute and play the video
+      playerRef.current.unMute()
+      playerRef.current.playVideo()
+      setNeedsInteraction(false)
+      setIsPlaying(true)
+    } catch (error) {
+      console.error('Error starting playback:', error)
+    }
   }
 
   const onPlayerStateChange = (event) => {
@@ -143,20 +185,10 @@ export default function AutoplayCountdown({ onSolve }) {
       return
     }
 
-    // YT.PlayerState.PAUSED === 2
-    if (event.data === 2 && playerRef.current) {
-      try {
-        const pauseTime = playerRef.current.getCurrentTime()
-
-        // Check if paused at correct timestamp
-        if (Math.abs(pauseTime - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
-          setIsSolved(true)
-          solveMechanism('autoplay')
-          onSolve?.()
-        }
-      } catch (error) {
-        console.error('Error checking pause time:', error)
-      }
+    // YT.PlayerState.PLAYING === 1
+    if (event.data === 1) {
+      setIsPlaying(true)
+      setNeedsInteraction(false)
     }
   }
 
@@ -170,8 +202,8 @@ export default function AutoplayCountdown({ onSolve }) {
     return (
       <div className={styles['autoplay-solved']}>
         <h3>🔓 Mechanism Solved</h3>
-        <p>You caught the moment of truth in the official narrative.</p>
-        <p className={styles['clue-revealed']}>The clue was hidden at {formatTime(CLUE_TIMESTAMP)}</p>
+        <p>You witnessed the mandatory viewing to completion.</p>
+        <p className={styles['clue-revealed']}>The truth was revealed at {formatTime(CLUE_TIMESTAMP)}</p>
       </div>
     )
   }
@@ -187,9 +219,15 @@ export default function AutoplayCountdown({ onSolve }) {
       <div className={styles['sticky-video-wrapper']}>
         <div className={styles['video-player']}>
           <div className={styles['video-screen']}>
-            {showClue && (
-              <div className={styles['hidden-clue']}>
-                PAUSE NOW
+            {needsInteraction && (
+              <div className={styles['interaction-overlay']}>
+                <button
+                  className={styles['play-button']}
+                  onClick={handleUserInteraction}
+                  aria-label="Start video playback"
+                >
+                  ▶ TAP TO BEGIN MANDATORY VIEWING
+                </button>
               </div>
             )}
             <div ref={setPlayerElement} className={styles['youtube-player']}></div>
