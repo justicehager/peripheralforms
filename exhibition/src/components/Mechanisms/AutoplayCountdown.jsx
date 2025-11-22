@@ -15,10 +15,14 @@ export default function AutoplayCountdown({ onSolve }) {
   const [isSolved, setIsSolved] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [showClue, setShowClue] = useState(false)
+  const [needsInteraction, setNeedsInteraction] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const playerRef = useRef(null)
   const isMountedRef = useRef(true)
   const containerRef = useRef(null)
   const playerIdRef = useRef(`yt-player-${++instanceCounter}`)
+  const autoplayCheckRef = useRef(null)
+  const hasSolvedRef = useRef(false)
 
   // Callback ref that initializes the YouTube player when element is mounted
   const setPlayerElement = useCallback((element) => {
@@ -43,10 +47,12 @@ export default function AutoplayCountdown({ onSolve }) {
         containerRef.current.appendChild(playerDiv)
 
         // Initialize YouTube player on the created div
+        // Start muted to allow autoplay on iOS
         playerRef.current = new window.YT.Player(playerDiv, {
           videoId: YOUTUBE_VIDEO_ID,
           playerVars: {
             autoplay: 1,
+            mute: 1,  // Start muted to enable autoplay on iOS
             controls: 1,
             modestbranding: 1,
             rel: 0
@@ -91,6 +97,11 @@ export default function AutoplayCountdown({ onSolve }) {
     return () => {
       isMountedRef.current = false
 
+      // Clear autoplay check timeout
+      if (autoplayCheckRef.current) {
+        clearTimeout(autoplayCheckRef.current)
+      }
+
       // Destroy player if it exists
       if (playerRef.current) {
         try {
@@ -106,16 +117,22 @@ export default function AutoplayCountdown({ onSolve }) {
   }, [])
 
   // Track current time and show clue
+  // Also check for pause state continuously (iOS Safari workaround)
   useEffect(() => {
+    let lastTime = 0
+    let stuckCount = 0
+
     const interval = setInterval(() => {
       // Only update state if component is still mounted
       if (!isMountedRef.current) {
         return
       }
 
-      if (playerRef.current && playerRef.current.getCurrentTime) {
+      if (playerRef.current && playerRef.current.getCurrentTime && playerRef.current.getPlayerState) {
         try {
           const time = playerRef.current.getCurrentTime()
+          const state = playerRef.current.getPlayerState()
+
           setCurrentTime(time)
 
           // Show clue briefly at target timestamp
@@ -124,6 +141,30 @@ export default function AutoplayCountdown({ onSolve }) {
           } else {
             setShowClue(false)
           }
+
+          // iOS Safari workaround: Check if video is paused (state === 2)
+          // OR if time is stuck (not advancing) near the target timestamp
+          const timeDiff = Math.abs(time - lastTime)
+          const isPaused = state === 2
+          const isStuck = timeDiff < 0.05 && time > 1 // Video time not advancing
+
+          if (isStuck) {
+            stuckCount++
+          } else {
+            stuckCount = 0
+          }
+
+          // Detect pause at correct timestamp through either:
+          // 1. Explicit pause event (state === 2)
+          // 2. Video stuck at timestamp for multiple checks (iOS Safari fallback)
+          if (!hasSolvedRef.current && (isPaused || stuckCount >= 3) && Math.abs(time - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
+            hasSolvedRef.current = true
+            setIsSolved(true)
+            solveMechanism('autoplay')
+            onSolve?.()
+          }
+
+          lastTime = time
         } catch (error) {
           // Player might not be ready yet, ignore
         }
@@ -134,7 +175,38 @@ export default function AutoplayCountdown({ onSolve }) {
   }, [])
 
   const onPlayerReady = (event) => {
-    // Auto-play is handled by playerVars
+    // Check if autoplay actually started after a delay
+    // If not, we need user interaction (iOS Safari requirement)
+    autoplayCheckRef.current = setTimeout(() => {
+      if (!isMountedRef.current || !playerRef.current) return
+
+      try {
+        const state = playerRef.current.getPlayerState()
+        // YT.PlayerState.PLAYING === 1
+        if (state !== 1) {
+          setNeedsInteraction(true)
+        } else {
+          setIsPlaying(true)
+        }
+      } catch (error) {
+        console.error('Error checking player state:', error)
+        setNeedsInteraction(true)
+      }
+    }, 1000)
+  }
+
+  const handleUserInteraction = () => {
+    if (!playerRef.current) return
+
+    try {
+      // Unmute and play the video
+      playerRef.current.unMute()
+      playerRef.current.playVideo()
+      setNeedsInteraction(false)
+      setIsPlaying(true)
+    } catch (error) {
+      console.error('Error starting playback:', error)
+    }
   }
 
   const onPlayerStateChange = (event) => {
@@ -143,13 +215,20 @@ export default function AutoplayCountdown({ onSolve }) {
       return
     }
 
+    // YT.PlayerState.PLAYING === 1
+    if (event.data === 1) {
+      setIsPlaying(true)
+      setNeedsInteraction(false)
+    }
+
     // YT.PlayerState.PAUSED === 2
-    if (event.data === 2 && playerRef.current) {
+    if (event.data === 2 && playerRef.current && !hasSolvedRef.current) {
       try {
         const pauseTime = playerRef.current.getCurrentTime()
 
         // Check if paused at correct timestamp
         if (Math.abs(pauseTime - CLUE_TIMESTAMP) < PAUSE_WINDOW) {
+          hasSolvedRef.current = true
           setIsSolved(true)
           solveMechanism('autoplay')
           onSolve?.()
@@ -190,6 +269,17 @@ export default function AutoplayCountdown({ onSolve }) {
             {showClue && (
               <div className={styles['hidden-clue']}>
                 PAUSE NOW
+              </div>
+            )}
+            {needsInteraction && (
+              <div className={styles['interaction-overlay']}>
+                <button
+                  className={styles['play-button']}
+                  onClick={handleUserInteraction}
+                  aria-label="Start video playback"
+                >
+                  ▶ TAP TO BEGIN MANDATORY VIEWING
+                </button>
               </div>
             )}
             <div ref={setPlayerElement} className={styles['youtube-player']}></div>
