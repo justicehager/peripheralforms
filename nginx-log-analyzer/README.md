@@ -11,6 +11,7 @@ A command-line tool that analyzes nginx access logs and visualizes traffic stati
 
 📊 **Traffic Analysis**
 - Total requests and unique visitors
+- **Date range coverage** - Shows earliest and latest log entries with duration
 - Status code distribution
 - Top IP addresses
 - Most requested paths
@@ -99,6 +100,12 @@ Analyze and save output to file:
 │                        TRAFFIC OVERVIEW                             │
 ├─────────────────────────────────────────────────────────────────────┤
 │  Total Requests:         15,234                                     │
+├─────────────────────────────────────────────────────────────────────┤
+│  Date Range:                                                        │
+│    From: 2025-11-01 00:00:15 UTC                                 │
+│    To:   2025-11-22 23:59:45 UTC                                 │
+│    Duration: 21d 23h 59m                                            │
+├─────────────────────────────────────────────────────────────────────┤
 │  Unique IPs:              1,523                                     │
 │  Unique Paths:              342                                     │
 │  Avg Response Size:    45.2 KB                                      │
@@ -132,12 +139,13 @@ Example log line:
 
 ## Visualizations Included
 
-1. **Traffic Overview** - Summary statistics with total requests, unique IPs, paths, and data transfer
+1. **Traffic Overview** - Summary statistics with total requests, date range coverage (from/to/duration), unique IPs, paths, and data transfer
 2. **Status Code Distribution** - Bar chart showing HTTP status codes (200, 404, 500, etc.)
 3. **HTTP Method Distribution** - Breakdown of GET, POST, PUT, DELETE, etc.
 4. **Top IP Addresses** - Most active visitors
 5. **Top Requested Paths** - Most popular URLs
-6. **Hourly Traffic** - 24-hour distribution showing peak traffic times
+6. **404 Errors** - Paths generating 404 Not Found errors
+7. **Hourly Traffic** - 24-hour distribution showing peak traffic times
 
 ## Tips
 
