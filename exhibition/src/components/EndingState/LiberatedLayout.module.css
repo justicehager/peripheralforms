@@ -69,7 +69,8 @@
   margin-right: var(--spacing-sm);
 }
 
-.liberated-nav a {
+.liberated-nav a,
+.liberated-nav button {
   color: var(--link);
   text-decoration: underline;
   font-weight: 700;
@@ -81,9 +82,12 @@
   display: inline-block;
   background: linear-gradient(145deg, var(--bg-secondary), var(--bg-primary));
   transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-.liberated-nav a:hover {
+.liberated-nav a:hover,
+.liberated-nav button:hover {
   color: var(--bg-primary);
   background: var(--accent);
   border-style: inset;

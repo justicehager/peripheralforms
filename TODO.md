@@ -119,6 +119,7 @@ Generated from `exhibition-site-plan.md`. Track progress through development pha
   - Created `DEPLOYMENT.md` with detailed deployment instructions for various hosting platforms (Apache, Nginx, Netlify, Cloudflare Pages, GitHub Pages)
   - Direct navigation and page reloads now work correctly for artwork URLs
 - [x] **Fixed Mechanism Layout Issues** - Removed excessive `min-height` values causing unnecessary black space and scrollbars in mechanism overlays. Mechanisms now fit content naturally without forced spacing.
+- [x] **Fixed Liberation Mode Navigation Links** - Fixed non-working About and Home links in LiberatedLayout by changing React Router Link components from `href` to `to` prop. Also improved Reset button semantics by converting from Link to proper button element with matching CSS styling.
 
 ### Functionality Testing
 - [ ] Test all 6 mechanisms individually for functionality and solvability

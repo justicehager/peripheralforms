@@ -24,9 +24,9 @@ export default function LiberatedLayout({ children }) {
 
       <nav className="liberated-nav" aria-label="Liberated navigation">
         <ul>
-          <li><Link href="/">→ HOME</Link></li>
-          <li><Link href="/about">→ ABOUT</Link></li>
-          <li><Link href="#" onClick={handleReset} style={{ cursor: 'pointer' }} aria-label="Reset exhibition progress">→ RESET EXHIBITION</Link></li>
+          <li><Link to="/">→ HOME</Link></li>
+          <li><Link to="/about">→ ABOUT</Link></li>
+          <li><button onClick={handleReset} aria-label="Reset exhibition progress">→ RESET EXHIBITION</button></li>
         </ul>
       </nav>
 
