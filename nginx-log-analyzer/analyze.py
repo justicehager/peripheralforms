@@ -32,6 +32,7 @@ class NginxLogAnalyzer:
         self.methods = Counter()
         self.hourly_traffic = defaultdict(int)
         self.sizes = []
+        self.not_found_paths = Counter()  # Track 404 error paths
 
     def parse_logs(self):
         """Parse the nginx log file."""
@@ -49,6 +50,10 @@ class NginxLogAnalyzer:
                         self.ip_addresses[entry['ip']] += 1
                         self.paths[entry['path']] += 1
                         self.methods[entry['method']] += 1
+
+                        # Track 404 errors specifically
+                        if entry['status'] == '404':
+                            self.not_found_paths[entry['path']] += 1
 
                         # Parse timestamp for hourly traffic
                         try:
@@ -164,6 +169,32 @@ class NginxLogAnalyzer:
 
         print("└─────────────────────────────────────────────────────────────────────┘")
 
+    def render_404_errors(self, limit=10):
+        """Render paths generating 404 errors."""
+        print("\n┌─────────────────────────────────────────────────────────────────────┐")
+        print(f"│                    PATHS GENERATING 404 ERRORS                      │")
+        print("├─────────────────────────────────────────────────────────────────────┤")
+
+        if not self.not_found_paths:
+            print("│  No 404 errors found - Great!                                       │")
+            print("└─────────────────────────────────────────────────────────────────────┘")
+            return
+
+        total_404s = sum(self.not_found_paths.values())
+        print(f"│  Total 404 Errors: {total_404s:>6}                                           │")
+        print("├─────────────────────────────────────────────────────────────────────┤")
+
+        for i, (path, count) in enumerate(self.not_found_paths.most_common(limit), 1):
+            percentage = (count / total_404s) * 100
+            path_display = path[:43] + '...' if len(path) > 43 else path
+            print(f"│  {i:>2}. {path_display:<43} │ {count:>6} ({percentage:>4.1f}%) │")
+
+        if len(self.not_found_paths) > limit:
+            remaining = len(self.not_found_paths) - limit
+            print(f"│  ... and {remaining} more unique 404 paths                                 │")
+
+        print("└─────────────────────────────────────────────────────────────────────┘")
+
     def render_hourly_traffic(self):
         """Render hourly traffic distribution."""
         print("\n┌─────────────────────────────────────────────────────────────────────┐")
@@ -262,6 +293,7 @@ class NginxLogAnalyzer:
         self.render_http_methods()
         self.render_top_ips(top_ips)
         self.render_top_paths(top_paths)
+        self.render_404_errors(top_paths)  # Show 404 errors
         self.render_hourly_traffic()
         self.render_footer()
 
