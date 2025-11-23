@@ -1,0 +1,16 @@
+# security.txt for Peripheral Forms
+# "We Should Be Allowed to Think" Exhibition
+# https://peripheralforms.com
+#
+# This file follows RFC 9116 - https://www.rfc-editor.org/rfc/rfc9116.html
+# We accept responsible disclosure of security vulnerabilities.
+
+Contact: mailto:justice@justicehager.com
+Expires: 2026-11-23T23:59:59.000Z
+Canonical: https://peripheralforms.com/.well-known/security.txt
+Preferred-Languages: en
+
+# Disclosure Policy:
+# We appreciate responsible disclosure of any security vulnerabilities.
+# Please contact us at the email above with details of any issues found.
+# We will respond as quickly as possible to address legitimate concerns.
