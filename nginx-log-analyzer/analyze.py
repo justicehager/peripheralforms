@@ -33,6 +33,8 @@ class NginxLogAnalyzer:
         self.hourly_traffic = defaultdict(int)
         self.sizes = []
         self.not_found_paths = Counter()  # Track 404 error paths
+        self.min_date = None  # Track earliest log entry
+        self.max_date = None  # Track latest log entry
 
     def parse_logs(self):
         """Parse the nginx log file."""
@@ -55,11 +57,17 @@ class NginxLogAnalyzer:
                         if entry['status'] == '404':
                             self.not_found_paths[entry['path']] += 1
 
-                        # Parse timestamp for hourly traffic
+                        # Parse timestamp for hourly traffic and date range
                         try:
                             dt = datetime.strptime(entry['time'], '%d/%b/%Y:%H:%M:%S %z')
                             hour = dt.hour
                             self.hourly_traffic[hour] += 1
+
+                            # Track min/max dates
+                            if self.min_date is None or dt < self.min_date:
+                                self.min_date = dt
+                            if self.max_date is None or dt > self.max_date:
+                                self.max_date = dt
                         except:
                             pass
 
@@ -99,6 +107,32 @@ class NginxLogAnalyzer:
         print("│                        TRAFFIC OVERVIEW                             │")
         print("├─────────────────────────────────────────────────────────────────────┤")
         print(f"│  Total Requests:     {self.total_requests:>10,}                              │")
+
+        # Display date range if available
+        if self.min_date and self.max_date:
+            date_format = '%Y-%m-%d %H:%M:%S %Z'
+            min_str = self.min_date.strftime(date_format)
+            max_str = self.max_date.strftime(date_format)
+            duration = self.max_date - self.min_date
+
+            print("├─────────────────────────────────────────────────────────────────────┤")
+            print("│  Date Range:                                                        │")
+            print(f"│    From: {min_str:<56}│")
+            print(f"│    To:   {max_str:<56}│")
+
+            # Calculate and display duration
+            days = duration.days
+            hours = duration.seconds // 3600
+            minutes = (duration.seconds % 3600) // 60
+            if days > 0:
+                duration_str = f"{days}d {hours}h {minutes}m"
+            elif hours > 0:
+                duration_str = f"{hours}h {minutes}m"
+            else:
+                duration_str = f"{minutes}m"
+            print(f"│    Duration: {duration_str:<55}│")
+
+        print("├─────────────────────────────────────────────────────────────────────┤")
         print(f"│  Unique IPs:         {len(self.ip_addresses):>10,}                              │")
         print(f"│  Unique Paths:       {len(self.paths):>10,}                              │")
 
