@@ -1,0 +1,21 @@
+# robots.txt for Peripheral Forms
+# "We Should Be Allowed to Think" Exhibition
+
+# Allow all robots to access all content
+User-agent: *
+Allow: /
+
+# Disallow any potential admin or config directories
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /node_modules/
+
+# Allow search engines to index the exhibition
+Allow: /exhibition/
+Allow: /open-call.html
+
+# Crawl delay (be respectful to smaller servers)
+Crawl-delay: 1
+
+# Sitemap (update with your actual domain)
+# Sitemap: https://peripheralforms.com/sitemap.xml
